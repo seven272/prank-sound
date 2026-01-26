@@ -58,6 +58,10 @@ export default defineConfig({
       usePolling: true,
     },
   },
+  preview: {
+    port: 4444,
+    strictPort: true,
+  },
 
   optimizeDeps: {
     force: true,
