@@ -1,0 +1,35 @@
+version: '3.8'
+services:
+  mongo:
+    image: mongo:8.0
+    restart: always
+    volumes:
+      - mongo_database_pub:/data/db
+  server:
+    image: seven272/sound-prank-server
+    restart: always
+    ports:
+      - '5000:5000'
+    environment:
+      MONGO_URI: mongodb://mongo:27017/prank_sound_db
+    depends_on:
+      - mongo
+  client:
+    image: seven272/sound-prank-client
+    restart: always
+    ports:
+      - '5173:5173'
+    depends_on:
+      - server
+  mongo-express:
+    image: mongo-express:1.0
+    restart: always
+    ports:
+      - '8081:8081'
+    environment:
+      ME_CONFIG_MONGODB_URL: mongodb://mongo:27017/prank_sound_db
+      ME_CONFIG_BASICAUTH_USERNAME: admin
+      ME_CONFIG_BASICAUTH_PASSWORD: 123456
+
+volumes:
+  mongo_database_pub:

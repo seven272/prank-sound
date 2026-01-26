@@ -1,0 +1,48 @@
+services:
+  prank_mongo:
+    image: mongo:8.0
+    container_name: prank_mongo_container
+    restart: always
+    volumes:
+      - mongo_database:/data/db
+  prank_server:
+    build:
+      dockerfile: Dockerfile
+      context: ./server
+    container_name: prank_server_container
+    hostname: prank_server_host
+    ports:
+      - '${SERVER_OUTSIDE_PORT}:${SERVER_DOCKER_PORT}'
+    environment:
+      MONGO_URI: ${MONGO_URI}
+    restart: always
+    depends_on:
+      - prank_mongo
+  prank_client:
+    build:
+      dockerfile: Dockerfile
+      context: ./client
+    container_name: prank_client_container
+    hostname: prank_client_host
+    ports:
+      - '${CLIENT_OUTSIDE_PORT}:${CLIENT_DOCKER_PORT}'
+    restart: always
+    depends_on:
+      - prank_server
+  prank_mongo_express:
+    image: mongo-express:1.0
+    container_name: prank_mongo_express_container
+    ports:
+      - '${ME_OUTSIDE_PORT}:${ME_DOCKER_PORT}'
+    environment:
+      ME_CONFIG_MONGODB_URL: ${ME_CONFIG_MONGODB_URL}
+      ME_CONFIG_BASICAUTH_USERNAME: ${ME_CONFIG_BASICAUTH_USERNAME}
+      ME_CONFIG_BASICAUTH_PASSWORD: ${ME_CONFIG_BASICAUTH_PASSWORD}
+    restart: always
+
+volumes:
+  mongo_database:
+networks:
+  default:
+    name: nginx_rp_tier
+    external: true

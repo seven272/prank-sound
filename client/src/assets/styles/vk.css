@@ -1,0 +1,25 @@
+.vkui {
+  background-color: var(--bg-color);
+}
+.vkuiAppRoot {
+  background-color: var(--bg-color);
+  height: 100vh;
+}
+.vkuiPanel__in {
+  background-color: var(--color-bg) !important;
+}
+.vkuiCustomSelectInput__container {
+  color: var(--color-blue-vk);
+}
+.vkuiCustomSelectInput__container:hover {
+}
+
+.vkuiCustomSelectInput__container option:hover {
+}
+.vkuiCustomSelectInput__el {
+  color: var(--color-black);
+}
+
+.vkuiDateInput__input {
+  color: var(--color-black);
+}

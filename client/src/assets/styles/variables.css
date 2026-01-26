@@ -1,0 +1,69 @@
+
+ :root {
+  /*шрифты*/
+  --font-family-main: 'Unbounded-Regular', Verdana, Tahoma;
+  --font-family-title: 'Unbounded-Bold', Verdana, Tahoma;
+  --font-family-subtitle: 'Unbounded-Bold', Verdana, Tahoma;
+  --font-family-upstring: 'Unbounded-Medium', Verdana, Tahoma;
+  --font-family-substring: 'Unbounded-Blond', Verdana, Tahoma; 
+  --font-family-light: 'Unbounded-Light', Verdana, Tahoma; 
+  --font-size-s: 8px;
+  --font-size-m: 12px;
+  --font-size-ml: 14px;
+  --font-size-l: 18px;
+  --font-size-xl: 26px;
+  --font-line-s: 9px;
+  --font-line-m: 14px;
+  --font-line-l: 19px;
+  --font-line-xl: 30px;
+  /* Шорткат font позволяет одновременно указать значение для нескольких свойств Обязательными являются значения для свойств font-size и font-family. Остальные значения опциональны.
+    Если нужно указать высоту строки, то она записывается через слэш (/) после размера шрифта. */
+  --font-xs: var(--font-size-s) / var(--font-line-s)
+    var(--font-family-light);
+  --font-s: var(--font-size-s) / var(--font-line-s)
+    var(--font-family-substring);
+  --font-m: var(--font-size-m) / var(--font-line-m)
+    var(--font-family-main);
+  --font-l: var(--font-size-l) / var(--font-line-l)
+    var(--font-family-upstring);
+  --font-xl: var(--font-size-xl) / var(--font-line-xl)
+    var(--font-family-title);
+  --font-menu: var(--font-size-m) / var(--font-line-m)
+    var(--font-family-title);
+  --font-submenu: var(--font-size-s) / var(--font-line-s)
+    var(--font-family-subtitle);
+
+  /*цвета*/
+  --color-pink: #ff89bb; 
+  --color-red: #f30404;
+  --color-blue: #1677ff;
+  --color-blue-vk: #2688eb;
+  --color-blue-dark: #08172D;
+  --color-light-blue: #d6fcf7;
+  --color-light-blue2: #acddd7;
+  --color-light-gray: #fff4cc;
+  --color-yellow: #ffbd12;
+  --color-grey-dark: #4e4d4d;
+  --color-grey: #c4c0c0;
+  --color-grey-light: #e2dcdc;
+
+   /*для приложения*/
+  --color-primary: #EC2578;
+  --color-bg: #FFEEDA;
+  --color-bg-dark: #303030;
+  --color-bg-light: #E2E2E2;
+  --color-text-grey: #646464;
+  --color-black: #000000;
+  --color-white: #ffffff;
+  
+
+  /*границы и фон*/
+  --color-bg-orange: #dfc032;
+  --color-border: #ecd98c;
+  --color-text: #d86b14;
+  --font-color-dark: #121212;
+  --font-color-light: #ffffff;
+  --border-dark: 1px solid #000000;
+  --border-light: 1px solid #ffffff;
+}
+

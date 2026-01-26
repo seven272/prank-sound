@@ -1,0 +1,43 @@
+.section {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.section_wrap {
+  width: 100%;
+  max-width: 700px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+
+}
+
+.title {
+  font: var(--font-l);
+  color: var(--color-text-grey);
+}
+
+.btn_wrap {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  margin: 20px 0 50px 0;
+}
+
+.btn {
+  width: 150px;
+  height: 40px;
+  background: none;
+  background-color: none;
+  border: 2px solid var(--color-bg-dark);
+  border-radius: 6px;
+  font: var(--font-m);
+  color: var(--color-text-grey);
+  cursor: pointer;
+}

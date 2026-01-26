@@ -1,0 +1,70 @@
+import { Panel } from '@vkontakte/vkui'
+import { useParams } from '@vkontakte/vk-mini-apps-router'
+import { useDispatch, useSelector } from 'react-redux'
+import { useEffect, useState } from 'react'
+
+import styles from './Category.module.css'
+import SoundCard from './sound-card/SoundCard'
+import SoundCarousel from './sound-carousel/SoundCarousel'
+import Dashboard from './dashboard/Dashboard'
+import Header from '../../components/header/Header'
+import Footer from '../../components/footer/Footer'
+import Loader from '../../UI/loader/Loader'
+import LockedSound from './locked-sound/LockedSound'
+import { fetchGetCategorySounds } from '../../redux/slices/soundSlice'
+
+
+const Category = ({ id }) => {
+  const { alias } = useParams()
+  const dispatch = useDispatch()
+  const { categorySounds, currentSound } = useSelector(
+    (state) => state.sound
+  )
+  const  user  = useSelector((state) => state.auth.user)
+  const [soundDisable, setSoundDisable] = useState(true)
+
+  useEffect(() => {
+    dispatch(fetchGetCategorySounds(alias))
+  }, [])
+
+  useEffect(() => {
+    if (currentSound.isFree === true) {
+      setSoundDisable(false)
+    } else if (currentSound.isFree === false && !user) {
+      setSoundDisable(true)
+    } else if (
+      currentSound.isFree === false &&
+      user &&
+      user?.isSubscription === false
+    ) {
+      setSoundDisable(true) 
+    } else if (
+      currentSound.isFree === false &&
+      user &&
+      user?.isSubscription === true
+    ) {
+      setSoundDisable(false)
+    }
+  }, [currentSound, user])
+
+  
+  if (categorySounds.length === 0) {
+    return <Loader />
+  }
+  return (
+    <Panel id={id}>
+      <Header />
+      <section className={styles.section}>
+        <div className={styles.wrapper}>
+          <SoundCard />
+          {soundDisable ? <LockedSound /> : <Dashboard />}
+
+          <SoundCarousel arrSounds={categorySounds} />
+        </div>
+      </section>
+      <Footer />
+    </Panel>
+  )
+}
+
+export default Category

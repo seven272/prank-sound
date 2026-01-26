@@ -1,0 +1,152 @@
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+.wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 700px;
+  height: 90px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--color-white);
+  background-color: var(--color-primary);
+  border-radius: 4px;
+}
+.home_wrapper {
+  width: max-content;
+  height: auto;
+  margin-left: 30px;
+}
+
+.icon_home {
+  color: var(--color-white);
+  cursor: pointer;
+}
+
+.avatar {
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+.pic_user_wrap {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  border: 2px solid var(--color-grey-dark);
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.pic_user {
+  object-fit: cover;
+  object-position: center center;
+}
+
+.logo_wrapper {
+  width: 140px;
+  height: 80px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.logo {
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.title {
+  font: var(--font-l);
+  color: var(--color-white);
+  margin-left: 10px;
+}
+
+.title_bold {
+  font-size: var(--font-size-xl);
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.items {
+  list-style-type: none;
+  padding: 0;
+  margin-right: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: max-content;
+}
+.item {
+  font: var(--font-submenu);
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.item a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.item a:hover {
+  text-decoration: none;
+}
+
+.auth_form {
+  position: absolute;
+  top: 95px;
+  right: 0;
+}
+
+@media screen and (max-width: 950px) {
+  .header {
+    width: 100%;
+    height: max-content;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .title {
+    font-size: var(--font-size-ml);
+    font-weight: 400;
+    color: var(--color-white);
+    margin-bottom: 5px;
+    margin-top: 15px;
+    cursor: pointer;
+  }
+
+  .items {
+    position: relative;
+    top: 10px;
+    right: 1px;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 250px;
+  }
+
+  .icon {
+    align-self: flex-start;
+    display: none;
+  }
+
+  .quote_wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+}

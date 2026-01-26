@@ -1,0 +1,33 @@
+.section {
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 50px;
+}
+
+.text {
+  font: var(--font-m);
+  color: var(--color-text-grey);
+  margin-bottom: 15px;
+}
+
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font: var(--font-m);
+  color: var(--color-white);
+  background-color: var(--color-primary);
+  border: none;
+  border-radius: 6px;
+  padding: 8px 35px;
+  cursor: pointer;
+}
+
+.icon {
+  font-size: 13px;
+  margin-right: 6px;
+}
