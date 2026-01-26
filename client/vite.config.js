@@ -1,4 +1,5 @@
 import { defineConfig, transformWithEsbuild } from 'vite'
+
 import react from '@vitejs/plugin-react'
 import legacy from '@vitejs/plugin-legacy'
 
@@ -37,7 +38,6 @@ function threatJsFilesAsJsx() {
  */
 export default defineConfig({
   base: '/',
-
   plugins: [
     react(),
     threatJsFilesAsJsx(),
@@ -74,5 +74,6 @@ export default defineConfig({
 
   build: {
     outDir: 'build',
+    chunkSizeWarningLimit: 1500,
   },
 })
