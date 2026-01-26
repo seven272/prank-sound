@@ -46,15 +46,6 @@ export default defineConfig({
       targets: ['defaults', 'not IE 11'],
     }),
   ],
-
-  optimizeDeps: {
-    force: true,
-    esbuildOptions: {
-      loader: {
-        '.js': 'jsx',
-      },
-    },
-  },
   server: {
     port: 3000,
     host: true,
@@ -65,6 +56,15 @@ export default defineConfig({
     ],
     watch: {
       usePolling: true,
+    },
+  },
+
+  optimizeDeps: {
+    force: true,
+    esbuildOptions: {
+      loader: {
+        '.js': 'jsx',
+      },
     },
   },
 
