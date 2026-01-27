@@ -6,7 +6,7 @@ import { useRouteNavigator } from '@vkontakte/vk-mini-apps-router'
 import Loader from '../../../UI/loader/Loader'
 import { fetchGetAllCategories } from '../../../redux/slices/categorySlice'
 import styles from './CategoriesList.module.css'
-// import { DOCKER_FILE_URL } from '../../../config/var'
+import { DOCKER_FILE_URL } from '../../../config/var'
 
 const CategoriesList = () => {
   const routeNavigator = useRouteNavigator()
@@ -45,8 +45,8 @@ const CategoriesList = () => {
             <div className={styles.wrap_img_wrap}>
               <div className={styles.img_wrap}>
                 <img
-                src={`/${elem?.imageUrl}`}
-                  // src={`${DOCKER_FILE_URL}/${elem?.imageUrl}`}
+                
+                  src={`${DOCKER_FILE_URL}/${elem?.imageUrl}`}
                   alt="фото категории"
                   className={styles.img}
                 />
