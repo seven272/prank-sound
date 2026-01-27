@@ -26,7 +26,7 @@ app.use(express.urlencoded({ extended: true }))
 //Мидлвар для изображений. При попытке загрузить изображение сервер отправляет get запрос на получение  изображения http://localhost:5000/static/name-folder/name-image.jpg, и я отправляю сервер искать в папку с изображениями uploads, чтобы проверить есть ли там файл с таким именем.
 app.use('/static', express.static(path.join(__dirname + '/uploads')))
 
-app.use('/api/auth', authRoute)
+app.use('/api/auth', authRoute) 
 app.use('/api/categories', categoryRoute)
 app.use('/api/sounds', soundRoute)
 
