@@ -10,10 +10,25 @@ const storage = multer.diskStorage({
       fs.mkdirSync('./src/uploads')
     }
     if (file.fieldname === 'category') {
+      // проверка на наличие папки
+      if (!fs.existsSync('./src/uploads/categories')) {
+        console.log('Папки не существует, создаю ее')
+        fs.mkdirSync('./src/uploadss/categories')
+      }
       cb(null, './src/uploads/categories')
     } else if (file.fieldname === 'sound') {
+      // проверка на наличие папки
+      if (!fs.existsSync('./src/uploads/sounds')) {
+        console.log('Папки не существует, создаю ее')
+        fs.mkdirSync('./src/uploadss/sounds')
+      }
       cb(null, './src/uploads/sounds/')
     } else if (file.fieldname === 'cover') {
+      // проверка на наличие папки
+      if (!fs.existsSync('./src/uploads/covers')) {
+        console.log('Папки не существует, создаю ее')
+        fs.mkdirSync('./src/uploadss/covers')
+      }
       cb(null, './src/uploads/covers/')
     } else {
       cb(null, './src/uploads/')
@@ -27,7 +42,7 @@ const storage = multer.diskStorage({
         '-' +
         Math.round(Math.random() * 1e9) +
         '-' +
-        file.originalname
+        file.originalname,
     )
   },
 })
@@ -50,9 +65,9 @@ const fileFilter = (req, file, cb) => {
   } else {
     cb(
       new Error(
-        'Неверный формат файла. Разрешены только JPEG, PNG, GIF, PDF, MP3, MPEG, WAV'
+        'Неверный формат файла. Разрешены только JPEG, PNG, GIF, PDF, MP3, MPEG, WAV',
       ),
-      false
+      false,
     )
   }
 }
