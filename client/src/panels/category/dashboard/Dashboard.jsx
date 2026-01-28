@@ -5,14 +5,14 @@ import { TbRepeat, TbRepeatOff } from 'react-icons/tb'
 
 import TimerSound from '../../../components/timer-sound/TimerSound'
 import styles from './Dashboard.module.css'
-import { DOCKER_FILE_URL } from '../../../config/var'
+
 
 const Dashboard = () => {
   const { currentSound } = useSelector((state) => state.sound)
-
   const [isRepeat, setIsRepeat] = useState(false)
   const [isPlaying, setIsPlaying] = useState(false)
   const pleerRef = useRef()
+  const URL = import.meta.env.VITE_PUBLIC_URL
 
   const handlePlay = () => {
     const duration = pleerRef.current.duration * 1000
@@ -55,7 +55,7 @@ const Dashboard = () => {
   return (
     <section className={styles.section} onMouseEnter={() => {}}>
       <audio
-        src={`${DOCKER_FILE_URL}/${currentSound?.soundUrl}`}
+        src={`${URL}/${currentSound?.soundUrl}`}
         controls
         ref={pleerRef}
         hidden={true}

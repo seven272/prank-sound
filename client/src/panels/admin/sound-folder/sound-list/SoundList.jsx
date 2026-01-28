@@ -111,7 +111,7 @@ const SoundList = () => {
             return (
               <li className={styles.item} key={elem._id}>
                 <span className={styles.title}>{inx + 1}</span>
-                <span className={styles.title}>{elem?.title}</span>
+                <span className={styles.title}>{elem.title}</span>
                 <span className={styles.title}>
                   {elem.category.title} | {elem.category.alias}
                 </span>

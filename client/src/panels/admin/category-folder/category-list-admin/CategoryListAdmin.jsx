@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import { RiDeleteBin5Line } from 'react-icons/ri'
-import { DOCKER_FILE_URL } from '../../../../config/var'
+
 
 import {
   fetchGetAllCategories,
@@ -18,6 +18,7 @@ const CategoryListAdmin = () => {
   const { categories, isLoading } = useSelector(
     (state) => state.category
   )
+  const URL = import.meta.env.VITE_PUBLIC_URL
 
   const deleteCategory = (categoryId) => {
     dispatch(fetchDeleteCategory(categoryId))
@@ -57,7 +58,7 @@ const CategoryListAdmin = () => {
               <span className={styles.title}>{elem.alias}</span>
               <div className={styles.img_wrap}>
                 <img
-                  src={`${DOCKER_FILE_URL}/${elem?.imageUrl}`}
+                  src={`${URL}/${elem?.imageUrl}`}
                   alt="фото категории"
                   className={styles.img}
                 />

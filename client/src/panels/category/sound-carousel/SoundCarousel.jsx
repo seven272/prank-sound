@@ -7,7 +7,6 @@ import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import styles from './SoundCarousel.module.css'
 import { setSound } from '../../../redux/slices/soundSlice'
-import { DOCKER_FILE_URL } from '../../../config/var'
 
 const SampleNextArrow = (props) => {
   const { onClick } = props
@@ -29,7 +28,7 @@ const SamplePrevArrow = (props) => {
 
 const SoundCarousel = ({ arrSounds }) => {
   const dispatch = useDispatch()
-
+  const URL = import.meta.env.VITE_PUBLIC_URL
   const settings = {
     // dots: true,
     infinite: true,
@@ -62,7 +61,7 @@ const SoundCarousel = ({ arrSounds }) => {
               <div className={styles.element_img_wrap}>
                 <img
                   className={styles.element_img}
-                  src={`${DOCKER_FILE_URL}/${item?.imageUrl}`}
+                  src={`${URL}/${item?.imageUrl}`}
                   alt="изображение слайдера"
                 />
               </div>

@@ -22,7 +22,6 @@ const CategoryFolder = ({ id }) => {
         <CategoryListAdmin />
         <AddCategory />
       </div>
-
       <Footer />
     </Panel>
   )

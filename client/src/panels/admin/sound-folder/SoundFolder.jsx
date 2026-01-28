@@ -11,7 +11,6 @@ const SoundFolder = ({ id }) => {
       <Header />
       <ButtonsAdmin />
       <SoundList />
-
       <Footer />
     </Panel>
   )

@@ -6,7 +6,7 @@ import { useRouteNavigator } from '@vkontakte/vk-mini-apps-router'
 import Loader from '../../../UI/loader/Loader'
 import { fetchGetAllCategories } from '../../../redux/slices/categorySlice'
 import styles from './CategoriesList.module.css'
-import { DOCKER_FILE_URL } from '../../../config/var'
+
 
 const CategoriesList = () => {
   const routeNavigator = useRouteNavigator()
@@ -14,6 +14,7 @@ const CategoriesList = () => {
   const { categories, isLoading } = useSelector(
     (state) => state.category
   )
+  const URL = import.meta.env.VITE_PUBLIC_URL
 
   const clickCategory = (alias) => {
     routeNavigator.go(`/category/${alias}`)
@@ -46,7 +47,7 @@ const CategoriesList = () => {
               <div className={styles.img_wrap}>
                 <img
                 
-                  src={`${DOCKER_FILE_URL}/${elem?.imageUrl}`}
+                  src={`${URL}/${elem?.imageUrl}`}
                   alt="фото категории"
                   className={styles.img}
                 />

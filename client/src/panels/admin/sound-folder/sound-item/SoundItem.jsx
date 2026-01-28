@@ -17,7 +17,6 @@ import {
   fetchGetOneSound,
   fetchDeleteSound,
 } from '../../../../redux/slices/soundSlice'
-import { DOCKER_FILE_URL } from '../../../../config/var'
 
 const SoundItem = () => {
   const { id } = useParams()
@@ -26,6 +25,7 @@ const SoundItem = () => {
   const { currentSound } = useSelector((state) => state.sound)
   const [showUpdateForm, setShowUpdateForm] = useState(false)
   const pleerRef = useRef()
+  const URL = import.meta.env.VITE_PUBLIC_URL
 
   const handlePlay = () => {
     pleerRef.current.play()
@@ -105,7 +105,7 @@ const SoundItem = () => {
 
               <div className={styles.img_wrap}>
                 <img
-                  src={`${DOCKER_FILE_URL}/${currentSound?.imageUrl}`}
+                  src={`${URL}/${currentSound?.imageUrl}`}
                   alt="фото звука"
                   className={styles.img}
                 />
@@ -129,7 +129,7 @@ const SoundItem = () => {
                   className={styles.icon}
                   onClick={handleDelete}
                 />
-              </div>
+              </div> 
             </li>
           </ul>
         )}
@@ -146,7 +146,7 @@ const SoundItem = () => {
         )}
       </div>
       <audio
-        src={`${DOCKER_FILE_URL}/${currentSound?.soundUrl}`}
+        src={`${URL}/${currentSound?.soundUrl}`}
         controls
         ref={pleerRef}
         hidden={true}
