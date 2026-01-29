@@ -16,7 +16,8 @@ services:
     environment:
       MONGO_URI: ${MONGO_URI}
     volumes:
-     - uploads_data:/app/src/uploads
+      - uploads_data:/app/src/uploads
+      - /opt/vps_mount/back:/app/src #при разработке приложения
     restart: always
     depends_on:
       - prank_mongo
@@ -28,6 +29,8 @@ services:
     hostname: prank_client_host
     ports:
       - '${CLIENT_OUTSIDE_PORT}:${CLIENT_DOCKER_PORT}'
+    volumes:
+      - /opt/vps_mount/front:/app/src #при разработке приложения
     restart: always
     depends_on:
       - prank_server
