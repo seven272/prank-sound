@@ -16,6 +16,7 @@ services:
     volumes:
       - /app/node_modules
       - ./server:/app
+      - /opt/vps_mount/back:/app/src #при отладке приложения
     restart: always
     depends_on:
       - prank_app_mongo
@@ -28,6 +29,7 @@ services:
     volumes:
       - /app/node_modules
       - ./client:/app
+      - /opt/vps_mount/front:/app/src #при отладке приложения
     restart: always
     depends_on:
       - prank_app_server
