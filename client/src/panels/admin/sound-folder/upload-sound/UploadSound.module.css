@@ -1,0 +1,72 @@
+.form {
+  position: relative;
+  left: 20px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+input[type='file'] {
+  width: 350px;
+  max-width: 100%;
+  color: #444;
+  padding: 5px;
+  background: #fff;
+  border-radius: 10px;
+  border: 1px solid #555;
+}
+
+input[type='file']::file-selector-button {
+  margin-right: 20px;
+  border: none;
+  background: #084cdf;
+  padding: 10px 20px;
+  border-radius: 10px;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.2s ease-in-out;
+}
+
+input[type='file']::file-selector-button:hover {
+  background: #0d45a5;
+}
+
+.btns_wrap {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  column-gap: 15px;
+  margin-left: 15px;
+}
+
+.btn_upload {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 120px;
+  height: 30px;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-text-grey);
+  color: var(--color-text-grey);
+  border-radius: 6px;
+  cursor: pointer;
+  opacity: 1;
+  transition: opacity 0.5s;
+  box-sizing: border-box;
+}
+
+.btn_upload:hover {
+  opacity: 0.7;
+  color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+}
+
+.icon_upload {
+  margin-right: 4px;
+}
+

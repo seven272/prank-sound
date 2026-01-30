@@ -1,0 +1,24 @@
+.items {
+  width: 100%;
+  padding: 5px 10px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.item {
+  width: 70px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font: var(--font-m);
+  color: var(--color-white);
+  border-radius: 6px;
+  background-color: var(--color-primary);
+  cursor: pointer;
+}
+
+.item:hover {
+    opacity: 0.7;
+}

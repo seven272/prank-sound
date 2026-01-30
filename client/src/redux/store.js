@@ -1,0 +1,15 @@
+import { configureStore } from '@reduxjs/toolkit'
+
+import categorySlice from './slices/categorySlice'
+import soundSlice from './slices/soundSlice'
+import authSlice from './slices/authSlice'
+
+const store = configureStore({
+  reducer: {
+    category: categorySlice,
+    sound: soundSlice,
+    auth: authSlice
+  },
+})
+
+export default store
