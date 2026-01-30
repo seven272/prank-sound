@@ -9,7 +9,7 @@ import styles from './Header.module.css'
 import { checkIsAuth } from '../../redux/slices/authSlice'
 import Auth from '../auth/Auth'
 import logoImg from '../../assets/images/logo.png'
-import DropdownMenu from '../dropdown-menu/DropdownMenu'
+// import DropdownMenu from '../dropdown-menu/DropdownMenu'
 
 const Header = () => {
   const routerNavigator = useRouteNavigator()
@@ -23,8 +23,8 @@ const Header = () => {
       <div className={styles.wrapper}>
         <div className={styles.home_wrapper}>
           <RiHomeSmileLine size={50} className={styles.icon_home} onClick={() => routerNavigator.push('/')} />
-          <DropdownMenu />
-          <h2>TESTr</h2>
+          {/* <DropdownMenu /> */}
+          <h2>TEST</h2>
         </div>
 
         <div className={styles.logo_wrapper}>
