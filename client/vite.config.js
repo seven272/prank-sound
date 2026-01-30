@@ -50,6 +50,7 @@ export default defineConfig({
     port: 3000,
     host: true,
     allowedHosts: [
+      'http://localhost:3000',
       'http://185.251.89.77',
       'prank-sound.ru',
       'www.prank-sound.ru',
