@@ -16,7 +16,6 @@ services:
     environment:
       MONGO_URI: ${MONGO_URI}
     volumes:
-      - /app/node_modules
       - /opt/vps_mount/back:/app/src
       - uploads_data:/app/src/uploads
     restart: always
