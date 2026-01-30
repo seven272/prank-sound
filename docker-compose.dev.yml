@@ -17,7 +17,7 @@ services:
       MONGO_URI: ${MONGO_URI}
     volumes:
       # - /app/node_modules
-      - ./server:/app
+      # - ./server:/app
       - uploads_data:/app/src/uploads
     restart: always
     depends_on:
@@ -32,7 +32,7 @@ services:
       - '${CLIENT_OUTSIDE_PORT}:${CLIENT_DOCKER_PORT}'
     volumes:
       # - /app/node_modules
-      - ./client:/app
+      # - ./client:/app
     restart: always
     depends_on:
       - prank_server
