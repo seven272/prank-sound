@@ -53,6 +53,10 @@ export default defineConfig({
       'http://185.251.89.77',
       'prank-sound.ru',
       'www.prank-sound.ru',
+      'www.vk.ru',
+      'vk.ru',
+      'vk.com',
+      'www.vk.com',
     ],
     watch: {
       usePolling: true,
