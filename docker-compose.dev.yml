@@ -16,7 +16,7 @@ services:
     environment:
       MONGO_URI: ${MONGO_URI}
     volumes:
-      - /app/node_modules
+      # - /app/node_modules
       - ./server:/app
       - uploads_data:/app/src/uploads
     restart: always
@@ -31,7 +31,7 @@ services:
     ports:
       - '${CLIENT_OUTSIDE_PORT}:${CLIENT_DOCKER_PORT}'
     volumes:
-      - /app/node_modules
+      # - /app/node_modules
       - ./client:/app
     restart: always
     depends_on:
