@@ -20,8 +20,8 @@ services:
     environment:
       MONGO_URI: ${MONGO_URI}
     volumes:
-      # - /app/node_modules
-      # - ./server:/app
+      - /app/node_modules
+      - ./server/src:/app/src
       - uploads_data:/app/src/uploads
     restart: always
     depends_on:
@@ -36,9 +36,9 @@ services:
       - nginx-rp-net
     ports:
       - '${CLIENT_OUTSIDE_PORT}:${CLIENT_DOCKER_PORT}'
-    # volumes:
-      # - /app/node_modules
-      # - ./client:/app
+    volumes:
+      - /app/node_modules
+      - ./client/src:/app/src
     restart: always
     depends_on:
       - prank-server
