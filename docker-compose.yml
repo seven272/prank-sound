@@ -52,5 +52,4 @@ volumes:
 
 networks:
   nginx-rp-net:
-    driver: bridge
     external: true # указывает на использование существующей сети, а не создание новой
