@@ -36,7 +36,7 @@ services:
       - nginx-rp-net
     ports:
       - '${CLIENT_OUTSIDE_PORT}:${CLIENT_DOCKER_PORT}'
-    volumes:
+    # volumes:
       # - /app/node_modules
       # - ./client:/app
     restart: always
