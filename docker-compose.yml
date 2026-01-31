@@ -1,11 +1,11 @@
 services:
-  prank_mongo:
+  prank-mongo:
     image: mongo:8.0
     container_name: prank_mongo_container
     restart: always
     volumes:
       - mongo_database:/data/db
-  prank_server:
+  prank-server:
     build:
       dockerfile: Dockerfile
       context: ./server
@@ -17,10 +17,12 @@ services:
       MONGO_URI: ${MONGO_URI}
     volumes:
       - uploads_data:/app/src/uploads
+    networks:
+      - nginx-rp-net
     restart: always
     depends_on:
-      - prank_mongo
-  prank_client:
+      - prank-mongo
+  prank-client:
     build:
       dockerfile: Dockerfile
       context: ./client
@@ -28,10 +30,12 @@ services:
     hostname: prank_client_host
     ports:
       - '${CLIENT_OUTSIDE_PORT}:${CLIENT_DOCKER_PORT}'
+    networks:
+      - nginx-rp-net
     restart: always
     depends_on:
-      - prank_server
-  prank_mongo_express:
+      - prank-server
+  prank-mongo-express:
     image: mongo-express:1.0
     container_name: prank_mongo_express_container
     ports:
@@ -47,6 +51,6 @@ volumes:
   uploads_data:
 
 networks:
-  default:
-    name: nginx_rp_tier
-    external: true
+  nginx-rp-net:
+    driver: bridge
+    external: true # указывает на использование существующей сети, а не создание новой
