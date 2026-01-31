@@ -2,6 +2,8 @@ services:
   prank-mongo:
     image: mongo:8.0
     container_name: prank_mongo_container
+    networks:
+      - nginx-rp-net
     restart: always
     volumes:
       - mongo_database:/data/db
@@ -11,6 +13,8 @@ services:
       context: ./server
     container_name: prank_server_container
     hostname: prank_server_host
+    networks:
+      - nginx-rp-net
     ports:
       - '${SERVER_OUTSIDE_PORT}:${SERVER_DOCKER_PORT}'
     environment:
@@ -19,8 +23,6 @@ services:
       # - /app/node_modules
       - ./server:/app
       - uploads_data:/app/src/uploads
-    networks:
-      - nginx-rp-net
     restart: always
     depends_on:
       - prank-mongo
@@ -30,19 +32,21 @@ services:
       context: ./client
     container_name: prank_client_container
     hostname: prank_client_host
+    networks:
+      - nginx-rp-net
     ports:
       - '${CLIENT_OUTSIDE_PORT}:${CLIENT_DOCKER_PORT}'
     volumes:
       # - /app/node_modules
       - ./client:/app
-    networks:
-      - nginx-rp-net
     restart: always
     depends_on:
       - prank-server
   prank-mongo-express:
     image: mongo-express:1.0
     container_name: prank_mongo_express_container
+    networks:
+      - nginx-rp-net
     ports:
       - '${ME_OUTSIDE_PORT}:${ME_DOCKER_PORT}'
     environment:
