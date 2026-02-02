@@ -24,7 +24,7 @@ const Header = () => {
         <div className={styles.home_wrapper}>
           <RiHomeSmileLine size={50} className={styles.icon_home} onClick={() => routerNavigator.push('/')} />
           {/* <DropdownMenu /> */}
-          <h2>TEST local</h2>
+          <h2>TEST server</h2>
         </div>
 
         <div className={styles.logo_wrapper}>
