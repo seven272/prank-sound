@@ -4,14 +4,15 @@ import { useEffect } from 'react'
 
 import MainView from './views/MainView'
 import { showPromo } from './utils/vkShowPromo'
-import { getUserInfoVk } from './utils/vkUserInfo'
+import { useVkUser } from './utils/useVkUser'
 
 const App = () => {
   const { panel, view } = useActiveVkuiLocation()
+  const { getUserInfo } = useVkUser()
 
   useEffect(() => {
     showPromo()
-    getUserInfoVk()
+    getUserInfo()
   }, [])
 
   return (

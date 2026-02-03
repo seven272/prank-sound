@@ -3,7 +3,7 @@ import { setTheme } from '../redux/slices/themeSlice'
 import { setThemeStorage } from './vkStorage'
 
 const useTheme = () => { 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch() 
 
   const theme = useSelector((state) => state.theme.userTheme)
 
