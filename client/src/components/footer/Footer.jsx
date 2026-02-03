@@ -33,7 +33,7 @@ const Footer = () => {
             {/* <span className={styles.title}>Поиск</span> */}
           </li>
           <li className={styles.item}>
-            <AiOutlineHome className={styles.icon} />
+            <AiOutlineHome className={styles.icon} onClick={() => routerNavigator.push('/')}/>
             {/* <span className={styles.title}>Домой</span> */}
           </li>
           <li className={styles.item}>
