@@ -2,7 +2,7 @@ import bridge from '@vkontakte/vk-bridge'
 import { useDispatch } from 'react-redux'
 import { setVkUser } from '../redux/slices/vkUserSlice'
 
-const useVkUser = async () => {
+const useVkUser = () => {
   const dispatch = useDispatch()
 
   const getUserInfo = async () => {
