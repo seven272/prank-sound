@@ -20,7 +20,7 @@ const showPromo = () => {
     .catch((error) => {
       // Ошибка
       console.log(error)
-      console.log('Ошибка в показе рекламы реклама')
+      console.log('Ошибка при показе рекламы')
     })
 }
 

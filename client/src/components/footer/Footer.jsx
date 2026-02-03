@@ -1,13 +1,18 @@
 import React, { useEffect, useState } from 'react'
+import { useRouteNavigator } from '@vkontakte/vk-mini-apps-router';
 import { AiOutlineHome } from 'react-icons/ai'
-import { FaSearch } from 'react-icons/fa'
 import { IoSettingsOutline } from 'react-icons/io5'
 import { MdFavoriteBorder } from 'react-icons/md'
-import { FaShareAlt } from 'react-icons/fa'
+import { IoShareSocialOutline } from 'react-icons/io5'
+import { AiOutlineLike } from 'react-icons/ai'
+
 import styles from './Footer.module.css'
+import { shareApp, recommendApp, addFavoriteApp } from '../../utils/vkAppShare'
 
 const Footer = () => {
   const [year, setYear] = useState('')
+  const routerNavigator = useRouteNavigator()
+  const VK_URL = import.meta.env.VK_URL
   //Получаем текущий год
   useEffect(() => {
     const dateObj = new Date()
@@ -20,11 +25,11 @@ const Footer = () => {
       <div className={styles.wrapper}>
         <ul className={styles.items}>
           <li className={styles.item}>
-            <FaSearch className={styles.icon} />
+            <IoSettingsOutline className={styles.icon} onClick={() => routerNavigator.push('/admin')} />
             {/* <span className={styles.title}>Поиск</span> */}
           </li>
           <li className={styles.item}>
-            <IoSettingsOutline className={styles.icon} />
+            <MdFavoriteBorder className={styles.icon} onClick={addFavoriteApp}/>
             {/* <span className={styles.title}>Поиск</span> */}
           </li>
           <li className={styles.item}>
@@ -32,11 +37,17 @@ const Footer = () => {
             {/* <span className={styles.title}>Домой</span> */}
           </li>
           <li className={styles.item}>
-            <MdFavoriteBorder className={styles.icon} />
+            <AiOutlineLike
+              className={styles.icon}
+              onClick={recommendApp}
+            />
             {/* <span className={styles.title}>Избранное</span> */}
           </li>
           <li className={styles.item}>
-            <FaShareAlt className={styles.icon} />
+            <IoShareSocialOutline
+              className={styles.icon}
+              onClick={() => shareApp(VK_URL)}
+            />
             {/* <span className={styles.title}>Поделиться</span> */}
           </li>
         </ul>
