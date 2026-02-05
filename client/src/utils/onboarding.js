@@ -1,6 +1,6 @@
 import bridge from '@vkontakte/vk-bridge'
 import ImgOnboarding from '../assets/images/onboarding.jpeg'
-import { convertBase64FromUrl } from './convertBase64FromUrl'
+import { convertBase64FromUrl } from './convertToBase64'
 // ф-ий отправки флага о показе Онбординга в ВКсторадж и ф-я получения информации о показе
 import { setOnboardingShown, getOnboardingShown } from './vkStorage'
 
@@ -21,9 +21,9 @@ const showOnboarding = async () => {
             blob: `${imgForOnboarding}`,
             type: 'image',
           },
-          title: 'Считаем расход питания при беге',
+          title: 'Добро пожаловать!',
           subtitle:
-            'Благодоря данному приложению вы сможете быстро узнать сколько калорий и углеводов потратите во время актвиности и сколько питания потребуется, чтобы их восполнить.',
+            'Любите смешные розыгрыши? Тогда приложение «Наглые звуки» — то, что вы искали. Более 30 звуковых пранков, таймер задержки воспроизведения и удобный интерфейс. ',
         },
       ],
     })
