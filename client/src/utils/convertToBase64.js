@@ -10,7 +10,7 @@ const convertBase64FromUrl = async (url) => {
       const base64data = reader.result
       resolve(base64data)
     }
-  })
+  }) 
 } 
 
 export {convertBase64FromUrl}

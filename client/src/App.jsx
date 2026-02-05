@@ -4,6 +4,7 @@ import { useEffect } from 'react'
 
 import MainView from './views/MainView'
 import { showPromo } from './utils/vkShowPromo'
+import { showOnboarding } from './utils/onboarding'
 import { useVkUser } from './utils/useVkUser'
 
 const App = () => {
@@ -11,6 +12,7 @@ const App = () => {
   const { getUserInfo } = useVkUser()
 
   useEffect(() => {
+    showOnboarding()
     showPromo()
     getUserInfo()
   }, [])
