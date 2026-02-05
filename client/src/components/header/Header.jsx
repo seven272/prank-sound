@@ -48,26 +48,7 @@ const Header = () => {
             className={styles.avatar}
           />
         )}
-
-        {/* авторизация обычная */}
-        {isAuth ? (
-          <Avatar
-            size={50}
-            className={styles.avatar}
-            onClick={() => setShowForm(true)}
-          >
-            {user?.username}
-          </Avatar>
-        ) : (
-          <Avatar
-            icon={<FiUser size={30} />}
-            size={50}
-            className={styles.avatar}
-            onClick={() => setShowForm(true)}
-          />
-        )}
-
-        <Auth showForm={showForm} setShowForm={setShowForm} />
+        
       </div>
     </div>
   )

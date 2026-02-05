@@ -1,7 +1,7 @@
 .section {
-  position: absolute;
-  top: 95px;
-  right: 0;
+  position: relative;
+  /* top: 95px;
+  right: 0; */
   width: max-content;
   height: auto;
   padding: 15px 90px;
