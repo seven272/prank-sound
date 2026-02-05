@@ -54,7 +54,7 @@ const getAllItemsStorage = () => {
 // сохранение состояние просмотренного онбординга
 const setOnboardingShown = () => {
   return bridge.send('VKWebAppStorageSet', {
-    key: 'onboardingShown',
+    key: 'onboardingShownPrankSound',
     value: '1',
   })
 }
@@ -62,7 +62,7 @@ const setOnboardingShown = () => {
 // получение состояние просмотренного онбординга
 const getOnboardingShown = async () => {
   const result = await bridge.send('VKWebAppStorageGet', {
-    keys: ['onboardingShown'],
+    keys: ['onboardingShownPrankSound'],
   })
   // получением значение первого элемента массива обьектов keys
   const resultValue = result.keys[0].value
