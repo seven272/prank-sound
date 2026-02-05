@@ -40,7 +40,7 @@ const Header = () => {
             size={50}
             className={styles.avatar}
             src={vk_avatar}
-          >Михаил</Avatar>
+          ></Avatar>
         ) : (
           <Avatar
             icon={<FiUser size={30} />}

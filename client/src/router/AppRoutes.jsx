@@ -9,11 +9,16 @@ const routers = [
   {
     path: '/category/:alias',
     panel: 'category_panel',
-    view: 'main_view',
+    view: 'main_view', 
   },
   {
     path: '/admin',
     panel: 'admin_panel',
+    view: 'main_view',
+  },
+   {
+    path: '/auth',
+    panel: 'auth_panel',
     view: 'main_view',
   },
   {
