@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
 
-const vkUserSchema = new mongoose.Schema(
+const userSchema = new mongoose.Schema(
   {
     vk_id: {
       type: String,
@@ -15,6 +15,6 @@ const vkUserSchema = new mongoose.Schema(
   },
   { timestamps: true }
 )
-const VkUser = mongoose.model('VkUser', vkUserSchema)
+const User = mongoose.model('User', userSchema)
 
-export default VkUser
+export default User

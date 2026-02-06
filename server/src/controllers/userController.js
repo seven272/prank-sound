@@ -1,4 +1,4 @@
-import VkUser from '../models/VkUser.js'
+import User from '../models/User.js'
 
 const createVkUser = async (req, res) => {
   try {
@@ -11,7 +11,7 @@ const createVkUser = async (req, res) => {
       })
     }
 
-    const existingValues = await VkUser.find({ vk_id })
+    const existingValues = await User.find({ vk_id })
 
     if (existingValues.length > 0) {
       return res.status(400).json({
@@ -19,7 +19,7 @@ const createVkUser = async (req, res) => {
       })
     }
 
-    const user = await VkUser.create({ vk_id, isPaid })
+    const user = await User.create({ vk_id, isPaid })
     console.log(user)
     res.status(200).json(user)
   } catch (error) {
@@ -31,7 +31,7 @@ const createVkUser = async (req, res) => {
 const getVkUser = async (req, res) => {
   const { vk_id } = req.body
   try {
-    const user = await VkUser.findOne({ vk_id: vk_id })
+    const user = await User.findOne({ vk_id: vk_id })
     if (!user) {
       return res
         .status(402)
@@ -52,7 +52,7 @@ const getVkUser = async (req, res) => {
 
 const listVkUsers = async (req, res) => {
   try {
-    const all = await VkUser.find({})
+    const all = await User.find({})
     res.status(200).json(all)
   } catch (error) {
     console.log(error)

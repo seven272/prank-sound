@@ -3,7 +3,7 @@ import {
   createVkUser,
   listVkUsers,
   getVkUser,
-} from '../controllers/vkUserController.js'
+} from '../controllers/userController.js'
 
 
 const router = express.Router()
