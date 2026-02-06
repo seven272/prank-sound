@@ -11,7 +11,7 @@ import { checkIsAuth } from '../../redux/slices/authSlice'
 const Subscription = () => {
   const dispatch = useDispatch()
   const isAuth = useSelector(checkIsAuth)
-  const { user } = useSelector((state) => state.auth)
+  // const { user } = useSelector((state) => state.auth)
   const {vk_id} = useSelector((state) => state.vkUser)
   const [openModal, setOpenModal] = useState(false)
 console.log('авторизован  ' + isAuth)

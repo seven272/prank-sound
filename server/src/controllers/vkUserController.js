@@ -20,7 +20,7 @@ const createVkUser = async (req, res) => {
     }
 
     const user = await VkUser.create({ vk_id, isPaid })
-
+    console.log(user)
     res.status(200).json(user)
   } catch (error) {
     console.log(error)
