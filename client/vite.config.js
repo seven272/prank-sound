@@ -49,6 +49,11 @@ export default defineConfig({
   server: {
     port: 3000,
     host: true,
+    strictPort: true,
+    hmr: {
+      clientPort: 443, // Если у вас https://prank-sound.ru
+      // или 80, если http
+    },
     allowedHosts: [
       'http://localhost:3000',
       'http://185.251.89.77',
