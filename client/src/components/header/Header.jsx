@@ -1,22 +1,18 @@
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { useRouteNavigator } from '@vkontakte/vk-mini-apps-router'
 import { RiHomeSmileLine } from 'react-icons/ri'
-import { useState } from 'react'
 import { Avatar } from 'antd'
 import { FiUser } from 'react-icons/fi'
 
 import styles from './Header.module.css'
-import { checkIsAuth } from '../../redux/slices/authSlice'
-import Auth from '../auth/Auth'
 import logoImg from '../../assets/images/logo.png'
-// import DropdownMenu from '../dropdown-menu/DropdownMenu'
+import { deleteVkUser, fetchGetAllVkUsers } from '../../redux/slices/vkUserSlice'
+
 
 const Header = () => {
+  const dispatch = useDispatch()
   const routerNavigator = useRouteNavigator()
-  const isAuth = useSelector(checkIsAuth)
-  const user = useSelector((state) => state.auth.user)
   const { vk_id, vk_avatar } = useSelector((state) => state.vkUser)
-  const [showForm, setShowForm] = useState(false)
 
   return (
     <div className={styles.header}>
@@ -27,7 +23,10 @@ const Header = () => {
             className={styles.icon_home}
             onClick={() => routerNavigator.push('/')}
           />
-          {/* <DropdownMenu /> */}
+          <button onClick={()=> dispatch(deleteVkUser())} >del</button>
+          <br />
+          <br />
+          <button onClick={()=> dispatch(fetchGetAllVkUsers()) }>all</button>
         </div>
 
         <div className={styles.logo_wrapper}>

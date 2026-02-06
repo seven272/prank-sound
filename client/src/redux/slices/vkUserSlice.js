@@ -6,6 +6,7 @@ import axiosInstance from '../../utils/axios'
 const fetchCreateVkUser = createAsyncThunk(
   'vkUser/fetchCreateVkUser',
   async (vk_id) => {
+    console.log(vk_id)
     try {
       const res = await axiosInstance.post('/vk-users/create', {
         vk_id,
@@ -83,9 +84,15 @@ const vkUserSlice = createSlice({
   initialState,
   reducers: {
     setVkUser: (state, action) => {
-      state.vk_id = action.payload.id
+      state.vk_id = String(action.payload.id)
       state.vk_name = action.payload.first_name
       state.vk_avatar = action.payload.photo_100
+    },
+    deleteVkUser: (state) => {
+      state.vk_id = ''
+      state.vk_name = ''
+      state.vk_avatar = ''
+      state.isPaid = false
     },
   },
   extraReducers: (builder) => {
@@ -136,13 +143,13 @@ const vkUserSlice = createSlice({
       })
   },
 })
-const checkIsAuth = (state) => Boolean(state.auth.user)
-export const { setVkUser } = vkUserSlice.actions
+const checkIsAuthVk = (state) => Boolean(state.vkUser.vk_id)
+export const { setVkUser, deleteVkUser } = vkUserSlice.actions
 export {
   fetchCreateVkUser,
   fetchGetAllVkUsers,
   fetchFindVkUser,
   fetchSubscribing,
-  checkIsAuth,
+  checkIsAuthVk,
 }
 export default vkUserSlice.reducer

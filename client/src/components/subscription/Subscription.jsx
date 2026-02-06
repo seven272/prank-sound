@@ -4,24 +4,26 @@ import { Modal } from 'antd'
 import { TbBellPlusFilled } from 'react-icons/tb'
 
 import styles from './Subscription.module.css'
-import { fetchSubscribing } from '../../redux/slices/authSlice'
-// import { fetchCreateVkUser } from '../../redux/slices/vkUserSlice'
-import { checkIsAuth } from '../../redux/slices/authSlice'
+// import { fetchSubscribing } from '../../redux/slices/authSlice'
+import { fetchCreateVkUser } from '../../redux/slices/vkUserSlice'
+import { checkIsAuthVk } from '../../redux/slices/vkUserSlice'
 
 const Subscription = () => {
   const dispatch = useDispatch()
-  const isAuth = useSelector(checkIsAuth)
-  const { user } = useSelector((state) => state.auth)
-  // const {vk_id} = useSelector((state) => state.vkUser)
+  const isAuth = useSelector(checkIsAuthVk)
+  // const { user } = useSelector((state) => state.auth)
+  const {vk_id} = useSelector((state) => state.vkUser)
   const [openModal, setOpenModal] = useState(false)
 console.log('авторизован  ' + isAuth)
+console.log('VK id  ' + vk_id)
+
   const showModal = () => {
     setOpenModal(true)
   }
 
   const handleOk = () => {
-    dispatch(fetchSubscribing(user))
-    // dispatch(fetchCreateVkUser(vk_id))
+    // dispatch(fetchSubscribing(user))
+    dispatch(fetchCreateVkUser(vk_id))
     setOpenModal(false)
   }
 

@@ -8,7 +8,7 @@ const LockedSound = () => {
     <div className={styles.section}>
       <span className={styles.text}>
         будет доступен после подписки
-      </span>
+      </span> 
 
       <Subscription />
     </div>

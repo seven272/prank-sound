@@ -12,12 +12,9 @@ const corsOptions = {
       'http://prank-sound.ru',
       'https://prank-sound.ru',
       'http://localhost:3000',
-      'https://localhost:3000',
-      'https://185.251.89.77:5173',
-      'http://185.251.89.77:5173/',
+      'http://185.251.89.77:3000/',
       'https://185.251.89.77',
       'http://185.251.89.77',
-      'http://185.251.89.77/',
     ]
 
     if (!origin || allowedOrigins.indexOf(origin) !== -1) {

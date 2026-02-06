@@ -14,6 +14,7 @@ import LockedSound from './locked-sound/LockedSound'
 import { fetchGetCategorySounds } from '../../redux/slices/soundSlice'
 
 
+
 const Category = ({ id }) => {
   const { alias } = useParams()
   const dispatch = useDispatch()
@@ -21,6 +22,7 @@ const Category = ({ id }) => {
     (state) => state.sound
   )
   const  user  = useSelector((state) => state.auth.user)
+  const {vk_id, isPaid} = useSelector((state) => state.vkUser)
   const [soundDisable, setSoundDisable] = useState(true)
 
   useEffect(() => {
@@ -30,18 +32,16 @@ const Category = ({ id }) => {
   useEffect(() => {
     if (currentSound.isFree === true) {
       setSoundDisable(false)
-    } else if (currentSound.isFree === false && !user) {
+    } else if (currentSound.isFree === false && vk_id === '') {
       setSoundDisable(true)
     } else if (
-      currentSound.isFree === false &&
-      user &&
-      user?.isSubscription === false
+      currentSound.isFree === false && vk_id !== '' &&
+      isPaid === false
     ) {
       setSoundDisable(true) 
     } else if (
-      currentSound.isFree === false &&
-      user &&
-      user?.isSubscription === true
+      currentSound.isFree === false  && vk_id !== '' &&
+      isPaid === true
     ) {
       setSoundDisable(false)
     }

@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react'
 import { useRouteNavigator } from '@vkontakte/vk-mini-apps-router';
 import { AiOutlineHome } from 'react-icons/ai'
 import { IoSettingsOutline } from 'react-icons/io5'
-import { MdFavoriteBorder } from 'react-icons/md'
 import { IoShareSocialOutline } from 'react-icons/io5'
 import { AiOutlineLike } from 'react-icons/ai'
+import { TiStarOutline } from "react-icons/ti";
 
 import styles from './Footer.module.css'
 import { shareApp, recommendApp, addFavoriteApp } from '../../utils/vkAppShare'
@@ -29,7 +29,7 @@ const Footer = () => {
             {/* <span className={styles.title}>Поиск</span> */}
           </li>
           <li className={styles.item}>
-            <MdFavoriteBorder className={styles.icon} onClick={addFavoriteApp}/>
+            <TiStarOutline className={styles.icon} onClick={addFavoriteApp}/>
             {/* <span className={styles.title}>Поиск</span> */}
           </li>
           <li className={styles.item}>
