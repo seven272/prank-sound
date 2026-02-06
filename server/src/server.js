@@ -9,7 +9,7 @@ import corsOptions from './config/corsOptions.js'
 import categoryRoute from './routes/categoryRoute.js'
 import authRoute from './routes/authRoute.js'
 import soundRoute from './routes/soundRoute.js'
-import vkRoute from './routes/vkRoute.js'
+import vkUserRoute from './routes/vkUserRoute.js'
 
 dotenv.config()
 
@@ -30,7 +30,7 @@ app.use('/static', express.static(path.join(__dirname + '/uploads')))
 app.use('/api/auth', authRoute) 
 app.use('/api/categories', categoryRoute)
 app.use('/api/sounds', soundRoute)
-app.use('/api/vk', vkRoute)
+app.use('/api/vk-users', vkUserRoute)
 
 const start = async () => {
   try {

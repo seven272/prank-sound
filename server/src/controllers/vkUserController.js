@@ -1,4 +1,4 @@
-import Vk from '../models/Vk.js'
+import VkUser from '../models/VkUser.js'
 
 const createVkUser = async (req, res) => {
   try {
@@ -7,13 +7,11 @@ const createVkUser = async (req, res) => {
     if (!vk_id) {
       return res.status(400).json({
         error:
-          'Произошла ошибка при получении данных о рользователе из ВК',
+          'Произошла ошибка при получении данных о пользователе из ВК',
       })
     }
 
-    const existingValues = await Vk.find({
-      $or: [{ title: title }, { alias: alias }],
-    })
+    const existingValues = await VkUser.find({ vk_id })
 
     if (existingValues.length > 0) {
       return res.status(400).json({
@@ -21,7 +19,7 @@ const createVkUser = async (req, res) => {
       })
     }
 
-    const user = await Vk.create({ vk_id, isPaid })
+    const user = await VkUser.create({ vk_id, isPaid })
 
     res.status(200).json(user)
   } catch (error) {
@@ -33,7 +31,7 @@ const createVkUser = async (req, res) => {
 const getVkUser = async (req, res) => {
   const { vk_id } = req.body
   try {
-    const user = await Vk.findOne({ vk_id: vk_id })
+    const user = await VkUser.findOne({ vk_id: vk_id })
     if (!user) {
       return res
         .status(402)
@@ -46,14 +44,15 @@ const getVkUser = async (req, res) => {
   } catch (error) {
     console.log(error)
     res.json({
-      message: 'Ошибка сеервера при получении данных о пользователе ВК',
+      message:
+        'Ошибка сеервера при получении данных о пользователе ВК',
     })
   }
 }
 
 const listVkUsers = async (req, res) => {
   try {
-    const all = await Vk.find({})
+    const all = await VkUser.find({})
     res.status(200).json(all)
   } catch (error) {
     console.log(error)

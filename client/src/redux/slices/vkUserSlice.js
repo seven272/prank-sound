@@ -3,67 +3,53 @@ import { message } from 'antd'
 
 import axiosInstance from '../../utils/axios'
 
-const fetchRegisterUser = createAsyncThunk(
-  'auth/fetchRegisterUser',
-  async ({ username, password }) => {
+const fetchCreateVkUser = createAsyncThunk(
+  'vkUser/fetchCreateVkUser',
+  async (vk_id) => {
     try {
-      const res = await axiosInstance.post('/auth/register', {
-        username,
-        password,
-        isAdmin: false,
+      const res = await axiosInstance.post('/vk-users/create', {
+        vk_id,
+        isPaid: true,
       })
-
-      message.success('Вы успешно зарегистрировались')
       console.log(res.dada)
       return res.data
     } catch (error) {
-      message.error('Ошибка при регистрации')
+      message.error('Ошибка при добавлении данных об подписке в БД')
       console.log(error)
     }
   },
 )
 
-const fetchLoginUser = createAsyncThunk(
-  'auth/fetchLoginUser',
-  async ({ username, password }) => {
+const fetchGetAllVkUsers = createAsyncThunk(
+  'vkUser/fetchGetAllVkUsers',
+  async () => {
     try {
-      const res = await axiosInstance.post('/auth/login', {
-        username,
-        password,
+      const res = await axiosInstance.get('/vk-users/all')
+      console.log(res.data)
+      return res.data
+    } catch (error) {
+      message.error('Ошибка при загрузке списка пользователей ВК')
+      console.log(error)
+    }
+  },
+)
+
+const fetchFindVkUser = createAsyncThunk(
+  'vkUser/fetchFindVkUser',
+  async (_, thunkAPI) => {
+    try {
+      const state = thunkAPI.getState()
+      const currentUserId = state.vk_id
+      const res = await axiosInstance.get('/vk-users/one', {
+        vk_id: currentUserId,
       })
-
-      message.success('Вы успешно вошли в систему')
+      console.log(res.data)
       return res.data
     } catch (error) {
       console.log(error)
-      message.error('Ошибка при авторизации')
     }
   },
 )
-
-const fetchLogoutUser = createAsyncThunk(
-  'auth/fetchLogoutUser',
-  async (_, { dispatch }) => {
-    try {
-      const res = await axiosInstance.post('/auth/logout')
-      dispatch(logout())
-      message.success('Вы покинули сайт')
-      return res.data
-    } catch (error) {
-      console.log(error)
-      message.error('Ошибка при выходе из системы')
-    }
-  },
-)
-
-const fetchGetMe = createAsyncThunk('auth/fetchGetMe', async () => {
-  try {
-    const res = await axiosInstance.get('/auth/me')
-    return res.data
-  } catch (error) {
-    console.log(error)
-  }
-})
 
 const fetchSubscribing = createAsyncThunk(
   'auth/fetchSubscribing',
@@ -89,6 +75,7 @@ const initialState = {
   vk_name: '',
   vk_avatar: '',
   isPaid: false,
+  vk_users: [],
 }
 
 const vkUserSlice = createSlice({
@@ -100,66 +87,41 @@ const vkUserSlice = createSlice({
       state.vk_name = action.payload.first_name
       state.vk_avatar = action.payload.photo_100
     },
-    logout: (state) => {
-      return (
-        (state.user = null),
-        (state.isAdmin = false),
-        (state.isLoading = false)
-      )
-    },
   },
   extraReducers: (builder) => {
-    //register user
+    //cteate vk user
     builder
-      .addCase(fetchRegisterUser.pending, (state) => {
+      .addCase(fetchCreateVkUser.pending, (state) => {
         state.isLoading = true
       })
-      .addCase(fetchRegisterUser.fulfilled, (state, action) => {
-        state.isLoading = false
-        state.user = action.payload.newUser
-      })
-      .addCase(fetchRegisterUser.rejected, (state) => {
+      .addCase(fetchCreateVkUser.fulfilled, (state, action) => {
         state.isLoading = false
       })
-      //login user
-      .addCase(fetchLoginUser.pending, (state) => {
+      .addCase(fetchCreateVkUser.rejected, (state) => {
+        state.isLoading = false
+      })
+      //get all vk users
+      .addCase(fetchGetAllVkUsers.pending, (state) => {
         state.isLoading = true
       })
-      .addCase(fetchLoginUser.fulfilled, (state, action) => {
-        console.log('Redux succsess login')
+      .addCase(fetchGetAllVkUsers.fulfilled, (state, action) => {
         state.isLoading = false
-        state.user = action.payload?.user
+        state.vk_users = [...action.payload]
       })
-      .addCase(fetchLoginUser.rejected, (state) => {
-        console.log('Redux error login')
-
+      .addCase(fetchGetAllVkUsers.rejected, (state) => {
         state.isLoading = false
-        state.user = null
+        state.vk_users = []
       })
 
-      //logout user
-      .addCase(fetchLogoutUser.pending, (state) => {
+      //get one vk user
+      .addCase(fetchFindVkUser.pending, (state) => {
         state.isLoading = true
       })
-      .addCase(fetchLogoutUser.fulfilled, (state) => {
+      .addCase(fetchFindVkUser.fulfilled, (state) => {
         state.isLoading = false
       })
-      .addCase(fetchLogoutUser.rejected, (state) => {
+      .addCase(fetchFindVkUser.rejected, (state) => {
         state.isLoading = false
-      })
-      //get me
-      .addCase(fetchGetMe.pending, (state) => {
-        state.isLoading = true
-      })
-      .addCase(fetchGetMe.fulfilled, (state, action) => {
-        state.isLoading = false
-        state.user = action.payload?.user
-        state.isAdmin = action.payload?.user.isAdmin
-      })
-      .addCase(fetchGetMe.rejected, (state) => {
-        state.isLoading = false
-        state.user = null
-        state.isAdmin = false
       })
       //subscribing
       .addCase(fetchSubscribing.pending, (state) => {
@@ -175,12 +137,11 @@ const vkUserSlice = createSlice({
   },
 })
 const checkIsAuth = (state) => Boolean(state.auth.user)
-export const { logout, setVkUser } = vkUserSlice.actions
+export const { setVkUser } = vkUserSlice.actions
 export {
-  fetchRegisterUser,
-  fetchLoginUser,
-  fetchGetMe,
-  fetchLogoutUser,
+  fetchCreateVkUser,
+  fetchGetAllVkUsers,
+  fetchFindVkUser,
   fetchSubscribing,
   checkIsAuth,
 }
