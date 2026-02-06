@@ -17,4 +17,4 @@ const vkUserSchema = new mongoose.Schema(
 )
 const VkUser = mongoose.model('VkUser', vkUserSchema)
 
-export default Vk
+export default VkUser
