@@ -5,6 +5,7 @@ dotenv.config()
 
 //`mongodb://localhost:27017/name_db`
 const MONGO_URI = process.env.MONGO_URI || `mongodb://localhost:27017/prank_db`
+// const MONGO_URI = `mongodb://localhost:27017/prank_db`
 
 const connectDB = async () => {
   try {
