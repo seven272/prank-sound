@@ -3,7 +3,7 @@ import User from '../models/User.js'
 const createVkUser = async (req, res) => {
   try {
     const { vk_id, isPaid } = req.body
-
+console.log(vk_id)
     if (!vk_id) {
       return res.status(400).json({
         error:

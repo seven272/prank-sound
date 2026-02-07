@@ -5,9 +5,9 @@ import axiosInstance from '../../utils/axios'
 
 const fetchSubscribe = createAsyncThunk(
   'vkUser/fetchSubscribe',
-  async (_, thunkAPI) => {
-    const state = thunkAPI.getState()
-    const currentUserId = state.vk_id
+  async (currentUserId, thunkAPI) => {
+    // const state = thunkAPI.getState()
+    // const currentUserId = state.vk_id
      console.log(currentUserId)
     try {
       const res = await axiosInstance.post('/vk-users/create', {

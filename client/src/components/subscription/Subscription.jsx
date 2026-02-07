@@ -9,7 +9,7 @@ import { checkIsAuthVk, fetchSubscribe } from '../../redux/slices/vkUserSlice'
 const Subscription = () => {
   const dispatch = useDispatch()
   const isAuth = useSelector(checkIsAuthVk)
-  const { isPaid} = useSelector((state) => state.vkUser)
+  const { isPaid, vk_id} = useSelector((state) => state.vkUser)
   const [openModal, setOpenModal] = useState(false)
 
 console.log('оплачена подписка ' + isPaid)
@@ -20,7 +20,7 @@ console.log('оплачена подписка ' + isPaid)
   }
 
   const handleOk = () => {
-    dispatch(fetchSubscribe())
+    dispatch(fetchSubscribe(vk_id))
     setOpenModal(false)
   }
 
