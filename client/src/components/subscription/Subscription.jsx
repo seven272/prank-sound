@@ -4,8 +4,7 @@ import { Modal } from 'antd'
 import { TbBellPlusFilled } from 'react-icons/tb'
 
 import styles from './Subscription.module.css'
-import { fetchSubscribe } from '../../redux/slices/vkUserSlice'
-import { checkIsAuthVk } from '../../redux/slices/vkUserSlice'
+import { checkIsAuthVk, fetchSubscribe } from '../../redux/slices/vkUserSlice'
 
 const Subscription = () => {
   const dispatch = useDispatch()
