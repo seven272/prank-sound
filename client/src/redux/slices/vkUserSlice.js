@@ -5,10 +5,10 @@ import axiosInstance from '../../utils/axios'
 
 const fetchSubscribe = createAsyncThunk(
   'vkUser/fetchSubscribe',
-  async (currentUserId) => {
-    // const state = thunkAPI.getState()
-    // const currentUserId = state.vk_id
-     console.log(currentUserId)
+  async (_, thunkAPI) => {
+    const state = thunkAPI.getState()
+    const currentUserId = state.vk_id
+    console.log(currentUserId)
     try {
       const res = await axiosInstance.post('/vk-users/create', {
         vk_id: currentUserId,
@@ -44,7 +44,7 @@ const fetchFindVkUser = createAsyncThunk(
     const vkId = String(userIdFromVK)
     try {
       const res = await axiosInstance.get(`/vk-users/${vkId}`)
-    
+
       return res.data
     } catch (error) {
       console.log(error)
@@ -108,8 +108,8 @@ const vkUserSlice = createSlice({
       })
       .addCase(fetchFindVkUser.fulfilled, (state, action) => {
         state.isLoading = false
-        if(action.payload.vk_id === state.vk_id) {
-            state.isPaid = true
+        if (action.payload.vk_id === state.vk_id) {
+          state.isPaid = true
         }
       })
       .addCase(fetchFindVkUser.rejected, (state) => {
