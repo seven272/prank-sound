@@ -3,16 +3,18 @@ import { message } from 'antd'
 
 import axiosInstance from '../../utils/axios'
 
-const fetchCreateVkUser = createAsyncThunk(
-  'vkUser/fetchCreateVkUser',
-  async (vk_id) => {
-    console.log(vk_id)
+const fetchSubscribe = createAsyncThunk(
+  'vkUser/fetchSubscribe',
+  async (_, thunkAPI) => {
+    const state = thunkAPI.getState()
+    const currentUserId = state.vk_id
     try {
       const res = await axiosInstance.post('/vk-users/create', {
-        vk_id,
+        vk_id: currentUserId,
         isPaid: true,
       })
-      console.log(res.dada)
+      console.log(res.data)
+      message.success('Подписка успешно оформлена')
       return res.data
     } catch (error) {
       message.error('Ошибка при добавлении данных об подписке в БД')
@@ -38,13 +40,10 @@ const fetchGetAllVkUsers = createAsyncThunk(
 const fetchFindVkUser = createAsyncThunk(
   'vkUser/fetchFindVkUser',
   async (userIdFromVK) => {
+    const vkId = String(userIdFromVK)
     try {
-      // const state = thunkAPI.getState()
-      // const currentUserId = state.vk_id
-      const res = await axiosInstance.get('/vk-users/one', {
-        vk_id: userIdFromVK,
-      })
-      console.log(res.data)
+      const res = await axiosInstance.get(`/vk-users/${vkId}`)
+    
       return res.data
     } catch (error) {
       console.log(error)
@@ -98,13 +97,14 @@ const vkUserSlice = createSlice({
   extraReducers: (builder) => {
     //cteate vk user
     builder
-      .addCase(fetchCreateVkUser.pending, (state) => {
+      .addCase(fetchSubscribe.pending, (state) => {
         state.isLoading = true
       })
-      .addCase(fetchCreateVkUser.fulfilled, (state) => {
+      .addCase(fetchSubscribe.fulfilled, (state) => {
         state.isLoading = false
+        state.isPaid = true
       })
-      .addCase(fetchCreateVkUser.rejected, (state) => {
+      .addCase(fetchSubscribe.rejected, (state) => {
         state.isLoading = false
       })
       //get all vk users
@@ -119,27 +119,17 @@ const vkUserSlice = createSlice({
         state.isLoading = false
         state.vk_users = []
       })
-
       //get one vk user
       .addCase(fetchFindVkUser.pending, (state) => {
         state.isLoading = true
       })
-      .addCase(fetchFindVkUser.fulfilled, (state) => {
+      .addCase(fetchFindVkUser.fulfilled, (state, action) => {
         state.isLoading = false
-        state.isPaid = true
+        if(action.payload.vk_id === state.vk_id) {
+            state.isPaid = true
+        }
       })
       .addCase(fetchFindVkUser.rejected, (state) => {
-        state.isLoading = false
-      })
-      //subscribing
-      .addCase(fetchSubscribing.pending, (state) => {
-        state.isLoading = true
-      })
-      .addCase(fetchSubscribing.fulfilled, (state, action) => {
-        state.isLoading = false
-        state.user = { ...action.payload }
-      })
-      .addCase(fetchSubscribing.rejected, (state) => {
         state.isLoading = false
       })
   },
@@ -147,10 +137,9 @@ const vkUserSlice = createSlice({
 const checkIsAuthVk = (state) => Boolean(state.vkUser.vk_id)
 export const { setVkUser, deleteVkUser } = vkUserSlice.actions
 export {
-  fetchCreateVkUser,
+  fetchSubscribe,
   fetchGetAllVkUsers,
   fetchFindVkUser,
-  fetchSubscribing,
   checkIsAuthVk,
 }
 export default vkUserSlice.reducer

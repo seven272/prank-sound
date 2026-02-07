@@ -29,23 +29,25 @@ const createVkUser = async (req, res) => {
 }
 
 const getVkUser = async (req, res) => {
-  const { vk_id } = req.body
+  const { vkId } = req.params
+  console.log('vk_id: ')
+  console.log(vkId)
   try {
-    const user = await User.findOne({ vk_id: vk_id })
+    const user = await User.findOne({ vk_id: vkId })
+    console.log(user)
+
     if (!user) {
       return res
         .status(402)
-        .json({ message: 'пользователь  не существует' })
+        .json({ message: 'пользователь не найден в БД' })
     }
 
-    return res.status(200).json({
-      user,
-    })
+    return res.status(200).json(user)
   } catch (error) {
     console.log(error)
     res.json({
       message:
-        'Ошибка сеервера при получении данных о пользователе ВК',
+        'Ошибка сервера при получении данных о пользователе ВК',
     })
   }
 }

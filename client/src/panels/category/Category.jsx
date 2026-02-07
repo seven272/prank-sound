@@ -45,7 +45,7 @@ const Category = ({ id }) => {
     ) {
       setSoundDisable(false)
     }
-  }, [currentSound, user])
+  }, [currentSound, vk_id, isPaid])
 
   
   if (categorySounds.length === 0) {
