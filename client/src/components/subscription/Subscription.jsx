@@ -20,7 +20,7 @@ const Subscription = () => {
   }
 
   const handleOk = () => {
-    dispatch(fetchSubscribe(vk_id))
+    dispatch(fetchSubscribe())
     setOpenModal(false)
   }
 

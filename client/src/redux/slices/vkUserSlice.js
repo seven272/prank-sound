@@ -7,7 +7,7 @@ const fetchSubscribe = createAsyncThunk(
   'vkUser/fetchSubscribe',
   async (_, thunkAPI) => {
     const state = thunkAPI.getState()
-    const currentUserId = state.vk_id
+    const currentUserId = state.vkUser.vk_id
     console.log(currentUserId)
     try {
       const res = await axiosInstance.post('/vk-users/create', {
@@ -78,14 +78,17 @@ const vkUserSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    //cteate vk user
+    //cteate subscribe vk user
     builder
       .addCase(fetchSubscribe.pending, (state) => {
         state.isLoading = true
       })
-      .addCase(fetchSubscribe.fulfilled, (state) => {
+      .addCase(fetchSubscribe.fulfilled, (state, action) => {
+        const objUser = action.payload
         state.isLoading = false
-        state.isPaid = true
+        if(Object.keys(objUser).length > 0) {
+            state.isPaid = true
+        }
       })
       .addCase(fetchSubscribe.rejected, (state) => {
         state.isLoading = false
