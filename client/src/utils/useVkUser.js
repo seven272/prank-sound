@@ -1,6 +1,7 @@
 import bridge from '@vkontakte/vk-bridge'
 import { useDispatch } from 'react-redux'
-import { setVkUser } from '../redux/slices/vkUserSlice'
+import { setVkUser, fetchFindVkUser } from '../redux/slices/vkUserSlice'
+
 
 const useVkUser = () => {
   const dispatch = useDispatch()
@@ -10,8 +11,9 @@ const useVkUser = () => {
       .send('VKWebAppGetUserInfo')
       .then((data) => {
         if (data.id) {
-          dispatch(setVkUser(data))
           // Данные пользователя получены
+          dispatch(setVkUser(data))
+          dispatch(fetchFindVkUser(data.id))
           console.log(data)
         }
       })
@@ -20,7 +22,6 @@ const useVkUser = () => {
         console.log(error)
       })
   }
-
   return {
     getUserInfo,
   }

@@ -37,12 +37,12 @@ const fetchGetAllVkUsers = createAsyncThunk(
 
 const fetchFindVkUser = createAsyncThunk(
   'vkUser/fetchFindVkUser',
-  async (_, thunkAPI) => {
+  async (userIdFromVK) => {
     try {
-      const state = thunkAPI.getState()
-      const currentUserId = state.vk_id
+      // const state = thunkAPI.getState()
+      // const currentUserId = state.vk_id
       const res = await axiosInstance.get('/vk-users/one', {
-        vk_id: currentUserId,
+        vk_id: userIdFromVK,
       })
       console.log(res.data)
       return res.data
@@ -101,7 +101,7 @@ const vkUserSlice = createSlice({
       .addCase(fetchCreateVkUser.pending, (state) => {
         state.isLoading = true
       })
-      .addCase(fetchCreateVkUser.fulfilled, (state, action) => {
+      .addCase(fetchCreateVkUser.fulfilled, (state) => {
         state.isLoading = false
       })
       .addCase(fetchCreateVkUser.rejected, (state) => {
@@ -126,6 +126,7 @@ const vkUserSlice = createSlice({
       })
       .addCase(fetchFindVkUser.fulfilled, (state) => {
         state.isLoading = false
+        state.isPaid = true
       })
       .addCase(fetchFindVkUser.rejected, (state) => {
         state.isLoading = false

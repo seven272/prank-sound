@@ -51,8 +51,7 @@ export default defineConfig({
     host: true,
     strictPort: true,
     hmr: {
-      clientPort: 443, // Если у вас https://prank-sound.ru
-      // или 80, если http
+      clientPort: 443, // При разработке, для тестирования на сервере
     },
     allowedHosts: [
       'http://localhost:3000',
@@ -66,7 +65,7 @@ export default defineConfig({
     ],
     watch: {
       usePolling: true,
-      ignored: ['**/.dockerignore']
+      ignored: ['**/.dockerignore'],
     },
   },
   preview: {
@@ -82,7 +81,6 @@ export default defineConfig({
       },
     },
   },
-
   build: {
     outDir: 'dist',
     chunkSizeWarningLimit: 1500,
