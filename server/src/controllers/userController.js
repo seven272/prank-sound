@@ -17,7 +17,7 @@ const createVkUser = async (req, res) => {
       return res.status(400).json({
         error: 'Такой пользователь уже существует',
       })
-    }
+    } 
 
     const user = await User.create({ vk_id, isPaid })
     console.log(user)
@@ -35,12 +35,10 @@ const getVkUser = async (req, res) => {
     if (!user) {
       return res
         .status(402)
-        .json({ message: 'пользователь  не существует' })
+        .json({ message: 'пользователя не существует' })
     }
 
-    return res.status(200).json({
-      user,
-    })
+    return res.status(200).json(user)
   } catch (error) {
     console.log(error)
     res.json({

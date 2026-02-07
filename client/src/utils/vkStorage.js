@@ -66,7 +66,6 @@ const getOnboardingShown = async () => {
   })
   // получением значение первого элемента массива обьектов keys
   const resultValue = result.keys[0].value
-  console.log('выводим деструторизацию ' + resultValue)
   if (resultValue === '') {
     return false
   } else if (resultValue === '1') {

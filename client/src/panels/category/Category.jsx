@@ -21,7 +21,6 @@ const Category = ({ id }) => {
   const { categorySounds, currentSound } = useSelector(
     (state) => state.sound
   )
-  const  user  = useSelector((state) => state.auth.user)
   const {vk_id, isPaid} = useSelector((state) => state.vkUser)
   const [soundDisable, setSoundDisable] = useState(true)
 
@@ -45,7 +44,7 @@ const Category = ({ id }) => {
     ) {
       setSoundDisable(false)
     }
-  }, [currentSound, user])
+  }, [currentSound, isPaid, vk_id])
 
   
   if (categorySounds.length === 0) {
