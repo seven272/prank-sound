@@ -10,7 +10,7 @@ const router = express.Router()
 
 router.post('/create', createVkUser)
 router.get('/all', listVkUsers)
-router.get('/one', getVkUser)
+router.get('/:vkId', getVkUser)
 
 
 
