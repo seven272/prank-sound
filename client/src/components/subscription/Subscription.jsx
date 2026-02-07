@@ -12,7 +12,7 @@ const Subscription = () => {
   const { isPaid, vk_id} = useSelector((state) => state.vkUser)
   const [openModal, setOpenModal] = useState(false)
 
-console.log('оплачена подписка ' + isPaid)
+  console.log('оплачена подписка ' + isPaid)
 
 
   const showModal = () => {
