@@ -14,7 +14,6 @@ const useVkUser = () => {
           // Данные пользователя получены
           dispatch(setVkUser(data))
           dispatch(fetchFindVkUser(data.id))
-          console.log(data)
         }
       })
       .catch((error) => {

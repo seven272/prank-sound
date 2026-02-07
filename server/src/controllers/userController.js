@@ -30,8 +30,7 @@ const createVkUser = async (req, res) => {
 
 const getVkUser = async (req, res) => {
   const { vkId } = req.params
-  console.log('vk_id: ')
-  console.log(vkId)
+ 
   try {
     const user = await User.findOne({ vk_id: vkId })
     console.log(user)

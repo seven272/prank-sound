@@ -4,13 +4,16 @@ import { Modal } from 'antd'
 import { TbBellPlusFilled } from 'react-icons/tb'
 
 import styles from './Subscription.module.css'
-import { fetchSubscribe} from '../../redux/slices/vkUserSlice'
+import { fetchSubscribe } from '../../redux/slices/vkUserSlice'
 import { checkIsAuthVk } from '../../redux/slices/vkUserSlice'
 
 const Subscription = () => {
   const dispatch = useDispatch()
   const isAuth = useSelector(checkIsAuthVk)
+  const { isPaid} = useSelector((state) => state.vkUser)
   const [openModal, setOpenModal] = useState(false)
+
+console.log('оплачена подписка ' + isPaid)
 
 
   const showModal = () => {
