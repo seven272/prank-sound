@@ -5,7 +5,7 @@ import axiosInstance from '../../utils/axios'
 
 const fetchSubscribe = createAsyncThunk(
   'vkUser/fetchSubscribe',
-  async (currentUserId, thunkAPI) => {
+  async (currentUserId) => {
     // const state = thunkAPI.getState()
     // const currentUserId = state.vk_id
      console.log(currentUserId)
