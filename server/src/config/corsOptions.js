@@ -15,6 +15,8 @@ const corsOptions = {
       'http://185.251.89.77:3000/',
       'https://185.251.89.77',
       'http://185.251.89.77',
+      'https://vk.com',
+      'https://m.vk.com',
     ]
 
     if (!origin || allowedOrigins.indexOf(origin) !== -1) {

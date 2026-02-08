@@ -1,3 +1,4 @@
+import { response } from 'express'
 import User from '../models/User.js'
 
 const createVkUser = async (req, res) => {
@@ -71,10 +72,10 @@ const purchase = async (req, res) => {
   }
   try {
     // const all = await User.find({})
-    res.status(200).json(objRes)
+    return res.json({ response: objRes })
   } catch (error) {
     console.log(error)
-    res.status(500).json({
+    return res.status(500).json({
       error: 'Внутренняя ошибка сервера при покупке товара',
     })
   }
