@@ -6,7 +6,7 @@ import axiosInstance from '../../utils/axios'
 const fetchPurchase = createAsyncThunk(
   'vkUser/fetchPurchase',
   async () => {
-    
+    console.log('Делаю запрос purchase')
     try {
       const res = await axiosInstance.post('/vk-users/pay')
       console.log(res.data)

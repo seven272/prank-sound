@@ -8,6 +8,7 @@ import styles from './Subscription.module.css'
 import {
   checkIsAuthVk,
   fetchSubscribe,
+  fetchPurchase
 } from '../../redux/slices/vkUserSlice'
 import { vkPay } from '../../utils/vkPayment'
 
@@ -27,6 +28,7 @@ const Subscription = () => {
     // dispatch(fetchSubscribe())
     setOpenModal(false)
     vkPay()
+    dispatch(fetchPurchase())
   }
 
   const handleCancel = () => {
