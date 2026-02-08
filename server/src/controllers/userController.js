@@ -3,7 +3,7 @@ import User from '../models/User.js'
 const createVkUser = async (req, res) => {
   try {
     const { vk_id, isPaid } = req.body
-console.log(vk_id)
+    console.log(vk_id)
     if (!vk_id) {
       return res.status(400).json({
         error:
@@ -17,7 +17,7 @@ console.log(vk_id)
       return res.status(400).json({
         error: 'Такой пользователь уже существует',
       })
-    } 
+    }
 
     const user = await User.create({ vk_id, isPaid })
     console.log('user create vk')
@@ -31,7 +31,7 @@ console.log(vk_id)
 
 const getVkUser = async (req, res) => {
   const { vkId } = req.params
- 
+
   try {
     const user = await User.findOne({ vk_id: vkId })
     console.log(user)
@@ -63,5 +63,26 @@ const listVkUsers = async (req, res) => {
     })
   }
 }
+const purchase = async (req, res) => {
+  const payload = req.body
+  console.log(payload)
+  const objRes = {
+    title: '300 изумрудов',
+    price: 27,
+    photo_url: 'https://my-app.example.com/sale-item-1.png',
+    discount: 3,
+    item_id: 'sale_item_1',
+    expiration: 660,
+  }
+  try {
+    // const all = await User.find({})
+    res.status(200).json(objRes)
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({
+      error: 'Внутренняя ошибка сервера при покупке товара',
+    })
+  }
+}
 
-export { createVkUser, listVkUsers, getVkUser }
+export { createVkUser, listVkUsers, getVkUser, purchase }
