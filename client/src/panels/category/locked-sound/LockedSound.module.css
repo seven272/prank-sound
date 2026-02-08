@@ -9,6 +9,9 @@
 }
 
 .text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font: var(--font-m);
   color: var(--color-text-grey);
   margin-bottom: 15px;
