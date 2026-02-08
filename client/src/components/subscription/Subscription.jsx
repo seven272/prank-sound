@@ -9,6 +9,7 @@ import {
   checkIsAuthVk,
   fetchSubscribe,
 } from '../../redux/slices/vkUserSlice'
+import { vkPay } from '../../utils/vkPayment'
 
 const Subscription = () => {
   const dispatch = useDispatch()
@@ -23,8 +24,9 @@ const Subscription = () => {
   }
 
   const handleOk = () => {
-    dispatch(fetchSubscribe())
+    // dispatch(fetchSubscribe())
     setOpenModal(false)
+    vkPay()
   }
 
   const handleCancel = () => {
