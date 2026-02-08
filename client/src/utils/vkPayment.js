@@ -4,7 +4,7 @@ const vkPay = async () => {
   bridge
     .send('VKWebAppShowOrderBox', {
       type: 'item', // Всегда должно быть 'item'
-      item: 'sale_item_id_1', // Идентификатор товара
+      item: 'sale_key', // Идентификатор товара
     })
     .then((data) => {
       console.log('Покупка состоялась.', data)
