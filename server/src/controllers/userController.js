@@ -67,7 +67,7 @@ const purchase = async (req, res) => {
         item_id: 'sale_key',
         title: '300 изумрудов',
         price: 2,
-        photo_url: 'https://prank-sound.ru/public/key.svg',
+        photo_url: 'https://prank-sound.ru/public/key.jpeg',
       },
     })
   } catch (error) {
