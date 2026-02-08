@@ -72,7 +72,16 @@ const purchase = async (req, res) => {
   }
   try {
     // const all = await User.find({})
-    return res.json({ response: objRes })
+    return res.json({
+      response: {
+        title: '300 изумрудов',
+        price: 27,
+        photo_url: 'https://my-app.example.com/sale-item-1.png',
+        discount: 3,
+        item_id: 'sale_item_id_1',
+        expiration: 660,
+      },
+    })
   } catch (error) {
     console.log(error)
     return res.status(500).json({
