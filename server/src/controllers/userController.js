@@ -61,6 +61,7 @@ const listVkUsers = async (req, res) => {
 }
 const purchase = async (req, res) => {
   const payload = req.body
+  console.log('вывод данных о запросе ВКонтакте')
   console.log(payload)
   const objRes = {
     title: '300 изумрудов',
