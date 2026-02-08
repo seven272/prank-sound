@@ -60,29 +60,47 @@ const listVkUsers = async (req, res) => {
   }
 }
 const purchase = async (req, res) => {
-  const payload = req.body
-  console.log('вывод данных о запросе ВКонтакте')
-  console.log(payload)
-  const objRes = {
-    title: '300 изумрудов',
-    price: 27,
-    photo_url: 'https://my-app.example.com/sale-item-1.png',
-    discount: 3,
-    item_id: 'sale_item_id_1',
-    expiration: 660,
-  }
+  console.log('Запрос от VK:', req.body)
+
+  const { notification_type, item } = req.body
+  // const objRes = {
+  //   title: '300 изумрудов',
+  //   price: 27,
+  //   photo_url: 'https://my-app.example.com/sale-item-1.png',
+  //   discount: 3,
+  //   item_id: 'sale_item_id_1',
+  //   expiration: 660,
+  // }
   try {
-    res.status(200).json({
-      response: {
-        title: '300 изумрудов',
-        price: 1,
-        photo_url:
-          'https://i.pinimg.com/280x280_RS/14/42/0e/14420e2c9f198730d465cd7dd99fad9d.jpg',
-        item_id: 'sale_key',
-      },
-    })
-    // На любой другой запрос всегда отвечаем 200 OK
-    // res.status(200).json({ response: { status: 'ok' } })
+    if (
+      notification_type === 'get_item_test' ||
+      notification_type === 'get_item'
+    ) {
+      // ВАЖНО: Никаких лишних полей, только response
+      return res.status(200).json({
+        response: {
+          item_id: String(item), // "sale_key"
+          title: '300 изумрудов',
+          price: 2, // СТРОГО ЧИСЛО
+          photo_url: 'https://i.pinimg.com',
+        },
+      })
+    }
+
+    // Для подтверждения заказа (финализация)
+    if (
+      notification_type === 'order_status_change_test' ||
+      notification_type === 'order_status_change'
+    ) {
+      return res.status(200).json({
+        response: {
+          order_id: Number(req.body.order_id),
+          app_order_id: Date.now(),
+        },
+      })
+    }
+
+    res.status(200).json({ response: { status: 'ok' } })
   } catch (error) {
     console.log(error)
     return res.status(500).json({
