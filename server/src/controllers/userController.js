@@ -61,46 +61,15 @@ const listVkUsers = async (req, res) => {
 }
 const purchase = async (req, res) => {
   console.log('Запрос от VK:', req.body)
-
-  const { notification_type, item } = req.body
-  // const objRes = {
-  //   title: '300 изумрудов',
-  //   price: 27,
-  //   photo_url: 'https://my-app.example.com/sale-item-1.png',
-  //   discount: 3,
-  //   item_id: 'sale_item_id_1',
-  //   expiration: 660,
-  // }
   try {
-    if (
-      notification_type === 'get_item_test' ||
-      notification_type === 'get_item'
-    ) {
-      // ВАЖНО: Никаких лишних полей, только response
-      return res.status(200).json({
-        response: {
-          item_id: String(item), // "sale_key"
-          title: '300 изумрудов',
-          price: 2, // СТРОГО ЧИСЛО
-          photo_url: 'https://i.pinimg.com',
-        },
-      })
-    }
-
-    // Для подтверждения заказа (финализация)
-    if (
-      notification_type === 'order_status_change_test' ||
-      notification_type === 'order_status_change'
-    ) {
-      return res.status(200).json({
-        response: {
-          order_id: Number(req.body.order_id),
-          app_order_id: Date.now(),
-        },
-      })
-    }
-
-    res.status(200).json({ response: { status: 'ok' } })
+    return res.status(200).json({
+      response: {
+        item_id: 'sale_key',
+        title: '300 изумрудов',
+        price: 2,
+        photo_url: 'https://prank-sound.ru/public/key.svg',
+      },
+    })
   } catch (error) {
     console.log(error)
     return res.status(500).json({

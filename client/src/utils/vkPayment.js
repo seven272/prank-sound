@@ -1,7 +1,7 @@
 import bridge from '@vkontakte/vk-bridge'
 
 const vkPay = async () => {
-  bridge
+ return await bridge
     .send('VKWebAppShowOrderBox', {
       type: 'item', // Всегда должно быть 'item'
       item: 'sale_key', // Идентификатор товара
