@@ -61,6 +61,7 @@ export default defineConfig({
       'www.vk.ru',
       'vk.ru',
       'vk.com',
+      'vk.com/',
       'www.vk.com',
     ],
     watch: {

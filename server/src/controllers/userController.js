@@ -77,12 +77,14 @@ const purchase = async (req, res) => {
       response: {
         title: '300 изумрудов',
         price: 27,
-        photo_url: 'https://my-app.example.com/sale-item-1.png',
+        photo_url: 'https://i.pinimg.com/280x280_RS/14/42/0e/14420e2c9f198730d465cd7dd99fad9d.jpg',
         discount: 3,
         item_id: 'sale_item_id_1',
         expiration: 660,
       },
     })
+    // На любой другой запрос всегда отвечаем 200 OK
+  res.status(200).json({ response: { status: 'ok' } });
   } catch (error) {
     console.log(error)
     return res.status(500).json({
