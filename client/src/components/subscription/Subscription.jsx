@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Modal } from 'antd'
 import { TbBellPlusFilled } from 'react-icons/tb'
+import { GiPadlock } from "react-icons/gi";
 
 import styles from './Subscription.module.css'
 import { checkIsAuthVk, fetchSubscribe } from '../../redux/slices/vkUserSlice'
@@ -30,8 +31,8 @@ const Subscription = () => {
   return (
     <div className={styles.section}>
       <button onClick={showModal} className={styles.btn_subscr} disabled={isAuth === false}>
-        <TbBellPlusFilled className={styles.btn_icon} />
-        <span className={styles.btn_text}>подписка</span>
+        <GiPadlock className={styles.btn_icon} />
+        <span className={styles.btn_text}>разблокировать</span>
       </button>
 
       <Modal
