@@ -75,7 +75,7 @@ const purchase = async (req, res) => {
     res.status(200).json({
       response: {
         title: '300 изумрудов',
-        price: 27,
+        price: 1,
         photo_url:
           'https://i.pinimg.com/280x280_RS/14/42/0e/14420e2c9f198730d465cd7dd99fad9d.jpg',
         item_id: 'sale_key',
