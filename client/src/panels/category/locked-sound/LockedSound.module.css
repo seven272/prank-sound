@@ -17,6 +17,10 @@
   margin-bottom: 15px;
 }
 
+.icon {
+  margin-left: 7px;
+}
+
 .btn {
   display: flex;
   justify-content: center;

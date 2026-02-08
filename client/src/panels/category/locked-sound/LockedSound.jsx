@@ -8,7 +8,7 @@ const LockedSound = () => {
   return (
     <div className={styles.section}>
       <span className={styles.text}>
-        доступен после покупки <MdOutlineVpnKey size={15} />
+        доступен после покупки <MdOutlineVpnKey size={15} className={styles.icon}/>
       </span>
 
       <Subscription />

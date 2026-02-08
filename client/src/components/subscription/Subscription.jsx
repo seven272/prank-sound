@@ -37,7 +37,7 @@ const Subscription = () => {
         className={styles.btn_subscr}
         disabled={isAuth === false}
       >
-        <GiPadlock className={styles.btn_icon} />
+        <GiPadlock className={styles.btn_icon} size={35}/>
         <span className={styles.btn_text}>разблокировать</span>
       </button>
 
