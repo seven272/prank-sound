@@ -28,7 +28,7 @@ const Subscription = () => {
     // dispatch(fetchSubscribe())
     setOpenModal(false)
     vkPay()
-    dispatch(fetchPurchase())
+    // dispatch(fetchPurchase())
   }
 
   const handleCancel = () => {
