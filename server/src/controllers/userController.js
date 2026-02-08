@@ -3,7 +3,6 @@ import User from '../models/User.js'
 const createVkUser = async (req, res) => {
   try {
     const { vk_id, isPaid } = req.body
-    console.log(vk_id)
     if (!vk_id) {
       return res.status(400).json({
         error:
@@ -20,8 +19,6 @@ const createVkUser = async (req, res) => {
     }
 
     const user = await User.create({ vk_id, isPaid })
-    console.log('user create vk')
-    console.log(user)
     res.status(200).json(user)
   } catch (error) {
     console.log(error)
@@ -34,8 +31,6 @@ const getVkUser = async (req, res) => {
 
   try {
     const user = await User.findOne({ vk_id: vkId })
-    console.log(user)
-
     if (!user) {
       return res
         .status(402)
