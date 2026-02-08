@@ -1,20 +1,22 @@
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Modal } from 'antd'
-import { TbBellPlusFilled } from 'react-icons/tb'
-import { GiPadlock } from "react-icons/gi";
+// import { TbBellPlusFilled } from 'react-icons/tb'
+import { GiPadlock } from 'react-icons/gi'
 
 import styles from './Subscription.module.css'
-import { checkIsAuthVk, fetchSubscribe } from '../../redux/slices/vkUserSlice'
+import {
+  checkIsAuthVk,
+  fetchSubscribe,
+} from '../../redux/slices/vkUserSlice'
 
 const Subscription = () => {
   const dispatch = useDispatch()
   const isAuth = useSelector(checkIsAuthVk)
-  const { isPaid, vk_id} = useSelector((state) => state.vkUser)
+  const { isPaid } = useSelector((state) => state.vkUser)
   const [openModal, setOpenModal] = useState(false)
 
   console.log('оплачена подписка ' + isPaid)
-
 
   const showModal = () => {
     setOpenModal(true)
@@ -30,14 +32,18 @@ const Subscription = () => {
   }
   return (
     <div className={styles.section}>
-      <button onClick={showModal} className={styles.btn_subscr} disabled={isAuth === false}>
+      <button
+        onClick={showModal}
+        className={styles.btn_subscr}
+        disabled={isAuth === false}
+      >
         <GiPadlock className={styles.btn_icon} />
         <span className={styles.btn_text}>разблокировать</span>
       </button>
 
       <Modal
         open={openModal}
-        title="оформление подписки..."
+        title="оплата доступа..."
         onOk={handleOk}
         onCancel={handleCancel}
         footer={() => (
@@ -61,8 +67,8 @@ const Subscription = () => {
         )}
       >
         <div className={styles.content}>
-          оформив подписку вы сможете разблокировать доступ ко всем
-          звукам во всех категориях навсегда
+          оформив покупку ключа вы навсегда разблокируете доступ ко
+          всем звукам во всех категориях.
         </div>
       </Modal>
     </div>
