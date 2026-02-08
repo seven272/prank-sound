@@ -66,7 +66,7 @@ const purchase = async (req, res) => {
     price: 27,
     photo_url: 'https://my-app.example.com/sale-item-1.png',
     discount: 3,
-    item_id: 'sale_item_1',
+    item_id: 'sale_item_id_1',
     expiration: 660,
   }
   try {
