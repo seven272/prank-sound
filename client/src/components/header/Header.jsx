@@ -23,10 +23,12 @@ const Header = () => {
             className={styles.icon_home}
             onClick={() => routerNavigator.push('/')}
           />
-          <button onClick={()=> dispatch(deleteVkUser())} >del</button>
-          <br />
-          <br />
-          <button onClick={()=> dispatch(fetchGetAllVkUsers()) }>all</button>
+          <div className={styles.test_btns}>
+            <button className={styles.test_btn} onClick={()=> dispatch(deleteVkUser())} >del</button>
+            <button className={styles.test_btn} onClick={()=> dispatch(fetchGetAllVkUsers()) }>all</button>
+            <button className={styles.test_btn} onClick={()=> dispatch(fetchGetAllVkUsers()) }>pay</button>
+          </div>
+         
         </div>
 
         <div className={styles.logo_wrapper}>
