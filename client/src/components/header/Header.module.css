@@ -161,8 +161,10 @@
 
 .test_btn {
   background: none;
-  border: 1px solid black;
+  border: 2px solid white;
+  color: white;
   padding: 3px 6px;
   text-align: center;
+  cursor: pointer;
 }
 

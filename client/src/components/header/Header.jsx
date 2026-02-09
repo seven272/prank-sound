@@ -7,6 +7,7 @@ import { FiUser } from 'react-icons/fi'
 import styles from './Header.module.css'
 import logoImg from '../../assets/images/logo.png'
 import { deleteVkUser, fetchGetAllVkUsers } from '../../redux/slices/vkUserSlice'
+import { vkPay } from '../../utils/vkPayment'
 
 
 const Header = () => {
@@ -26,7 +27,7 @@ const Header = () => {
           <div className={styles.test_btns}>
             <button className={styles.test_btn} onClick={()=> dispatch(deleteVkUser())} >del</button>
             <button className={styles.test_btn} onClick={()=> dispatch(fetchGetAllVkUsers()) }>all</button>
-            <button className={styles.test_btn} onClick={()=> dispatch(fetchGetAllVkUsers()) }>pay</button>
+            <button className={styles.test_btn} onClick={()=> vkPay() }>pay</button>
           </div>
          
         </div>
