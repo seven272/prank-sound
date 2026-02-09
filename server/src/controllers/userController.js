@@ -69,6 +69,7 @@ const purchase = async (req, res) => {
         price: 2,
         photo_url: 'https://prank-sound.ru/public/key.jpeg',
       },
+      test_mode: 1 //возвращать только в тестовом режиме
     })
   } catch (error) {
     console.log(error)
