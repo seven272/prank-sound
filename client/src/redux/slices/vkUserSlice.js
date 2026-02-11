@@ -58,7 +58,7 @@ const fetchFindVkUser = createAsyncThunk(
   async (userIdFromVK) => {
     const vkId = String(userIdFromVK)
     try {
-      const res = await axiosInstance.get(`/vk-users/${vkId}`)
+      const res = await axiosInstance.get(`/vk-users/user/${vkId}`)
 
       return res.data
     } catch (error) {
