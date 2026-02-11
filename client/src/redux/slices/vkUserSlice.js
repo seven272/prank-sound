@@ -18,8 +18,8 @@ const fetchPurchase = createAsyncThunk(
   },
 )
 
-const fetchSubscribe = createAsyncThunk(
-  'vkUser/fetchSubscribe',
+const fetchCreateVkUser = createAsyncThunk(
+  'vkUser/fetchCreateVkUser',
   async (_, thunkAPI) => {
     const state = thunkAPI.getState()
     const currentUserId = state.vkUser.vk_id
@@ -95,17 +95,17 @@ const vkUserSlice = createSlice({
   extraReducers: (builder) => {
     //cteate subscribe vk user
     builder
-      .addCase(fetchSubscribe.pending, (state) => {
+      .addCase(fetchCreateVkUser.pending, (state) => {
         state.isLoading = true
       })
-      .addCase(fetchSubscribe.fulfilled, (state, action) => {
+      .addCase(fetchCreateVkUser.fulfilled, (state, action) => {
         const objUser = action.payload
         state.isLoading = false
         if(Object.keys(objUser).length > 0) {
             state.isPaid = true
         }
       })
-      .addCase(fetchSubscribe.rejected, (state) => {
+      .addCase(fetchCreateVkUser.rejected, (state) => {
         state.isLoading = false
       })
       //get all vk users
@@ -138,7 +138,7 @@ const vkUserSlice = createSlice({
 const checkIsAuthVk = (state) => Boolean(state.vkUser.vk_id)
 export const { setVkUser, deleteVkUser } = vkUserSlice.actions
 export {
-  fetchSubscribe,
+  fetchCreateVkUser,
   fetchGetAllVkUsers,
   fetchFindVkUser,
   fetchPurchase,

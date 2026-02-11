@@ -11,7 +11,7 @@ import {
   fetchGetAllVkUsers,
   fetchPurchase,
 } from '../../redux/slices/vkUserSlice'
-import { vkPay, vkSubscription } from '../../utils/vkPayment'
+import { vkPay, vkSubscription } from '../../utils/useVkPayment'
 
 const Header = () => {
   const dispatch = useDispatch()
@@ -23,7 +23,7 @@ const Header = () => {
 
     // dispatch(fetchPurchase())
   }
-  
+
   const handleSubscr = () => {
     vkSubscription()
   }

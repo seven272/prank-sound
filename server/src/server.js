@@ -10,6 +10,7 @@ import categoryRoute from './routes/categoryRoute.js'
 import authRoute from './routes/authRoute.js'
 import soundRoute from './routes/soundRoute.js'
 import userRoute from './routes/userRoute.js'
+import orderRoute from './routes/orderRoute.js'
 
 dotenv.config()
 
@@ -31,6 +32,7 @@ app.use('/api/auth', authRoute)
 app.use('/api/categories', categoryRoute)
 app.use('/api/sounds', soundRoute)
 app.use('/api/vk-users', userRoute)
+app.use('/api/vk-orders', orderRoute)
 
 const start = async () => {
   try {

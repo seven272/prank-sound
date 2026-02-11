@@ -1,4 +1,3 @@
-import { response } from 'express'
 import User from '../models/User.js'
 
 const createVkUser = async (req, res) => {
@@ -59,24 +58,6 @@ const listVkUsers = async (req, res) => {
     })
   }
 }
-const purchase = async (req, res) => {
-  console.log('Запрос от VK:', req.body)
-  try {
-    return res.status(200).json({
-      response: {
-        item_id: 'sale_key',
-        title: '300 изумрудов',
-        price: 2,
-        photo_url: 'https://prank-sound.ru/public/key.jpeg',
-      },
-      test_mode: 1 //возвращать только в тестовом режиме
-    })
-  } catch (error) {
-    console.log(error)
-    return res.status(500).json({
-      error: 'Внутренняя ошибка сервера при покупке товара',
-    })
-  }
-}
 
-export { createVkUser, listVkUsers, getVkUser, purchase }
+
+export { createVkUser, listVkUsers, getVkUser }

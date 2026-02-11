@@ -11,12 +11,13 @@ const corsOptions = {
     const allowedOrigins = [
       'http://prank-sound.ru',
       'https://prank-sound.ru',
-      'http://localhost:3000',
-      'http://185.251.89.77:3000/',
       'https://185.251.89.77',
       'http://185.251.89.77',
+      'https://vk.com',
+      'https://vk.ru',
       /vk\.com$/,
       /vk\.me$/,
+
     ]
 
     if (!origin || allowedOrigins.indexOf(origin) !== -1) {
