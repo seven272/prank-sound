@@ -1,7 +1,7 @@
 import bridge from '@vkontakte/vk-bridge'
 
 const vkPay = async () => {
- return await bridge
+  return await bridge
     .send('VKWebAppShowOrderBox', {
       type: 'item', // Всегда должно быть 'item'
       item: 'sale_key', // Идентификатор товара
@@ -10,8 +10,22 @@ const vkPay = async () => {
       console.log('Покупка состоялась.', data)
     })
     .catch((error) => {
-      console.log('Ошибка!', error)
+      console.log('Ошибка платежа!', error)
     })
 }
 
-export { vkPay }
+const vkSubscription = async () => {
+  return bridge
+    .send('VKWebAppShowSubscriptionBox', {
+      action: 'create',
+      item: 'sale_subscr_1', // Идентификатор подписки в приложении
+    })
+    .then((data) => {
+      console.log('Полписка прошла успешно', data)
+    })
+    .catch((e) => {
+      console.log('Ошибка подписки!', e)
+    })
+}
+
+export { vkPay, vkSubscription }

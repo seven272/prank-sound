@@ -7,7 +7,7 @@ import { FiUser } from 'react-icons/fi'
 import styles from './Header.module.css'
 import logoImg from '../../assets/images/logo.png'
 import { deleteVkUser, fetchGetAllVkUsers, fetchPurchase} from '../../redux/slices/vkUserSlice'
-import { vkPay } from '../../utils/vkPayment'
+import { vkPay, vkSubscription } from '../../utils/vkPayment'
 
 
 
@@ -17,8 +17,9 @@ const Header = () => {
   const { vk_id, vk_avatar } = useSelector((state) => state.vkUser)
 
   const handlePay = () => {
-  vkPay()
-  dispatch(fetchPurchase())
+  // vkPay()
+  vkSubscription()
+  // dispatch(fetchPurchase())
 }
 
 
