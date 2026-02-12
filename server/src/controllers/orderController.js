@@ -44,9 +44,9 @@ const makePurchaseVk = async (req, res) => {
     }
 
     // НАЧИСЛЕНИЕ ПОСЛЕ ОПЛАТЫ
+    //notification_type === 'order_status_change' 
     if (
-      (notification_type === 'order_status_change' ||
-        notification_type === 'order_status_change_test') &&
+      notification_type === 'order_status_change_test' &&
       status === 'chargeable'
     ) {
       console.log('НАЧИСЛЕНИЕ ПОСЛЕ ОПЛАТЫ')
