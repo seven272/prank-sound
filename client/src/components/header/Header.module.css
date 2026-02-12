@@ -175,7 +175,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-right: 20px;
+
   border: 1px solid white;
 }
 
@@ -187,6 +187,7 @@
   color: var(--color-white);
   font: var(--font-submenu);
   margin-top: 3px;
+  margin-right: 20px;
   border: 1px solid wheat;
 }
 
