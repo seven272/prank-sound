@@ -16,7 +16,7 @@ const useVkPay = () => {
         type: 'item', // Всегда должно быть 'item'
         item: 'premium_pass', // Идентификатор товара
       })
-
+      console.log(data)
       if (data.success) {
         // 2. Если VK вернул success, значит пользователь нажал "Оплатить"
         // и деньги (голоса) списались.
