@@ -4,6 +4,7 @@ import crypto from 'crypto'
 const vkAuthMiddleware = (req, res, next) => {
   const data = req.body
   const secretKey = process.env.VK_SECRET_KEY
+    console.log('port : ', process.env.PORT)
   console.log('секретный ключ приложения: ', secretKey)
   console.log('хэшированный ключ от ВК: ', data.sig)
 
