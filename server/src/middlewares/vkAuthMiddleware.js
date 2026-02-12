@@ -4,9 +4,13 @@ import crypto from 'crypto'
 const vkAuthMiddleware = (req, res, next) => {
   const data = req.body
   const secretKey = process.env.VK_SECRET_KEY
+  console.log('секретный ключ приложения: ', secretKey)
+  console.log('хэшированный ключ от ВК: ', data.sig)
 
   if (!data.sig) {
-    return res.status(400).json({ error: 'Ошибка при передачи ключа' })
+    return res
+      .status(400)
+      .json({ error: 'Ошибка при передачи ключа' })
   }
 
   // 1. Фильтруем параметры уведомления
@@ -21,6 +25,8 @@ const vkAuthMiddleware = (req, res, next) => {
     .createHash('md5')
     .update(filteredParams + secretKey)
     .digest('hex')
+
+  console.log('секретный ключ приложения после hash: ', hash)
 
   // 3. Сверяем
   if (hash !== data.sig) {

@@ -26,8 +26,6 @@ const makePurchaseVk = async (req, res) => {
     ) {
       const product = ITEMS_STORE[item]
 
-      console.log('продукт', product)
-
       if (!product)
         return res
           .status(404)
@@ -44,7 +42,6 @@ const makePurchaseVk = async (req, res) => {
     }
 
     // НАЧИСЛЕНИЕ ПОСЛЕ ОПЛАТЫ
-    //notification_type === 'order_status_change'
     if (
       (notification_type === 'order_status_change' ||
         notification_type === 'order_status_change_test') &&
