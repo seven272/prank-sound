@@ -1,5 +1,4 @@
 import { useSelector } from 'react-redux'
-import { RiVipLine } from 'react-icons/ri'
 import { RiVipFill } from "react-icons/ri";
 
 
@@ -18,7 +17,7 @@ const LockedSound = () => {
   return (
     <div className={styles.section}>
       <span className={styles.text}>
-        доступен после покупки премиум статуса
+        доступен после покупки премиум доступа
       </span>
 
       <button
