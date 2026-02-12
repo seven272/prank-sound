@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux'
 import { RiVipLine } from 'react-icons/ri'
+import { RiVipFill } from "react-icons/ri";
 
 
 import styles from './LockedSound.module.css'
@@ -25,8 +26,8 @@ const LockedSound = () => {
         className={styles.btn_subscr}
         disabled={isAuth === false}
       >
-        <RiVipLine className={styles.btn_icon} size={25} />
-        <span className={styles.btn_text}>оформить vip</span>
+        <RiVipFill className={styles.btn_icon} size={25} />
+        <span className={styles.btn_text}>оформить</span>
       </button>
     </div>
   )
