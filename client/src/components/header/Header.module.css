@@ -168,3 +168,18 @@
   cursor: pointer;
 }
 
+.avatar_wrapper {
+  width: max-content;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.text_avatar {
+  color: var(--color-white);
+  font: var(--font-submenu);
+  margin-top: 3px;
+}
+
