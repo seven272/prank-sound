@@ -1,25 +1,25 @@
 import bridge from '@vkontakte/vk-bridge'
 import { useDispatch } from 'react-redux'
-import { setVkUser, fetchFindVkUser } from '../redux/slices/vkUserSlice'
-
+import {
+  setVkUser,
+  fetchCheckVkUser,
+} from '../redux/slices/vkUserSlice'
 
 const useVkUser = () => {
   const dispatch = useDispatch()
 
   const getUserInfo = async () => {
-    return await bridge
-      .send('VKWebAppGetUserInfo')
-      .then((data) => {
-        if (data.id) {
-          // Данные пользователя получены
-          dispatch(setVkUser(data))
-          dispatch(fetchFindVkUser(data.id))
-        }
-      })
-      .catch((error) => {
-        // Ошибка
-        console.log(error)
-      })
+    try {
+      const data = await bridge.send('VKWebAppGetUserInfo')
+       // Данные пользователя получены
+      if (data.id) {
+        dispatch(setVkUser(data))
+        dispatch(fetchCheckVkUser(data.id))
+      }
+    } catch (error) {
+      console.log('Ошибка при загрузке данных о пользователе ВК')
+      console.log(error)
+    }
   }
   return {
     getUserInfo,

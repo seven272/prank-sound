@@ -53,8 +53,8 @@ const fetchGetAllVkUsers = createAsyncThunk(
   },
 )
 
-const fetchFindVkUser = createAsyncThunk(
-  'vkUser/fetchFindVkUser',
+const fetchCheckVkUser = createAsyncThunk(
+  'vkUser/fetchCheckVkUser',
   async (userIdFromVK) => {
     const vkId = String(userIdFromVK)
     try {
@@ -84,6 +84,9 @@ const vkUserSlice = createSlice({
       state.vk_id = String(action.payload.id)
       state.vk_name = action.payload.first_name
       state.vk_avatar = action.payload.photo_100
+    },
+    changeStatusPaid: (state) => {
+      state.isPaid = true
     },
     deleteVkUser: (state) => {
       state.vk_id = ''
@@ -121,26 +124,26 @@ const vkUserSlice = createSlice({
         state.vk_users = []
       })
       //get one vk user
-      .addCase(fetchFindVkUser.pending, (state) => {
+      .addCase(fetchCheckVkUser.pending, (state) => {
         state.isLoading = true
       })
-      .addCase(fetchFindVkUser.fulfilled, (state, action) => {
+      .addCase(fetchCheckVkUser.fulfilled, (state, action) => {
         state.isLoading = false
         if (action.payload.vk_id === state.vk_id) {
           state.isPaid = true
         }
       })
-      .addCase(fetchFindVkUser.rejected, (state) => {
+      .addCase(fetchCheckVkUser.rejected, (state) => {
         state.isLoading = false
       })
   },
 })
 const checkIsAuthVk = (state) => Boolean(state.vkUser.vk_id)
-export const { setVkUser, deleteVkUser } = vkUserSlice.actions
+export const { setVkUser, deleteVkUser, changeStatusPaid } = vkUserSlice.actions
 export {
   fetchCreateVkUser,
   fetchGetAllVkUsers,
-  fetchFindVkUser,
+  fetchCheckVkUser,
   fetchPurchase,
   checkIsAuthVk,
 }

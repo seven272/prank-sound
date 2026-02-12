@@ -1,13 +1,15 @@
 import bridge from '@vkontakte/vk-bridge'
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { fetchCreateVkUser } from '../redux/slices/vkUserSlice'
 
-const useVkPayment = () => {
+import { message } from 'antd'
+import { changeStatusPaid } from '../redux/slices/vkUserSlice'
+
+const useVkPay = () => {
   const dispatch = useDispatch()
   const [loading, setLoading] = useState(false)
 
-  const vkPay = async () => {
+  const payVirtualMoney = async () => {
     try {
       // 1. Вызываем нативное окно оплаты VK
       const data = await bridge.send('VKWebAppShowOrderBox', {
@@ -19,37 +21,33 @@ const useVkPayment = () => {
         // 2. Если VK вернул success, значит пользователь нажал "Оплатить"
         // и деньги (голоса) списались.
 
-        // ВАЖНО: В этот момент твой бэкенд ПАРАЛЛЕЛЬНО получает callback от VK.
-        // Нужно подождать секунду или обновить данные пользователя вручную.
-
-        alert(
-          'Оплата прошла успешно! Изумруды скоро появятся на счету.',
+        // ВАЖНО: В этот момент бэкенд ПАРАЛЛЕЛЬНО получает callback от VK.
+        // Нужно подождать секунду или обновить данные пользователя.
+        message.success(
+          'Оплата прошла успешно! Премиум доступ скоро появится.',
         )
-
-        // Здесь можно вызвать функцию обновления баланса с твоего сервера
+        // Здесь вызов функции обновления баланса или статуса оплаты
         setLoading(true)
-
         setTimeout(() => {
-          dispatch(fetchCreateVkUser())
+          dispatch(changeStatusPaid())
           setLoading(false)
         }, 1500)
       }
     } catch (error) {
       // Пользователь закрыл окно или произошла ошибка (например, ошибка 13)
       console.error('Ошибка при оплате:', error)
-
       if (error.error_data && error.error_data.error_code === 4) {
-        alert('Покупка отменена пользователем')
+        message.success('Покупка отменена пользователем')
       } else {
-        alert('Произошла ошибка при связи с сервером VK')
+        message.error('Произошла ошибка при связи с сервером VK')
       }
     }
   }
 
   return {
-    vkPay,
+    payVirtualMoney,
     loading,
   }
 }
 
-export { useVkPayment }
+export { useVkPay }

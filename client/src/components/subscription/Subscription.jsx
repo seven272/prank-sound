@@ -10,13 +10,14 @@ import {
   fetchSubscribe,
   fetchPurchase
 } from '../../redux/slices/vkUserSlice'
-import { vkPay } from '../../utils/vkPayment'
+import {useVkPay} from '../../utils/useVkPay'
 
 const Subscription = () => {
   const dispatch = useDispatch()
   const isAuth = useSelector(checkIsAuthVk)
   const { isPaid } = useSelector((state) => state.vkUser)
   const [openModal, setOpenModal] = useState(false)
+  const {loading, payVirtualMoney} = useVkPay()
 
   console.log('оплачена подписка ' + isPaid)
 
@@ -27,7 +28,7 @@ const Subscription = () => {
   const handleOk = () => {
     // dispatch(fetchSubscribe())
     setOpenModal(false)
-    vkPay()
+    // vkPay()
     // dispatch(fetchPurchase())
   }
 

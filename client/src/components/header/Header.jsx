@@ -6,26 +6,21 @@ import { FiUser } from 'react-icons/fi'
 
 import styles from './Header.module.css'
 import logoImg from '../../assets/images/logo.png'
+import Loader from '../../UI/loader/Loader.jsx'
 import {
   deleteVkUser,
   fetchGetAllVkUsers,
-  fetchPurchase,
 } from '../../redux/slices/vkUserSlice'
-import { vkPay, vkSubscription } from '../../utils/useVkPayment'
+import { useVkPay } from '../../utils/useVkPay'
 
 const Header = () => {
   const dispatch = useDispatch()
   const routerNavigator = useRouteNavigator()
   const { vk_id, vk_avatar } = useSelector((state) => state.vkUser)
+  const { loading, payVirtualMoney } = useVkPay()
 
   const handlePay = () => {
-    vkPay()
-
-    // dispatch(fetchPurchase())
-  }
-
-  const handleSubscr = () => {
-    vkSubscription()
+    payVirtualMoney()
   }
 
   return (
@@ -56,12 +51,6 @@ const Header = () => {
             >
               pay
             </button>
-            <button
-              className={styles.test_btn}
-              onClick={() => handleSubscr()}
-            >
-              subscr
-            </button>
           </div>
         </div>
 
@@ -84,6 +73,7 @@ const Header = () => {
           />
         )}
       </div>
+      {loading && <Loader />}
     </div>
   )
 }
