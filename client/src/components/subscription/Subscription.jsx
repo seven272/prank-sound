@@ -7,7 +7,6 @@ import { GiPadlock } from 'react-icons/gi'
 import styles from './Subscription.module.css'
 import {
   checkIsAuthVk,
-  fetchSubscribe,
   fetchPurchase
 } from '../../redux/slices/vkUserSlice'
 import {useVkPay} from '../../utils/useVkPay'
