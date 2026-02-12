@@ -169,7 +169,7 @@
 }
 
 .avatar_wrapper {
-  width: max-content;
+  width: 50px;
   height: auto;
   display: flex;
   flex-direction: column;
