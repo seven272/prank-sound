@@ -1,5 +1,5 @@
 import express from 'express'
-import { makePurchaseVk } from '../controllers/щквукController.js'
+import { makePurchaseVk } from '../controllers/orderController.js'
 
 const router = express.Router()
 
