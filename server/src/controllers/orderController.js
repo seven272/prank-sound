@@ -45,9 +45,8 @@ const makePurchaseVk = async (req, res) => {
 
     // НАЧИСЛЕНИЕ ПОСЛЕ ОПЛАТЫ
     if (
-      notification_type === 'order_status_change' &&
-      notification_type === 'order_status_change_test' &&
-      status === 'chargeable'
+      (notification_type === 'order_status_change' &&
+      status === 'chargeable') || (notification_type === 'order_status_change_test' &&  status === 'chargeable')
     ) {
       const orderId = String(order_id)
       const vkId = String(user_id)
