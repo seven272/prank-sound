@@ -6,7 +6,7 @@ const vkAuthMiddleware = (req, res, next) => {
   const secretKey = process.env.VK_SECRET_KEY
 
   if (!data.sig) {
-    return res.status(400).json({ error: 'Missing signature' })
+    return res.status(400).json({ error: 'Ошибка при передачи ключа' })
   }
 
   // 1. Фильтруем параметры уведомления
