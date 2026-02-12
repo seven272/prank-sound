@@ -1,11 +1,10 @@
-import { useDispatch, useSelector } from 'react-redux'
-import { MdOutlineVpnKey } from 'react-icons/md'
-import { GiPadlock } from 'react-icons/gi'
+import { useSelector } from 'react-redux'
+import { RiVipLine } from 'react-icons/ri'
+
 
 import styles from './LockedSound.module.css'
 import { checkIsAuthVk } from '../../../redux/slices/vkUserSlice'
 import { useVkPay } from '../../../utils/useVkPay'
-
 
 const LockedSound = () => {
   const isAuth = useSelector(checkIsAuthVk)
@@ -18,8 +17,7 @@ const LockedSound = () => {
   return (
     <div className={styles.section}>
       <span className={styles.text}>
-        доступен после покупки VIP статуса{' '}
-        <MdOutlineVpnKey size={15} className={styles.icon} />
+        доступен после покупки премиум статуса
       </span>
 
       <button
@@ -27,10 +25,9 @@ const LockedSound = () => {
         className={styles.btn_subscr}
         disabled={isAuth === false}
       >
-        <GiPadlock className={styles.btn_icon} size={25} />
+        <RiVipLine className={styles.btn_icon} size={25} />
         <span className={styles.btn_text}>оформить vip</span>
       </button>
-
     </div>
   )
 }
