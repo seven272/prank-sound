@@ -8,7 +8,7 @@ const makePurchaseVk = async (req, res) => {
     premium_pass: {
       title: 'Премиум доступ',
       price: 5,
-      photo_url: 'https://prank-sound.ru/public/key.jpeg',
+      photo_url: 'https://prank-sound.ru/public/vip-2.jpeg',
     },
     sale_key: {
       title: 'Музыкальный ключ',
@@ -44,12 +44,12 @@ const makePurchaseVk = async (req, res) => {
     }
 
     // НАЧИСЛЕНИЕ ПОСЛЕ ОПЛАТЫ
-    //notification_type === 'order_status_change' 
+    //notification_type === 'order_status_change'
     if (
-      notification_type === 'order_status_change_test' &&
+      (notification_type === 'order_status_change' ||
+        notification_type === 'order_status_change_test') &&
       status === 'chargeable'
     ) {
-      console.log('НАЧИСЛЕНИЕ ПОСЛЕ ОПЛАТЫ')
       const orderId = String(order_id)
       const vkId = String(user_id)
 
@@ -68,12 +68,18 @@ const makePurchaseVk = async (req, res) => {
         item,
       })
 
-      const user = await User.create({ vk_id: vkId, isPaid: true })
-      console.log(user)
+      // Проверка на уже созданного пользователя
+      const existingUser = await User.findOne({ vk_id: vkId })
+
+      if (existingUser) {
+        console.log('Такой пользователья уже есть в БД')
+      } else {
+        const user = await User.create({ vk_id: vkId, isPaid: true })
+        console.log(user)
+      }
 
       return res.json({
         response: { order_id: orderId, app_order_id: newOrder._id },
-        newUser: user,
       })
     }
 

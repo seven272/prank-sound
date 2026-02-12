@@ -37,7 +37,7 @@ const useVkPay = () => {
       // Пользователь закрыл окно или произошла ошибка (например, ошибка 13)
       console.error('Ошибка при оплате:', error)
       if (error.error_data && error.error_data.error_code === 4) {
-        message.success('Покупка отменена пользователем')
+        message.warning('Покупка отменена пользователем')
       } else {
         message.error('Произошла ошибка при связи с сервером VK')
       }
