@@ -25,6 +25,9 @@ const makePurchaseVk = async (req, res) => {
       notification_type === 'get_item_test'
     ) {
       const product = ITEMS_STORE[item]
+
+      console.log(product)
+
       if (!product)
         return res
           .status(404)
@@ -43,6 +46,7 @@ const makePurchaseVk = async (req, res) => {
     // НАЧИСЛЕНИЕ ПОСЛЕ ОПЛАТЫ
     if (
       notification_type === 'order_status_change' &&
+      notification_type === 'order_status_change_test' &&
       status === 'chargeable'
     ) {
       const orderId = String(order_id)
@@ -64,6 +68,7 @@ const makePurchaseVk = async (req, res) => {
       })
 
       const user = await User.create({ vk_id: vkId, isPaid: true })
+      console.log(user)
 
       return res.json({
         response: { order_id: orderId, app_order_id: newOrder._id },
