@@ -1,17 +1,36 @@
-import React from 'react'
-import { MdOutlineVpnKey } from "react-icons/md";
+import { useDispatch, useSelector } from 'react-redux'
+import { MdOutlineVpnKey } from 'react-icons/md'
+import { GiPadlock } from 'react-icons/gi'
 
 import styles from './LockedSound.module.css'
-import Subscription from '../../../components/subscription/Subscription'
+import { checkIsAuthVk } from '../../../redux/slices/vkUserSlice'
+import { useVkPay } from '../../../utils/useVkPay'
+
 
 const LockedSound = () => {
+  const isAuth = useSelector(checkIsAuthVk)
+  const { loading, payVirtualMoney } = useVkPay()
+
+  const handlePay = () => {
+    payVirtualMoney()
+  }
+
   return (
     <div className={styles.section}>
       <span className={styles.text}>
-        доступен после покупки <MdOutlineVpnKey size={15} className={styles.icon}/>
+        доступен после покупки VIP статуса{' '}
+        <MdOutlineVpnKey size={15} className={styles.icon} />
       </span>
 
-      <Subscription />
+      <button
+        onClick={handlePay}
+        className={styles.btn_subscr}
+        disabled={isAuth === false}
+      >
+        <GiPadlock className={styles.btn_icon} size={25} />
+        <span className={styles.btn_text}>оформить vip</span>
+      </button>
+
     </div>
   )
 }
