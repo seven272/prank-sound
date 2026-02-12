@@ -1,41 +1,48 @@
 import crypto from 'crypto'
 
-// Middleware для проверки подписи VK
+/**
+ * Middleware для проверки подписи платежных уведомлений ВК
+ */
 const vkAuthMiddleware = (req, res, next) => {
   const data = req.body
   const secretKey = process.env.VK_SECRET_KEY
-    console.log('port : ', process.env.PORT)
-  console.log('секретный ключ приложения: ', secretKey)
-  console.log('хэшированный ключ от ВК: ', data.sig)
 
-  if (!data.sig) {
-    return res
-      .status(400)
-      .json({ error: 'Ошибка при передачи ключа' })
+  // 1. Проверка наличия данных и подписи
+  if (!data || !data.sig) {
+    console.error('Ошибка: данные или подпись (sig) отсутствуют')
+    return res.status(400).json({ error: 'Missing signature' })
   }
 
-  // 1. Фильтруем параметры уведомления
-  const filteredParams = Object.keys(data)
-    .filter((key) => key.startsWith('notification_'))
+  if (!secretKey) {
+    console.error('Ошибка: VK_SECRET_KEY не задан в .env')
+    return res
+      .status(500)
+      .json({ error: 'Server configuration error' })
+  }
+
+  // 2. Формируем строку для хэширования
+  // Берем ВСЕ ключи, сортируем их по алфавиту, исключаем 'sig'
+  const paramsString = Object.keys(data)
+    .filter((key) => key !== 'sig')
     .sort()
     .map((key) => `${key}=${data[key]}`)
     .join('')
 
-  // 2. Считаем MD5
-  const hash = crypto
+  // 3. Вычисляем MD5: MD5(конкатенация_параметров + secretKey)
+  const calculatedHash = crypto
     .createHash('md5')
-    .update(filteredParams + secretKey)
+    .update(paramsString + secretKey)
     .digest('hex')
 
-  console.log('секретный ключ приложения после hash: ', hash)
-
-  // 3. Сверяем
-  if (hash !== data.sig) {
-    console.error('Критическая ошибка: Неверная подпись платежа!')
+  // 4. Сверка подписей
+  if (calculatedHash.toLowerCase() !== data.sig.toLowerCase()) {
+    console.error('Критическая ошибка: Подписи не совпадают!')
+    console.log('Ожидалось:', calculatedHash)
+    console.log('Получено (data.sig):', data.sig)
     return res.status(403).json({ error: 'Invalid signature' })
   }
 
-  next() // Если всё ок, идем дальше
+  next() // Все хорошо, передаем управление следующему обработчику
 }
 
 export default vkAuthMiddleware
