@@ -44,7 +44,7 @@ const DropdownMenu = () => {
 
   const items = [
     {
-      label: 'Главная',
+      label: 'Главная', 
       key: 'main',
       icon: <CaretRightOutlined />,
     },

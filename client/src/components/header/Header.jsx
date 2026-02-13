@@ -7,6 +7,7 @@ import { FiUser } from 'react-icons/fi'
 import styles from './Header.module.css'
 import logoImg from '../../assets/images/logo.png'
 import Loader from '../../UI/loader/Loader.jsx'
+import DropdownMenu from '../dropdown-menu/DropdownMenu.jsx'
 import {
   deleteVkUser,
   fetchGetAllVkUsers,
@@ -27,11 +28,12 @@ const Header = () => {
     <div className={styles.header}>
       <div className={styles.wrapper}>
         <div className={styles.home_wrapper}>
-          <RiHomeSmileLine
+          <DropdownMenu />
+          {/* <RiHomeSmileLine
             size={50}
             className={styles.icon_home}
             onClick={() => routerNavigator.push('/')}
-          />
+          /> */}
           <div className={styles.test_btns}>
             <button
               className={styles.test_btn}
