@@ -80,3 +80,21 @@
     height: 100px;
   }
 }
+
+@media screen and (max-width: 460px) {
+  .element {
+    max-width: 180px;
+    height: 180px;
+    padding: 30px;
+  }
+  .wrap_img_wrap {
+    width: 110px;
+    height: 110px;
+    padding: 10px;
+  }
+  .img_wrap {
+    width: 95px;
+    height: 95px;
+  }
+}
+
