@@ -17,7 +17,9 @@ import { useVkPay } from '../../utils/useVkPay'
 const Header = () => {
   const dispatch = useDispatch()
   const routerNavigator = useRouteNavigator()
-  const { vk_id, vk_avatar, isPaid } = useSelector((state) => state.vkUser)
+  const { vk_id, vk_avatar, isPaid } = useSelector(
+    (state) => state.vkUser,
+  )
   const { loading, payVirtualMoney } = useVkPay()
 
   const handlePay = () => {
@@ -57,7 +59,12 @@ const Header = () => {
         </div>
 
         <div className={styles.logo_wrapper}>
-          <img src={logoImg} alt="логотип" className={styles.logo} />
+          <img
+            src={logoImg}
+            alt="логотип"
+            className={styles.logo}
+            onClick={() => routerNavigator.push('/')}
+          />
         </div>
 
         {/* авторизация вконтакте */}
@@ -68,8 +75,9 @@ const Header = () => {
               className={styles.avatar}
               src={vk_avatar}
             />
-            {isPaid && <span className={styles.text_avatar}>VIP</span>}
-            
+            {isPaid && (
+              <span className={styles.text_avatar}>VIP</span>
+            )}
           </div>
         ) : (
           <Avatar

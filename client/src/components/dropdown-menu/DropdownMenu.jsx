@@ -1,7 +1,7 @@
 import React from 'react'
 import { Dropdown, Space } from 'antd'
 import { CaretRightOutlined, MenuOutlined } from '@ant-design/icons'
-import { PiPlaylist } from "react-icons/pi";
+import { BiSolidPlaylist } from "react-icons/bi";
 import { MdMusicNote } from "react-icons/md";
 import { useRouteNavigator } from '@vkontakte/vk-mini-apps-router'
 
@@ -53,12 +53,12 @@ const DropdownMenu = () => {
     {
       label: 'Админ',
       key: 'admin',
-      icon: <CaretRightOutlined />,
+      icon: <MdMusicNote />,
     },
     {
       label: '404',
       key: '3',
-      icon: <CaretRightOutlined />,
+      icon: <MdMusicNote />,
     },
   ]
 
@@ -75,7 +75,7 @@ const DropdownMenu = () => {
     >
       {/* <> */}
       <Space align="center" orientation="horizontal">
-        <PiPlaylist className={styles.icon} />
+        <BiSolidPlaylist className={styles.icon} />
       </Space>
       {/* </> */}
     </Dropdown>
