@@ -1,13 +1,11 @@
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Modal } from 'antd'
-// import { TbBellPlusFilled } from 'react-icons/tb'
 import { GiPadlock } from 'react-icons/gi'
 
 import styles from './Subscription.module.css'
 import {
   checkIsAuthVk,
-  fetchPurchase
 } from '../../redux/slices/vkUserSlice'
 import {useVkPay} from '../../utils/useVkPay'
 

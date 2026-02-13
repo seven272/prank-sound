@@ -1,10 +1,10 @@
 import { useSelector } from 'react-redux'
-import { RiVipFill } from "react-icons/ri";
-
+import { RiVipFill } from 'react-icons/ri'
 
 import styles from './LockedSound.module.css'
 import { checkIsAuthVk } from '../../../redux/slices/vkUserSlice'
 import { useVkPay } from '../../../utils/useVkPay'
+import Loader from '../../../UI/loader/Loader'
 
 const LockedSound = () => {
   const isAuth = useSelector(checkIsAuthVk)
@@ -28,6 +28,7 @@ const LockedSound = () => {
         <RiVipFill className={styles.btn_icon} size={25} />
         <span className={styles.btn_text}>оформить</span>
       </button>
+      {loading && <Loader />}
     </div>
   )
 }
