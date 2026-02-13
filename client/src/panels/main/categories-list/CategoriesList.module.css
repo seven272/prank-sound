@@ -17,6 +17,7 @@
   width: 100%;
   max-width: 250px;
   height: 270px;
+  padding: 40px;
   display: flex;
   flex-direction: column;
   justify-content: center;
