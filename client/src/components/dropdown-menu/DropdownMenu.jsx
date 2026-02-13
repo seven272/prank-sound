@@ -15,13 +15,14 @@ const DropdownMenu = () => {
 
   const handleMenuClick = (payload) => {
     const { key } = payload
-    if (key === 'main') {
-      routeNavigator.push('/')
-    } else if (key === 'admin') {
-      routeNavigator.push('/admin')
-    } else {
-      routeNavigator.push('/')
-    }
+     routeNavigator.push(`/category/${key}`)
+    // if (key === 'main') {
+    //   routeNavigator.push('/')
+    // } else if (key === 'admin') {
+    //   routeNavigator.push('/admin')
+    // } else {
+    //   routeNavigator.push('/')
+    // }
   }
 
   const objectStyles = {
