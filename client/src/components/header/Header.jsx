@@ -36,8 +36,8 @@ const Header = () => {
             className={styles.icon_home}
             onClick={() => routerNavigator.push('/')}
           /> */}
-{/*           
-          <div className={styles.test_btns}>
+          
+          {/* <div className={styles.test_btns}>
             <button
               className={styles.test_btn}
               onClick={() => dispatch(deleteVkUser())}
@@ -56,8 +56,9 @@ const Header = () => {
             >
               pay
             </button>
-          </div>
-        </div> */}
+          </div> */}
+
+        </div> 
 
         <div className={styles.logo_wrapper}>
           <img
