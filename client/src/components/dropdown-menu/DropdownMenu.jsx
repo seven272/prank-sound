@@ -1,6 +1,5 @@
-import React from 'react'
+import { useSelector } from 'react-redux';
 import { Dropdown, Space } from 'antd'
-import { CaretRightOutlined, MenuOutlined } from '@ant-design/icons'
 import { BiSolidPlaylist } from "react-icons/bi";
 import { MdMusicNote } from "react-icons/md";
 import { useRouteNavigator } from '@vkontakte/vk-mini-apps-router'
@@ -9,6 +8,10 @@ import styles from './DropdownMenu.module.css'
 
 const DropdownMenu = () => {
   const routeNavigator = useRouteNavigator()
+
+  const {categories} = useSelector((state) => state.category)
+
+  console.log('list categories: ', categories)
 
   const handleMenuClick = (payload) => {
     const { key } = payload

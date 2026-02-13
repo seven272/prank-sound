@@ -80,7 +80,7 @@ const fetchUpdateCategory = createAsyncThunk(
 // Начальное значение
 const initialState = {
   isLoading: true,
-  categories: [],
+  categories: [], 
 }
 
 const categorySlice = createSlice({
