@@ -63,7 +63,25 @@
 .icon {
   color: var(--color-primary);
 }
+
 @media screen and (max-width: 635px) {
+  .container {
+    column-gap: 40px;
+  }
+
+  .element {
+    max-width: 250px;
+    height: 250px;
+    padding: 40px;
+  }
+
+  .wrap_img_wrap {
+    width: 140px;
+    height: 140px;
+  }
+}
+
+@media screen and (max-width: 560px) {
   .container {
     column-gap: 30px;
   }
