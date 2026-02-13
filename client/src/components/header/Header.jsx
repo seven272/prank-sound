@@ -1,6 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux'
 import { useRouteNavigator } from '@vkontakte/vk-mini-apps-router'
-import { RiHomeSmileLine } from 'react-icons/ri'
 import { Avatar } from 'antd'
 import { FiUser } from 'react-icons/fi'
 
@@ -31,13 +30,8 @@ const Header = () => {
       <div className={styles.wrapper}>
         <div className={styles.home_wrapper}>
           <DropdownMenu />
-          {/* <RiHomeSmileLine
-            size={50}
-            className={styles.icon_home}
-            onClick={() => routerNavigator.push('/')}
-          /> */}
           
-          {/* <div className={styles.test_btns}>
+          <div className={styles.test_btns}>
             <button
               className={styles.test_btn}
               onClick={() => dispatch(deleteVkUser())}
@@ -56,7 +50,7 @@ const Header = () => {
             >
               pay
             </button>
-          </div> */}
+          </div>
 
         </div> 
 

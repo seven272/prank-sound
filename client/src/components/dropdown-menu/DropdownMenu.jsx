@@ -11,18 +11,9 @@ const DropdownMenu = () => {
 
   const { categories } = useSelector((state) => state.category)
 
-  console.log('list categories: ', categories)
-
   const handleMenuClick = (payload) => {
     const { key } = payload
      routeNavigator.push(`/category/${key}`)
-    // if (key === 'main') {
-    //   routeNavigator.push('/')
-    // } else if (key === 'admin') {
-    //   routeNavigator.push('/admin')
-    // } else {
-    //   routeNavigator.push('/')
-    // }
   }
 
   const objectStyles = {
@@ -41,7 +32,7 @@ const DropdownMenu = () => {
     },
     itemIcon: {
       color: `#EC2578`,
-      marginRight: '8px',
+      marginRight: '5px',
     },
     itemContent: {
       backgroundColor: 'transparent',
@@ -56,23 +47,7 @@ const DropdownMenu = () => {
     }
   })
 
-  // const items = [
-  //   {
-  //     label: 'Главная',
-  //     key: 'main',
-  //     icon: <MdMusicNote />,
-  //   },
-  //   {
-  //     label: 'Админ',
-  //     key: 'admin',
-  //     icon: <MdMusicNote />,
-  //   },
-  //   {
-  //     label: '404',
-  //     key: '3',
-  //     icon: <MdMusicNote />,
-  //   },
-  // ]
+
 
   const menuProps = {
     items,
