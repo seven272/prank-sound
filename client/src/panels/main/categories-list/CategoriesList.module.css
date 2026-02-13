@@ -63,7 +63,7 @@
 .icon {
   color: var(--color-primary);
 }
-@media screen and (max-width: 560px) {
+@media screen and (max-width: 635px) {
   .container {
     column-gap: 30px;
   }
