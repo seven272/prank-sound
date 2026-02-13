@@ -39,6 +39,9 @@
 @media screen and (max-width: 500px) {
   .btn_wrap {
     width: max-content;
+    column-gap: 30px;
+    margin-top: 25px;
+    margin-bottom: 25px;
     padding: 7px;
   }
 }
