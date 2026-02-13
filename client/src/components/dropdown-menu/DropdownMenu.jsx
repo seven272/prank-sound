@@ -1,7 +1,7 @@
-import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux'
 import { Dropdown, Space } from 'antd'
-import { BiSolidPlaylist } from "react-icons/bi";
-import { MdMusicNote } from "react-icons/md";
+import { BiSolidPlaylist } from 'react-icons/bi'
+import { MdMusicNote } from 'react-icons/md'
 import { useRouteNavigator } from '@vkontakte/vk-mini-apps-router'
 
 import styles from './DropdownMenu.module.css'
@@ -9,7 +9,7 @@ import styles from './DropdownMenu.module.css'
 const DropdownMenu = () => {
   const routeNavigator = useRouteNavigator()
 
-  const {categories} = useSelector((state) => state.category)
+  const { categories } = useSelector((state) => state.category)
 
   console.log('list categories: ', categories)
 
@@ -47,23 +47,31 @@ const DropdownMenu = () => {
     },
   }
 
-  const items = [
-    {
-      label: 'Главная', 
-      key: 'main',
+  const items = categories.map((category) => {
+    return {
+      label: category.title,
+      key: category.alias,
       icon: <MdMusicNote />,
-    },
-    {
-      label: 'Админ',
-      key: 'admin',
-      icon: <MdMusicNote />,
-    },
-    {
-      label: '404',
-      key: '3',
-      icon: <MdMusicNote />,
-    },
-  ]
+    }
+  })
+
+  // const items = [
+  //   {
+  //     label: 'Главная',
+  //     key: 'main',
+  //     icon: <MdMusicNote />,
+  //   },
+  //   {
+  //     label: 'Админ',
+  //     key: 'admin',
+  //     icon: <MdMusicNote />,
+  //   },
+  //   {
+  //     label: '404',
+  //     key: '3',
+  //     icon: <MdMusicNote />,
+  //   },
+  // ]
 
   const menuProps = {
     items,
