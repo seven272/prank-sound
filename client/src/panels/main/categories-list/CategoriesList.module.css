@@ -14,8 +14,7 @@
 }
 
 .element {
-  width: 100%;
-  max-width: 250px;
+  width: 280px;
   height: 250px;
   padding: 50px;
   display: flex;
