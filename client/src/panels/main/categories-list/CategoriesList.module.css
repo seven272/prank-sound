@@ -16,8 +16,8 @@
 .element {
   width: 100%;
   max-width: 250px;
-  height: 270px;
-  padding: 40px;
+  height: 250px;
+  padding: 50px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -59,7 +59,7 @@
 .name {
   font: var(--font-l);
   color: var(--color-primary);
-  margin-top: 20px;
+  margin-top: 15px;
 }
 
 .icon {
