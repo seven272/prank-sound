@@ -83,6 +83,11 @@
     width: 100px;
     height: 100px;
   }
+
+  .name {
+    font: var(--font-ml);
+    margin-top: 10px;
+  }
 }
 
 @media screen and (max-width: 460px) {

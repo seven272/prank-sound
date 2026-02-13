@@ -13,7 +13,8 @@
   --font-size-l: 18px;
   --font-size-xl: 26px;
   --font-line-s: 9px;
-  --font-line-m: 14px;
+  --font-line-m: 12px;
+  --font-line-ml: 14px;
   --font-line-l: 19px;
   --font-line-xl: 30px;
   /* Шорткат font позволяет одновременно указать значение для нескольких свойств Обязательными являются значения для свойств font-size и font-family. Остальные значения опциональны.
@@ -23,7 +24,9 @@
   --font-s: var(--font-size-s) / var(--font-line-s)
     var(--font-family-substring);
   --font-m: var(--font-size-m) / var(--font-line-m)
-    var(--font-family-main);
+    var(--font-family-main); 
+  --font-ml: var(--font-size-ml) / var(--font-line-ml)
+    var(--font-family-main); 
   --font-l: var(--font-size-l) / var(--font-line-l)
     var(--font-family-upstring);
   --font-xl: var(--font-size-xl) / var(--font-line-xl)
