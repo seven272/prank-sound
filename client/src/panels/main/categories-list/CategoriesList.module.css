@@ -10,7 +10,7 @@
   align-items: start;
   background-color: var(--color-white);
   border-radius: 4px;
-  padding: 25px 0;
+  padding: 25px 15px;
 }
 
 .element {
@@ -46,7 +46,6 @@
   align-items: center;
   box-sizing: border-box;
   overflow: hidden;
- 
 }
 
 .img {
@@ -64,4 +63,20 @@
 
 .icon {
   color: var(--color-primary);
+}
+@media screen and (max-width: 560px) {
+  .element {
+    max-width: 200px;
+    height: 200px;
+    padding: 40px;
+  }
+  .wrap_img_wrap {
+    width: 120px;
+    height: 120px;
+    padding: 10px;
+  }
+  .img_wrap {
+    width: 100px;
+    height: 100px;
+  }
 }

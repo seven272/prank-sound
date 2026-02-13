@@ -20,7 +20,7 @@ const CategoriesList = () => {
     routeNavigator.go(`/category/${alias}`)
   }
 
-  useEffect(() => {
+  useEffect(() => { 
     dispatch(fetchGetAllCategories())
   }, [])
 
