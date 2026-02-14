@@ -36,6 +36,11 @@ const routers = [
     panel: 'admin_sound_item_panel',
     view: 'main_view',
   },
+   {
+    path: '/admin/statistic/:type',
+    panel: 'admin_statistic_panel',
+    view: 'main_view',
+  },
 ]
 
 const router = createHashRouter(routers)

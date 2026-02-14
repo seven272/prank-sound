@@ -14,11 +14,11 @@ const ButtonsAdmin = () => {
   }
 
   const clickUsers = () => {
-    routerNavigator.go('/admin/users')
+    routerNavigator.go(`/admin/statistic/:users`)
   }
 
   const clickOrders = () => {
-    routerNavigator.go('/admin/orders')
+    routerNavigator.go(`/admin/statistic/:orders`)
   }
 
   return (
