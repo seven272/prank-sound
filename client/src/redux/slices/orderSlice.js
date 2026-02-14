@@ -8,7 +8,6 @@ const fetchGetAllOrders = createAsyncThunk(
   async () => {
     try {
       const res = await axiosInstance.get('/vk-orders/all')
-      console.log(res.data)
       return res.data
     } catch (error) {
       message.error('Ошибка при загрузке списка заказов ВК')
