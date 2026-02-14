@@ -93,6 +93,7 @@ const makePurchaseVk = async (req, res) => {
 const getAllOrdersVk =  async (req, res) => {
   try {
     const all = await Order.find({})
+    console.log(all)
     res.status(200).json(all)
   } catch (error) {
     console.log(error)
