@@ -45,7 +45,7 @@
   align-items: center;
   font: var(--font-s);
   color: var(--color-black);
-  width: max-content;
+  width: inherit;
 }
 
 .text_center {
