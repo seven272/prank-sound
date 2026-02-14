@@ -54,7 +54,7 @@ const listVkUsers = async (req, res) => {
   } catch (error) {
     console.log(error)
     res.status(500).json({
-      error: 'Внутренняя ошибка сервера при загрузке категорий',
+      error: 'Внутренняя ошибка сервера при загрузке пользователей ВК',
     })
   }
 }

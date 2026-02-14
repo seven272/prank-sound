@@ -3,20 +3,7 @@ import { message } from 'antd'
 
 import axiosInstance from '../../utils/axios'
 
-const fetchPurchase = createAsyncThunk(
-  'vkUser/fetchPurchase',
-  async () => {
-    console.log('Делаю запрос purchase')
-    try {
-      const res = await axiosInstance.post('/vk-users/pay')
-      console.log(res.data)
-      return res.data
-    } catch (error) {
-      message.error('Ошибка при оплате подписки через Вконтакте')
-      console.log(error)
-    }
-  },
-)
+
 
 const fetchCreateVkUser = createAsyncThunk(
   'vkUser/fetchCreateVkUser',
@@ -144,7 +131,6 @@ export {
   fetchCreateVkUser,
   fetchGetAllVkUsers,
   fetchCheckVkUser,
-  fetchPurchase,
   checkIsAuthVk,
 }
 export default vkUserSlice.reducer

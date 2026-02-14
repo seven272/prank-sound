@@ -90,4 +90,16 @@ const makePurchaseVk = async (req, res) => {
   }
 }
 
-export { makePurchaseVk }
+const getAllOrdersVk =  async (req, res) => {
+  try {
+    const all = await Order.find({})
+    res.status(200).json(all)
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({
+      error: 'Внутренняя ошибка сервера при загрузке ззаказов ВК',
+    })
+  }
+}
+
+export { makePurchaseVk, getAllOrdersVk }
