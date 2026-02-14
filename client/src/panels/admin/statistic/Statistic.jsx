@@ -12,10 +12,8 @@ const Statistic = () => {
   const { vk_users } = useSelector((state) => state.vkUser)
   const { orders } = useSelector((state) => state.order)
 
- 
   useEffect(() => {
     if (type === 'users') {
-
       dispatch(fetchGetAllVkUsers())
     } else if (type === 'orders') {
       dispatch(fetchGetAllOrders())
@@ -30,7 +28,7 @@ const Statistic = () => {
       <span>
         общее колличество{' '}
         {type === 'users' ? 'пользователей' : 'заказов'} :
-        {type === `users' ? ${vk_users.length} : ${orders.length}`}
+        {type === 'users' ? `${vk_users.length}` : `${orders.length}`}
       </span>
       <ul>
         <li></li>
