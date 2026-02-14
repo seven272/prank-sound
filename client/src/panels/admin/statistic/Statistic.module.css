@@ -9,6 +9,7 @@
 .title {
   font: var(--font-l);
   color: var(--color-black);
+  margin-bottom: 15px;
 }
 
 .subtitle {
@@ -45,7 +46,6 @@
   font: var(--font-s);
   color: var(--color-black);
   width: max-content;
-  padding: 0 5px;
 }
 
 .text_center {
