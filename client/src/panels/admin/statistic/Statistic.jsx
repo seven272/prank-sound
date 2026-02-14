@@ -15,14 +15,14 @@ const Statistic = () => {
  
   useEffect(() => {
     if (type === 'users') {
-      
+
       dispatch(fetchGetAllVkUsers())
     } else if (type === 'orders') {
       dispatch(fetchGetAllOrders())
     }
   }, [type, dispatch])
 
-  console.log('Кол-во orders: ', orders)
+  console.log('Кол-во orders: ', orders.length)
 
   return (
     <div className={styles.main}>
