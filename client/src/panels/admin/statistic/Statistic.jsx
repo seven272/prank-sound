@@ -1,6 +1,8 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from '@vkontakte/vk-mini-apps-router'
+import { MdOutlineArrowBackIos } from "react-icons/md";
+import { useRouteNavigator } from '@vkontakte/vk-mini-apps-router';
 
 import styles from './Statistic.module.css'
 import { fetchGetAllVkUsers } from '../../../redux/slices/vkUserSlice'
@@ -9,6 +11,7 @@ import { fetchGetAllOrders } from '../../../redux/slices/orderSlice'
 const Statistic = () => {
   const { type } = useParams()
   const dispatch = useDispatch()
+  const routerNavigator = useRouteNavigator()
   const { vk_users } = useSelector((state) => state.vkUser)
   const { orders } = useSelector((state) => state.order)
 
@@ -30,6 +33,11 @@ const Statistic = () => {
         {type === 'users' ? 'пользователей' : 'заказов'} :
         {type === 'users' ? `${vk_users.length}` : `${orders.length}`}
       </span>
+
+      <button className={styles.btn_back} onClick={() => routerNavigator.back()}>
+        <MdOutlineArrowBackIos />
+        <span>назад</span>
+      </button>
       <ul className={styles.items}>
         <li className={styles.item}>
           <span className={styles.text}>№</span>
