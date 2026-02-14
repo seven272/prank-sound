@@ -34,7 +34,7 @@ const Statistic = () => {
         <li className={styles.item}>
           <span className={styles.text}>№</span>
           <span className={styles.text_center}>_id database</span>
-          <span className={styles.text}>_id vk</span>
+          <span className={styles.text}>id user vk</span>
         </li>
         {type === 'users'
           ? vk_users.map((user, inx) => {
