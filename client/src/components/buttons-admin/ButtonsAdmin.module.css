@@ -11,8 +11,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 50px;
-  margin: 20px 0 20px 0;
+  column-gap: 50px;
+  margin: 15px 0 15px 0;
 }
 
 .btn {
