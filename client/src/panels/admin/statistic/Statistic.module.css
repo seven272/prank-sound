@@ -26,9 +26,9 @@
 
 .items {
   list-style-type: none;
-  padding: 0;
+  padding: 0 25px;
   margin: 25px 0;
-  width: 70%;
+  width: max-content;
   display: flex;
   flex-direction: column;
   justify-content: center;
