@@ -24,14 +24,30 @@ const Statistic = () => {
 
   return (
     <div className={styles.main}>
-      <h3>Статистика VK {type}</h3>
-      <span>
+      <h3 className={styles.title}>Статистика VK {type}</h3>
+      <span className={styles.subtitle}>
         общее колличество{' '}
         {type === 'users' ? 'пользователей' : 'заказов'} :
         {type === 'users' ? `${vk_users.length}` : `${orders.length}`}
       </span>
-      <ul>
-        <li></li>
+      <ul className={styles.items}>
+        {type === 'users'
+          ? vk_users.map((user, inx) => {
+              return (
+                <li key={inx} className={styles.item}>
+                  <span className={styles.text}>{inx + 1}</span>
+                  <span className={styles.text}>{user}</span>
+                </li>
+              )
+            })
+          : orders.map((order, inx) => {
+              return (
+                <li key={inx} className={styles.item}>
+                  <span className={styles.text}>{inx + 1}</span>
+                  <span className={styles.text}>{order}</span>
+                </li>
+              )
+            })}
       </ul>
     </div>
   )
