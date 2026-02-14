@@ -12,14 +12,34 @@ const ButtonsAdmin = () => {
   const clickSounds = () => {
     routerNavigator.go('/admin/sounds')
   }
+
+  const clickUsers = () => {
+    routerNavigator.go('/admin/users')
+  }
+
+  const clickOrders = () => {
+    routerNavigator.go('/admin/orders')
+  }
+
   return (
-    <div className={styles.btn_wrap}>
-      <button className={styles.btn} onClick={clickCategories}>
-        Управление категориями
-      </button>
-      <button className={styles.btn} onClick={clickSounds}>
-        Управление звуками
-      </button>
+    <div className={styles.main}>
+      <div className={styles.btn_wrap}>
+        <button className={styles.btn} onClick={clickCategories}>
+          Управление категориями
+        </button>
+        <button className={styles.btn} onClick={clickSounds}>
+          Управление звуками
+        </button>
+      </div>
+
+      <div className={styles.btn_wrap}>
+        <button className={styles.btn} onClick={clickUsers}>
+          Статистика VK юзеров
+        </button>
+        <button className={styles.btn} onClick={clickOrders}>
+          Статистика VK подписок
+        </button>
+      </div>
     </div>
   )
 }
