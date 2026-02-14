@@ -45,7 +45,7 @@ const Statistic = () => {
               return (
                 <li key={inx} className={styles.item}>
                   <span className={styles.text}>{inx + 1}</span>
-                  <span className={styles.text}>{order._id}</span>
+                  <span className={styles.text_center}>{order._id}</span>
                   <span className={styles.text}>{order.userId}</span>
                 </li>
               )

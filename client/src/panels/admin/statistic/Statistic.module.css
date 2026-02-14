@@ -17,12 +17,14 @@
 }
 
 .text {
+    display: flex;
   font: var(--font-s);
   color: var(--color-black);
   width: max-content;
 }
 
 .text_center {
+    display: flex;
   font: var(--font-s);
   color: var(--color-black);
   width: max-content;
