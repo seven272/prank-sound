@@ -31,12 +31,19 @@ const Statistic = () => {
         {type === 'users' ? `${vk_users.length}` : `${orders.length}`}
       </span>
       <ul className={styles.items}>
+        <li className={styles.item}>
+          <span className={styles.text}>№</span>
+          <span className={styles.text_center}>_id database</span>
+          <span className={styles.text}>_id vk</span>
+        </li>
         {type === 'users'
           ? vk_users.map((user, inx) => {
               return (
                 <li key={inx} className={styles.item}>
                   <span className={styles.text}>{inx + 1}</span>
-                  <span className={styles.text_center}>{user._id}</span>
+                  <span className={styles.text_center}>
+                    {user._id}
+                  </span>
                   <span className={styles.text}>{user.vk_id}</span>
                 </li>
               )
@@ -45,7 +52,9 @@ const Statistic = () => {
               return (
                 <li key={inx} className={styles.item}>
                   <span className={styles.text}>{inx + 1}</span>
-                  <span className={styles.text_center}>{order._id}</span>
+                  <span className={styles.text_center}>
+                    {order._id}
+                  </span>
                   <span className={styles.text}>{order.userId}</span>
                 </li>
               )
