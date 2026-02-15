@@ -24,7 +24,7 @@ const LockedSound = () => {
   return (
     <div className={styles.section}>
       <span className={styles.text}>
-        доступен c премиум доступом
+        нужен премиум доступом
         <BsPatchQuestion
           size={15}
           className={styles.btn_quiestion}
