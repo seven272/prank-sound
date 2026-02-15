@@ -1,12 +1,12 @@
 
  :root {
   /*шрифты*/
-  --font-family-main: 'Unbounded-Regular', Verdana, Tahoma;
-  --font-family-title: 'Unbounded-Bold', Verdana, Tahoma;
-  --font-family-subtitle: 'Unbounded-Bold', Verdana, Tahoma;
-  --font-family-upstring: 'Unbounded-Medium', Verdana, Tahoma;
-  --font-family-substring: 'Unbounded-Blond', Verdana, Tahoma; 
-  --font-family-light: 'Unbounded-Light', Verdana, Tahoma; 
+  --font-family-main: 'Rubik-Regular', Verdana, Tahoma;
+  --font-family-title: 'Rubik-Bold', Verdana, Tahoma;
+  --font-family-subtitle: 'v-Bold', Verdana, Tahoma;
+  --font-family-upstring: 'Rubik-Medium', Verdana, Tahoma;
+  --font-family-substring: 'Rubik-Blond', Verdana, Tahoma; 
+  --font-family-light: 'Rubik-Light', Verdana, Tahoma; 
   --font-size-s: 8px;
   --font-size-m: 12px;
   --font-size-ml: 14px;
