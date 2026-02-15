@@ -13,16 +13,14 @@ import Loader from '../../UI/loader/Loader'
 import LockedSound from './locked-sound/LockedSound'
 import { fetchGetCategorySounds } from '../../redux/slices/soundSlice'
 
-
-
 const Category = ({ id }) => {
   const { alias } = useParams()
   const dispatch = useDispatch()
   const { categorySounds, currentSound } = useSelector(
-    (state) => state.sound
+    (state) => state.sound,
   )
-  
-  const {vk_id, isPaid} = useSelector((state) => state.vkUser)
+
+  const { vk_id, isPaid } = useSelector((state) => state.vkUser)
   const [soundDisable, setSoundDisable] = useState(true)
 
   useEffect(() => {
@@ -35,19 +33,25 @@ const Category = ({ id }) => {
     } else if (currentSound.isFree === false && vk_id === '') {
       setSoundDisable(true)
     } else if (
-      currentSound.isFree === false && vk_id !== '' &&
+      currentSound.isFree === false &&
+      vk_id !== '' &&
       isPaid === false
     ) {
-      setSoundDisable(true) 
+      setSoundDisable(true)
     } else if (
-      currentSound.isFree === false  && vk_id !== '' &&
+      currentSound.isFree === false &&
+      vk_id !== '' &&
       isPaid === true
     ) {
       setSoundDisable(false)
     }
   }, [currentSound, vk_id, isPaid])
 
-  
+  //чтобы работала перезагрузка категории при клике в меню, когда мы уже на страницы другой категории
+  useEffect(() => {
+    console.log(alias)
+  }, [alias])
+
   if (categorySounds.length === 0) {
     return <Loader />
   }
