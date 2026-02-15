@@ -25,7 +25,7 @@ const Category = ({ id }) => {
 
   useEffect(() => {
     dispatch(fetchGetCategorySounds(alias))
-  }, [])
+  }, [alias, dispatch])
 
   useEffect(() => {
     if (currentSound.isFree === true) {
