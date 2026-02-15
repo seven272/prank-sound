@@ -56,7 +56,7 @@ const Category = ({ id }) => {
     return <Loader />
   }
   return (
-    <Panel id={id}>
+    <Panel id={id} key={alias}>
       <Header />
       <section className={styles.section}>
         <div className={styles.wrapper}>

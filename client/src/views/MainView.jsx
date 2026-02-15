@@ -2,6 +2,7 @@
 import React from 'react'
 import { View } from '@vkontakte/vkui'
 
+
 import Main from '../panels/main/Main'
 import Category from '../panels/category/Category'
 import Admin from '../panels/admin/Admin'
