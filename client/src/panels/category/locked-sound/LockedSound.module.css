@@ -17,6 +17,12 @@
   margin-bottom: 15px;
 }
 
+.btn_quiestion {
+  margin-left: 7px;
+  color: var(--color-text-grey);
+  cursor: pointer;
+}
+
 .btn_subscr {
   display: flex;
   justify-content: center;

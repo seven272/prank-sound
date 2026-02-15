@@ -15,11 +15,16 @@ const LockedSound = () => {
     payVirtualMoney()
   }
 
+  const handleClick = () => {}
   return (
     <div className={styles.section}>
       <span className={styles.text}>
         доступен c премиум доступом
-        <BsPatchQuestion size={15} style={{ marginLeft: '7px', cursor:'pointer' }} />
+        <BsPatchQuestion
+          size={15}
+          className={styles.btn_quiestion}
+          onClick={handleClick}
+        />
       </span>
 
       <button
