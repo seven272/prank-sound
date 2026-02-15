@@ -20,14 +20,14 @@ const storage = multer.diskStorage({
       // проверка на наличие папки
       if (!fs.existsSync('./src/uploads/sounds')) {
         console.log('Папки не существует, создаю ее')
-        fs.mkdirSync('./src/uploadss/sounds')
+        fs.mkdirSync('./src/uploads/sounds')
       }
       cb(null, './src/uploads/sounds/')
     } else if (file.fieldname === 'cover') {
       // проверка на наличие папки
       if (!fs.existsSync('./src/uploads/covers')) {
         console.log('Папки не существует, создаю ее')
-        fs.mkdirSync('./src/uploadss/covers')
+        fs.mkdirSync('./src/uploads/covers')
       }
       cb(null, './src/uploads/covers/')
     } else {
