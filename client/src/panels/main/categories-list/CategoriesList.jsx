@@ -46,7 +46,6 @@ const CategoriesList = () => {
             <div className={styles.wrap_img_wrap}>
               <div className={styles.img_wrap}>
                 <img
-                
                   src={`${URL}/${elem?.imageUrl}`}
                   alt="фото категории"
                   className={styles.img}

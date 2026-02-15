@@ -24,7 +24,9 @@ const Category = ({ id }) => {
   const [soundDisable, setSoundDisable] = useState(true)
 
   useEffect(() => {
-    dispatch(fetchGetCategorySounds(alias))
+    if (alias) {
+      dispatch(fetchGetCategorySounds(alias))
+    }
   }, [alias, dispatch])
 
   useEffect(() => {
@@ -46,11 +48,6 @@ const Category = ({ id }) => {
       setSoundDisable(false)
     }
   }, [currentSound, vk_id, isPaid])
-
-  // //чтобы работала перезагрузка категории при клике в меню, когда мы уже на страницы другой категории
-  // useEffect(() => {
-  //   console.log(alias)
-  // }, [alias])
 
   if (categorySounds.length === 0) {
     return <Loader />
