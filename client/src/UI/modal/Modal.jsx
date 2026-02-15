@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react'
-import styles from './Modal.module.css' 
+import styles from './Modal.module.css'
 
 const Modal = ({ active, setActive, children }) => {
-  // закрываем модальное окно при нажатии на ESC 
+  // закрываем модальное окно при нажатии на ESC
   useEffect(() => {
     const closeModal = (evt) => {
       if (evt.key === 'Escape') {
@@ -12,8 +12,8 @@ const Modal = ({ active, setActive, children }) => {
     window.addEventListener('keydown', closeModal)
     return () => window.removeEventListener('keydown', closeModal)
   }, [])
- 
-  return ( 
+
+  return (
     <div
       className={
         active ? `${styles.modal} ${styles.active}` : styles.modal
@@ -28,7 +28,8 @@ const Modal = ({ active, setActive, children }) => {
         }
         onClick={(evt) => evt.stopPropagation()}
       >
-        {children}
+        <span className={styles.text}>{children}</span>
+
         <span
           className={styles.close}
           onClick={() => setActive(false)}
