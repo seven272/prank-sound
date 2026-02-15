@@ -14,8 +14,9 @@ const DropdownMenu = () => {
   const handleMenuClick = (payload) => {
     const { key } = payload
     console.log(key)
-    routeNavigator.replace(`/category/${key}`)
-    
+    // routeNavigator.replace(`/category/${key}`)
+    routeNavigator.push(`/category/${key}`, { forceUpdate: Date.now() });
+
     // switch (key) {
     //   case 'fart':
     //     routeNavigator.push(`/category/fart`)
