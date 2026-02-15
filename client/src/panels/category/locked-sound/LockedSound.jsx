@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { RiVipFill } from 'react-icons/ri'
 import { BsPatchQuestion } from 'react-icons/bs'
@@ -6,16 +7,20 @@ import styles from './LockedSound.module.css'
 import { checkIsAuthVk } from '../../../redux/slices/vkUserSlice'
 import { useVkPay } from '../../../utils/useVkPay'
 import Loader from '../../../UI/loader/Loader'
+import Modal from '../../../UI/modal/Modal'
 
 const LockedSound = () => {
   const isAuth = useSelector(checkIsAuthVk)
   const { loading, payVirtualMoney } = useVkPay()
+  const { openModal, setOpenModal } = useState(false)
 
   const handlePay = () => {
     payVirtualMoney()
   }
 
-  const handleClick = () => {}
+  const handleClick = () => {
+    setOpenModal(true)
+  }
   return (
     <div className={styles.section}>
       <span className={styles.text}>
@@ -36,6 +41,11 @@ const LockedSound = () => {
         <span className={styles.btn_text}>оформить</span>
       </button>
       {loading && <Loader />}
+      <Modal active={openModal} setActive={setOpenModal}>
+        Премиум подписка открывает доступ ко всем звукам во всех
+        категориях бессрочно. Все будущие новые категории и звуки
+        также будут доступны бесплатно. Стоимость 10 голосов VK.
+      </Modal>
     </div>
   )
 }
