@@ -7,7 +7,7 @@ const makePurchaseVk = async (req, res) => {
   const ITEMS_STORE = {
     premium_pass: {
       title: 'Премиум доступ',
-      price: 5,
+      price: 10,
       photo_url: 'https://prank-sound.ru/public/vip-2.jpeg',
     },
     sale_key: {
@@ -93,7 +93,6 @@ const makePurchaseVk = async (req, res) => {
 const getAllOrdersVk =  async (req, res) => {
   try {
     const all = await Order.find({})
-    console.log(all)
     res.status(200).json(all)
   } catch (error) {
     console.log(error)
