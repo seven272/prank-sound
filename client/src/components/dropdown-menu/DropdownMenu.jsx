@@ -13,7 +13,7 @@ const DropdownMenu = () => {
 
   const handleMenuClick = (payload) => {
     const { key } = payload
-    routeNavigator.push(`/category/${key}`)
+    // routeNavigator.push(`/category/${key}`)
     switch (key) {
       case 'fart':
         routeNavigator.push(`/category/fart`)
