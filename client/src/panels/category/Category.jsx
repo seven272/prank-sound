@@ -47,10 +47,10 @@ const Category = ({ id }) => {
     }
   }, [currentSound, vk_id, isPaid])
 
-  //чтобы работала перезагрузка категории при клике в меню, когда мы уже на страницы другой категории
-  useEffect(() => {
-    console.log(alias)
-  }, [alias])
+  // //чтобы работала перезагрузка категории при клике в меню, когда мы уже на страницы другой категории
+  // useEffect(() => {
+  //   console.log(alias)
+  // }, [alias])
 
   if (categorySounds.length === 0) {
     return <Loader />

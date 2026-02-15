@@ -13,30 +13,14 @@ const DropdownMenu = () => {
 
   const handleMenuClick = (payload) => {
     const { key } = payload
-    console.log(key)
-    routeNavigator.replace(`/category/${key}`)
-    // routeNavigator.push(`/category/${key}`, { forceUpdate: Date.now() });
+    const categories = ['fart', 'burp', 'sneez', 'snore', 'cough']
 
-    // switch (key) {
-    //   case 'fart':
-    //     routeNavigator.push(`/category/fart`)
-    //     break
-    //   case 'burp':
-    //     routeNavigator.push(`/category/burp`)
-    //     break
-    //   case 'sneez':
-    //     routeNavigator.push(`/category/sneez`)
-    //     break
-    //   case 'snore':
-    //     routeNavigator.push(`/category/snore`)
-    //     break
-    //   case 'cough':
-    //     routeNavigator.push(`/category/cough`)
-    //     break
-    //   default:
-    //     routeNavigator.push(`/`)
-    //     break
-    // }
+    if (categories.includes(key)) {
+      // Используем replace, чтобы не плодить историю при переходах между категориями
+      routeNavigator.replace(`/category/${key}`)
+    } else {
+      routeNavigator.push('/')
+    }
   }
 
   const objectStyles = {
