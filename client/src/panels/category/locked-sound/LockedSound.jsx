@@ -12,7 +12,7 @@ import Modal from '../../../UI/modal/Modal'
 const LockedSound = () => {
   const isAuth = useSelector(checkIsAuthVk)
   const { loading, payVirtualMoney } = useVkPay()
-  const { openModal, setOpenModal } = useState(false)
+  const [ openModal, setOpenModal ] = useState(false)
 
   const handlePay = () => {
     payVirtualMoney()
