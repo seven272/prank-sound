@@ -14,27 +14,28 @@ const DropdownMenu = () => {
   const handleMenuClick = (payload) => {
     const { key } = payload
     console.log(key)
-    // routeNavigator.push(`/category/${key}`)
-    switch (key) {
-      case 'fart':
-        routeNavigator.push(`/category/fart`)
-        break
-      case 'burp':
-        routeNavigator.push(`/category/burp`)
-        break
-      case 'sneez':
-        routeNavigator.push(`/category/sneez`)
-        break
-      case 'snore':
-        routeNavigator.push(`/category/snore`)
-        break
-      case 'cough':
-        routeNavigator.push(`/category/cough`)
-        break
-      default:
-        routeNavigator.push(`/`)
-        break
-    }
+    routeNavigator.replace(`/category/${key}`)
+    
+    // switch (key) {
+    //   case 'fart':
+    //     routeNavigator.push(`/category/fart`)
+    //     break
+    //   case 'burp':
+    //     routeNavigator.push(`/category/burp`)
+    //     break
+    //   case 'sneez':
+    //     routeNavigator.push(`/category/sneez`)
+    //     break
+    //   case 'snore':
+    //     routeNavigator.push(`/category/snore`)
+    //     break
+    //   case 'cough':
+    //     routeNavigator.push(`/category/cough`)
+    //     break
+    //   default:
+    //     routeNavigator.push(`/`)
+    //     break
+    // }
   }
 
   const objectStyles = {
