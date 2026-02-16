@@ -64,6 +64,16 @@
   margin-top: 10px;
 }
 
+.item_logo {
+  width: max-content;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
 .logo_wrapper {
   width: 80px;
   height: 50px;
@@ -80,7 +90,6 @@
   object-position: center;
   cursor: pointer;
 }
-
 
 @media screen and (max-width: 650px) {
   .text {

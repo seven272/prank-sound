@@ -32,12 +32,11 @@ const Footer = () => {
             <TiStarOutline className={styles.icon} onClick={addFavoriteApp}/>
             {/* <span className={styles.title}>Поиск</span> */}
           </li>
-          <li className={styles.item}>
+          <li className={styles.item_logo}>
             <div className={styles.logo_wrapper}>
               <img src={Logo} alt="логотип" className={styles.logo}/>
             </div>
            <span className={styles.text}>{year}</span>
-           <span className={styles.text}>vk mini apps</span>
           </li>
           <li className={styles.item}>
             <AiOutlineLike
