@@ -29,16 +29,25 @@ const SoundCard = () => {
   }
 
   const handleClickNext = () => {
-    const nextNumber = currentSound.number + 1
-    const sound = categorySounds.find((elem) => {
-      return elem.number === nextNumber
-    })
-
-    if (nextNumber <= categorySounds.length) {
+    const currentNumber = currentSound.number
+    if (currentNumber < categorySounds.length) {
+      const nextNumber = currentNumber + 1
+      const sound = categorySounds.find((elem) => {
+        return elem.number === nextNumber
+      })
+      console.log(sound)
       dispatch(setSound(sound))
     }
+    // const nextNumber = currentNumber + 1
+    // const sound = categorySounds.find((elem) => {
+    //   return elem.number === nextNumber
+    // })
 
-    console.log(sound)
+    // if (nextNumber <= categorySounds.length) {
+    //   dispatch(setSound(sound))
+    // }
+
+    // console.log(sound)
   }
 
   return (
