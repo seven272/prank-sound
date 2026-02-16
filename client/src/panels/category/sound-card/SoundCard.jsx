@@ -22,7 +22,10 @@ const SoundCard = () => {
     const sound = categorySounds.find((elem) => {
       return elem.number === nextNumber
     })
-    dispatch(setSound(sound))
+    if (nextNumber <= categorySounds.lenght) {
+      dispatch(setSound(sound))
+    }
+
     console.log(sound)
   }
 
@@ -46,6 +49,7 @@ const SoundCard = () => {
         <MdOutlineArrowForwardIos
           className={styles.arrow}
           onClick={handleClickNext}
+          disabled={true}
         />
       </div>
     </section>
