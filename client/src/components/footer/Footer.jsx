@@ -25,7 +25,7 @@ const Footer = () => {
       <div className={styles.wrapper}>
         <ul className={styles.items}>
           <li className={styles.item}>
-            <IoSettingsOutline className={styles.icon} onClick={() => routerNavigator.push('/admin')} />
+           <AiOutlineHome className={styles.icon} onClick={() => routerNavigator.push('/')}/>
             {/* <span className={styles.title}>Поиск</span> */}
           </li>
           <li className={styles.item}>
@@ -33,8 +33,8 @@ const Footer = () => {
             {/* <span className={styles.title}>Поиск</span> */}
           </li>
           <li className={styles.item}>
-            <AiOutlineHome className={styles.icon} onClick={() => routerNavigator.push('/')}/>
-            {/* <span className={styles.title}>Домой</span> */}
+           <span className={styles.title}>{year}</span>
+           <span className={styles.title}>vk mini apps</span>
           </li>
           <li className={styles.item}>
             <AiOutlineLike

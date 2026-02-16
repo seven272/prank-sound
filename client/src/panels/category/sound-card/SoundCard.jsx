@@ -22,7 +22,6 @@ const SoundCard = () => {
       const sound = categorySounds.find((elem) => {
         return elem.number === prevNumber
       })
-      console.log(sound)
       dispatch(setSound(sound))
     }
   }
@@ -34,7 +33,6 @@ const SoundCard = () => {
       const sound = categorySounds.find((elem) => {
         return elem.number === nextNumber
       })
-      console.log(sound)
       dispatch(setSound(sound))
     }
   }
