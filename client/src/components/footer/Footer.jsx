@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useRouteNavigator } from '@vkontakte/vk-mini-apps-router';
+import { useRouteNavigator, RouterLink } from '@vkontakte/vk-mini-apps-router';
 import { AiOutlineHome } from 'react-icons/ai'
 import { IoShareSocialOutline } from 'react-icons/io5'
 import { AiOutlineLike } from 'react-icons/ai'
@@ -31,6 +31,7 @@ const Footer = () => {
             <TiStarOutline className={styles.icon} onClick={addFavoriteApp}/>
           </li>
           <li className={styles.item_logo}>
+            <RouterLink to='https://vk.com/app54436091'></RouterLink>
             <div className={styles.logo_wrapper}>
               <img src={Logo} alt="логотип" className={styles.logo}/>
             </div>
@@ -49,7 +50,7 @@ const Footer = () => {
             />
           </li>
         </ul>
-        <span className={styles.text}>&#169; {year}</span>
+        {/* <span className={styles.text}>&#169; {year}</span> */}
       </div>
     </footer>
   )
