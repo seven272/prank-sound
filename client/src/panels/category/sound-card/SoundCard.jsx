@@ -1,11 +1,13 @@
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { MdOutlineArrowBackIos } from 'react-icons/md'
 import { MdOutlineArrowForwardIos } from 'react-icons/md'
 
 import styles from './SoundCard.module.css'
 import PrankImg from '../../../assets/images/prank.png'
+import { setSound } from '../../../redux/slices/soundSlice'
 
 const SoundCard = () => {
+  const dispatch = useDispatch()
   const { currentSound, categorySounds } = useSelector(
     (state) => state.sound,
   )
@@ -20,6 +22,7 @@ const SoundCard = () => {
     const sound = categorySounds.find((elem) => {
       return elem.number === nextNumber
     })
+    dispatch(setSound(sound))
     console.log(sound)
   }
 
