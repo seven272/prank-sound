@@ -22,8 +22,8 @@ const SoundCard = () => {
     const sound = categorySounds.find((elem) => {
       return elem.number === nextNumber
     })
-    
-    if (nextNumber <= categorySounds.lenght) {
+
+    if (nextNumber <= categorySounds.length) {
       dispatch(setSound(sound))
     }
 
