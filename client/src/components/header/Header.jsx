@@ -1,58 +1,24 @@
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { useRouteNavigator } from '@vkontakte/vk-mini-apps-router'
 import { Avatar } from 'antd'
 import { FiUser } from 'react-icons/fi'
 
 import styles from './Header.module.css'
 import logoImg from '../../assets/images/logo.png'
-import Loader from '../../UI/loader/Loader.jsx'
 import DropdownMenu from '../dropdown-menu/DropdownMenu.jsx'
-import {
-  deleteVkUser,
-  fetchGetAllVkUsers,
-} from '../../redux/slices/vkUserSlice'
-import { useVkPay } from '../../utils/useVkPay'
 
 const Header = () => {
-  const dispatch = useDispatch()
   const routerNavigator = useRouteNavigator()
   const { vk_id, vk_avatar, isPaid } = useSelector(
     (state) => state.vkUser,
   )
-  const { loading, payVirtualMoney } = useVkPay()
-
-  const handlePay = () => {
-    payVirtualMoney()
-  }
 
   return (
     <div className={styles.header}>
       <div className={styles.wrapper}>
         <div className={styles.home_wrapper}>
           <DropdownMenu />
-          
-          <div className={styles.test_btns}>
-            <button
-              className={styles.test_btn}
-              onClick={() => dispatch(deleteVkUser())}
-            >
-              del
-            </button>
-            <button
-              className={styles.test_btn}
-              onClick={() => dispatch(fetchGetAllVkUsers())}
-            >
-              all
-            </button>
-            <button
-              className={styles.test_btn}
-              onClick={() => handlePay()}
-            >
-              pay
-            </button>
-          </div>
-
-        </div> 
+        </div>
 
         <div className={styles.logo_wrapper}>
           <img
@@ -83,7 +49,6 @@ const Header = () => {
           />
         )}
       </div>
-      {loading && <Loader />}
     </div>
   )
 }

@@ -12,8 +12,6 @@ const SoundCard = () => {
     (state) => state.sound,
   )
   const URL = import.meta.env.VITE_PUBLIC_URL
-  console.log(currentSound)
-  console.log(categorySounds)
 
   const handleClickPrev = () => {
     const currentNumber = currentSound.number
