@@ -97,9 +97,7 @@ const initialState = {
   isLoading: true,
   allSounds: [],
   categorySounds: [],
-  currentSound: {},
-
-  soundsCategory: [{}, {}, {}],
+  currentSound: {}
 }
 
 const soundSlice = createSlice({

@@ -6,8 +6,10 @@ import styles from './SoundCard.module.css'
 import PrankImg from '../../../assets/images/prank.png'
 
 const SoundCard = () => {
-  const { currentSound } = useSelector((state) => state.sound)
+  const { currentSound, categorySounds } = useSelector((state) => state.sound)
   const URL = import.meta.env.VITE_PUBLIC_URL
+  console.log(currentSound)
+  console.log(categorySounds)
 
   return (
     <section className={styles.section}>
