@@ -26,34 +26,30 @@ const Footer = () => {
         <ul className={styles.items}>
           <li className={styles.item}>
            <AiOutlineHome className={styles.icon} onClick={() => routerNavigator.push('/')}/>
-            {/* <span className={styles.title}>Поиск</span> */}
           </li>
           <li className={styles.item}>
             <TiStarOutline className={styles.icon} onClick={addFavoriteApp}/>
-            {/* <span className={styles.title}>Поиск</span> */}
           </li>
           <li className={styles.item_logo}>
             <div className={styles.logo_wrapper}>
               <img src={Logo} alt="логотип" className={styles.logo}/>
             </div>
-           <span className={styles.text}>{year}</span>
+           {/* <span className={styles.text}>{year}</span> */}
           </li>
           <li className={styles.item}>
             <AiOutlineLike
               className={styles.icon}
               onClick={recommendApp}
             />
-            {/* <span className={styles.title}>Избранное</span> */}
           </li>
           <li className={styles.item}>
             <IoShareSocialOutline
               className={styles.icon}
               onClick={() => shareApp(VK_URL)}
             />
-            {/* <span className={styles.title}>Поделиться</span> */}
           </li>
         </ul>
-        {/* <span className={styles.text}>&#169; {year}</span> */}
+        <span className={styles.text}>&#169; {year}</span>
       </div>
     </footer>
   )
