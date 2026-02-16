@@ -33,8 +33,8 @@ const Footer = () => {
             {/* <span className={styles.title}>Поиск</span> */}
           </li>
           <li className={styles.item}>
-           <span className={styles.title}>{year}</span>
-           <span className={styles.title}>vk mini apps</span>
+           <span className={styles.text}>{year}</span>
+           <span className={styles.text}>vk mini apps</span>
           </li>
           <li className={styles.item}>
             <AiOutlineLike
