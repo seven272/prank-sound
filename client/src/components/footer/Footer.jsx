@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { useRouteNavigator } from '@vkontakte/vk-mini-apps-router';
 import { AiOutlineHome } from 'react-icons/ai'
-import { IoSettingsOutline } from 'react-icons/io5'
 import { IoShareSocialOutline } from 'react-icons/io5'
 import { AiOutlineLike } from 'react-icons/ai'
 import { TiStarOutline } from "react-icons/ti";
 
 import styles from './Footer.module.css'
 import { shareApp, recommendApp, addFavoriteApp } from '../../utils/vkAppShare'
+import Logo from '../../assets/images/logo.png'
 
 const Footer = () => {
   const [year, setYear] = useState('')
@@ -33,6 +33,9 @@ const Footer = () => {
             {/* <span className={styles.title}>Поиск</span> */}
           </li>
           <li className={styles.item}>
+            <div className={styles.logo_wrapper}>
+              <img src={Logo} alt="логотип" className={styles.logo}/>
+            </div>
            <span className={styles.text}>{year}</span>
            <span className={styles.text}>vk mini apps</span>
           </li>

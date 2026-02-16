@@ -64,6 +64,24 @@
   margin-top: 10px;
 }
 
+.logo_wrapper {
+  width: 80px;
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.logo {
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+  cursor: pointer;
+}
+
+
 @media screen and (max-width: 650px) {
   .text {
     font-size: 12px;
