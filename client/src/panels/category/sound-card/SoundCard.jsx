@@ -17,7 +17,7 @@ const SoundCard = () => {
 
   const handleClickPrev = () => {
     const currentNumber = currentSound.number
-    if (currentNumber > 0) {
+    if (currentNumber > 1) {
       const prevNumber = currentNumber - 1
       const sound = categorySounds.find((elem) => {
         return elem.number === prevNumber
