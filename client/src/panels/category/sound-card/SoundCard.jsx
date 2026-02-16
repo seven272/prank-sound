@@ -15,7 +15,18 @@ const SoundCard = () => {
   console.log(currentSound)
   console.log(categorySounds)
 
-  const handleClickPrev = () => {}
+  const handleClickPrev = () => {
+    const prevNumber = currentSound.number - 1
+    const sound = categorySounds.find((elem) => {
+      return elem.number === prevNumber
+    })
+
+    if (prevNumber > 0) {
+      dispatch(setSound(sound))
+    }
+
+    console.log(sound)
+  }
 
   const handleClickNext = () => {
     const nextNumber = currentSound.number + 1
