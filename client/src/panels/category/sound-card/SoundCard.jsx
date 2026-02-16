@@ -16,16 +16,15 @@ const SoundCard = () => {
   console.log(categorySounds)
 
   const handleClickPrev = () => {
-    const prevNumber = currentSound.number - 1
-    const sound = categorySounds.find((elem) => {
-      return elem.number === prevNumber
-    })
-
-    if (prevNumber > 0) {
+    const currentNumber = currentSound.number
+    if (currentNumber > 0) {
+      const prevNumber = currentNumber - 1
+      const sound = categorySounds.find((elem) => {
+        return elem.number === prevNumber
+      })
+      console.log(sound)
       dispatch(setSound(sound))
     }
-
-    console.log(sound)
   }
 
   const handleClickNext = () => {
@@ -38,16 +37,6 @@ const SoundCard = () => {
       console.log(sound)
       dispatch(setSound(sound))
     }
-    // const nextNumber = currentNumber + 1
-    // const sound = categorySounds.find((elem) => {
-    //   return elem.number === nextNumber
-    // })
-
-    // if (nextNumber <= categorySounds.length) {
-    //   dispatch(setSound(sound))
-    // }
-
-    // console.log(sound)
   }
 
   return (
