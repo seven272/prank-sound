@@ -6,10 +6,22 @@ import styles from './SoundCard.module.css'
 import PrankImg from '../../../assets/images/prank.png'
 
 const SoundCard = () => {
-  const { currentSound, categorySounds } = useSelector((state) => state.sound)
+  const { currentSound, categorySounds } = useSelector(
+    (state) => state.sound,
+  )
   const URL = import.meta.env.VITE_PUBLIC_URL
   console.log(currentSound)
   console.log(categorySounds)
+
+  const handleClickPrev = () => {}
+
+  const handleClickNext = () => {
+    const nextNumber = currentSound.number + 1
+    const sound = categorySounds.find((elem) => {
+      return elem.number === nextNumber
+    })
+    console.log(sound)
+  }
 
   return (
     <section className={styles.section}>
@@ -17,7 +29,10 @@ const SoundCard = () => {
         {currentSound.title || 'какой-то звук'}
       </span>
       <div className={styles.content_wpap}>
-        <MdOutlineArrowBackIos className={styles.arrow}/>
+        <MdOutlineArrowBackIos
+          className={styles.arrow}
+          onClick={handleClickPrev}
+        />
         <div className={styles.img_wrap}>
           <img
             src={`${URL}/${currentSound?.imageUrl}` || PrankImg}
@@ -25,7 +40,10 @@ const SoundCard = () => {
             className={styles.img}
           />
         </div>
-        <MdOutlineArrowForwardIos className={styles.arrow}/>
+        <MdOutlineArrowForwardIos
+          className={styles.arrow}
+          onClick={handleClickNext}
+        />
       </div>
     </section>
   )
