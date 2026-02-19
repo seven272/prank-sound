@@ -4,7 +4,7 @@ const showPromo = () => {
   bridge
     .send('VKWebAppShowBannerAd', {
       banner_location: 'bottom',
-      layout_type: 'overlay',// экран игры или мини-приложения станет меньше на размер баннера.
+      layout_type: 'overlay',// экран игры или мини-приложения станет меньше на размер баннера.overlay / resize
       height_type: 'compact',//баннер с уменьшенной высотой
       // banner_width: '650',
       // banner_height: '70',
