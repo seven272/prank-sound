@@ -50,6 +50,6 @@
 .title {
   font: var(--font-l);
   color: var(--color-text-grey);
-  margin-top: 10px;
-  margin-bottom: 20px;
+  margin-top: 5px;
+  margin-bottom: 15px;
 }

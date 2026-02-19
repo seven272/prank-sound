@@ -7,8 +7,8 @@
   justify-content: center;
   column-gap: 50px;
   align-items: center;
-  margin-top: 50px;
-  margin-bottom: 50px;
+  margin-top: 25px;
+  margin-bottom: 25px;
 }
 
 .btn_wrap {
@@ -39,8 +39,8 @@
 @media screen and (max-width: 500px) {
   .section {
     column-gap: 30px;
-    margin-top: 25px;
-    margin-bottom: 25px;
+    margin-top: 15px;
+    margin-bottom: 15px;
   }
   .btn_wrap {
     width: max-content;
