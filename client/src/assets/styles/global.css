@@ -7,8 +7,8 @@
 html,
 body {
   width: 100vw;
-  height: auto;
   max-width: 1590px;
+  height: auto;
   margin: 0 auto;
   color: var(--font-color);
   background-color: var(--color-bg);
@@ -17,9 +17,10 @@ body {
 
 #root {
   width: 100%;
+  height: 100vh;
   display: flex;
   justify-content: center;
-    background-color: var(--color-bg);
+  background-color: var(--color-bg);
 }
 
 a {
