@@ -10,7 +10,7 @@ const createVkUser = async (req, res) => {
       })
     }
 
-    const existingValues = await User.find({ vk_id })
+    const existingValues = await User.find({ vk_id }) 
 
     if (existingValues.length > 0) {
       return res.status(400).json({
@@ -18,7 +18,7 @@ const createVkUser = async (req, res) => {
       })
     }
 
-    const user = await User.create({ vk_id, isPaid })
+    const user = await User.create({ vk_id, isPaid: false })
     res.status(200).json(user)
   } catch (error) {
     console.log(error)

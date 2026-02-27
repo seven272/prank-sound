@@ -23,8 +23,6 @@ const Statistic = () => {
     }
   }, [type, dispatch])
 
-  console.log('Кол-во orders: ', orders.length)
-
   return (
     <div className={styles.main}>
       <h3 className={styles.title}>Статистика VK {type}</h3>

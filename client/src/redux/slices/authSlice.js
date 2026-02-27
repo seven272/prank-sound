@@ -20,7 +20,7 @@ const fetchRegisterUser = createAsyncThunk(
       message.error('Ошибка при регистрации')
       console.log(error)
     }
-  }
+  },
 )
 
 const fetchLoginUser = createAsyncThunk(
@@ -38,7 +38,7 @@ const fetchLoginUser = createAsyncThunk(
       console.log(error)
       message.error('Ошибка при авторизации')
     }
-  }
+  },
 )
 
 const fetchLogoutUser = createAsyncThunk(
@@ -53,7 +53,7 @@ const fetchLogoutUser = createAsyncThunk(
       console.log(error)
       message.error('Ошибка при выходе из системы')
     }
-  }
+  },
 )
 
 const fetchGetMe = createAsyncThunk('auth/fetchGetMe', async () => {
@@ -72,7 +72,7 @@ const fetchSubscribing = createAsyncThunk(
     try {
       const res = await axiosInstance.patch(
         '/auth/subscription',
-        user
+        user,
       )
       message.success('Подписка успешно оформлена')
       console.log(res.data)
@@ -80,7 +80,7 @@ const fetchSubscribing = createAsyncThunk(
     } catch (error) {
       console.log(error)
     }
-  }
+  },
 )
 
 const initialState = {
@@ -94,9 +94,11 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     logout: (state) => {
-      state.user = null,
-      state.isAdmin = false,
-      state.isLoading = false
+      return (
+        (state.user = null),
+        (state.isAdmin = false),
+        (state.isLoading = false)
+      )
     },
   },
   extraReducers: (builder) => {
@@ -117,13 +119,10 @@ const authSlice = createSlice({
         state.isLoading = true
       })
       .addCase(fetchLoginUser.fulfilled, (state, action) => {
-        console.log('Redux succsess login')
         state.isLoading = false
         state.user = action.payload?.user
       })
       .addCase(fetchLoginUser.rejected, (state) => {
-        console.log('Redux error login')
-
         state.isLoading = false
         state.user = null
       })
