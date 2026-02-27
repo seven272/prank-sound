@@ -10,7 +10,7 @@ dotenv.config()
 const register = async (req, res) => {
   const { username, password, isAdmin } = req.body
 
-  try {
+  try { 
     const userExists = await Auth.findOne({ username })
 
     if (userExists) {
@@ -25,8 +25,7 @@ const register = async (req, res) => {
     const newUser = await Auth.create({
       username,
       password: hashedPassword,
-      isAdmin,
-      isSubscription: false,
+      isAdmin:false,
     })
 
     createToken(res, newUser._id)

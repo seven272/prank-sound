@@ -13,12 +13,6 @@ const authSchema = new mongoose.Schema(
     },
     isAdmin: {
       type: Boolean,
-      required: true,
-      default: false,
-    },
-    isSubscription: {
-      type: Boolean,
-      required: true,
       default: false,
     },
   },
