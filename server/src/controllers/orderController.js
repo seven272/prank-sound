@@ -2,7 +2,6 @@ import User from '../models/User.js'
 import Order from '../models/Order.js'
 
 const makePurchaseVk = async (req, res) => {
-  console.log('Запрос от VK:', req.body)
 
   const ITEMS_STORE = {
     premium_pass: {
