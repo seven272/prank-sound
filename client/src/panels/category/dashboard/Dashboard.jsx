@@ -54,7 +54,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     setIsRepeat(false)
-  }, [])
+  }, [currentSound])
 
   return (
     <section className={styles.section} onMouseEnter={() => {}}>
