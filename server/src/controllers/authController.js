@@ -8,9 +8,10 @@ dotenv.config()
 
 //register user
 const register = async (req, res) => {
+  const registerCode = process.env.REGISTRATION_CODE
   const { username, password, secretCode } = req.body
   console.log('1 -', secretCode)
-  console.log('2 -', process.env.REGISTRATION_CODE)
+  console.log('2 -', registerCode)
 
   // Проверяем соответствие кода
   if (secretCode !== process.env.REGISTRATION_CODE) {
