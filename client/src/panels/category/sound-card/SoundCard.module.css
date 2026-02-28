@@ -7,7 +7,7 @@
   justify-content: center;
   align-items: center;
   background-color: none;
-  overflow: scroll;
+  overflow: hidden;
 }
 
 .content_wpap {
