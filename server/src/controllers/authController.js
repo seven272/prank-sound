@@ -14,7 +14,7 @@ const register = async (req, res) => {
   console.log('2 -', registerCode)
 
   // Проверяем соответствие кода
-  if (secretCode !== process.env.REGISTRATION_CODE) {
+  if (secretCode !== registerCode) {
     return res.status(403).json({
       message: 'Регистрация запрещена. Неверный код',
     })
