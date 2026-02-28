@@ -9,14 +9,15 @@ dotenv.config()
 //register user
 const register = async (req, res) => {
   const { username, password, secretCode } = req.body
+  console.log(secretCode)
 
+  // Проверяем соответствие кода
+  if (secretCode !== process.env.REGISTRATION_CODE) {
+    return res.status(403).json({
+      message: 'Регистрация запрещена',
+    })
+  }
   try {
-    // Проверяем соответствие кода
-    if (secretCode !== process.env.REGISTRATION_CODE) {
-      return res.status(403).json({
-        message: 'Регистрация запрещена',
-      })
-    }
     const userExists = await Auth.findOne({ username })
 
     if (userExists) {
