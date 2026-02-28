@@ -9,12 +9,11 @@ body {
   width: 100vw;
   max-width: 1590px;
   height: 100%;
-  max-height: 100vh;
   margin: 0 auto;
   color: var(--font-color);
   background-color: var(--color-bg);
   font: var(--font-m);
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
 }
 
 #root {

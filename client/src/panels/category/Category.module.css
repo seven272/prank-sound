@@ -5,7 +5,7 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
 }
 
 .wrapper {
@@ -20,6 +20,6 @@
 @media screen and (max-width: 630px) {
   .section {
     height: 100%;
-    max-height: 400px;
+    /* max-height: 400px; */
   }
 }
