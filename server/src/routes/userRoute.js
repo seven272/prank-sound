@@ -1,6 +1,5 @@
 import express from 'express'
 import {
-  createVkUser,
   listVkUsers,
   getVkUser,
 } from '../controllers/userController.js'
@@ -11,7 +10,7 @@ import {
 
 const router = express.Router()
 
-router.post('/create', createVkUser)
+// router.post('/create', createVkUser)
 router.get('/all', checkAuth, checkAdmin, listVkUsers)
 router.get('/user/:vkId', getVkUser)
 

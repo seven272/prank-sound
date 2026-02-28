@@ -1,30 +1,30 @@
 import User from '../models/User.js'
 
-const createVkUser = async (req, res) => {
-  try {
-    const { vk_id, isPaid } = req.body
-    if (!vk_id) {
-      return res.status(400).json({
-        error:
-          'Произошла ошибка при получении данных о пользователе из ВК',
-      })
-    }
+// const createVkUser = async (req, res) => {
+//   try {
+//     const { vk_id, isPaid } = req.body
+//     if (!vk_id) {
+//       return res.status(400).json({
+//         error:
+//           'Произошла ошибка при получении данных о пользователе из ВК',
+//       })
+//     }
 
-    const existingValues = await User.find({ vk_id }) 
+//     const existingValues = await User.find({ vk_id }) 
 
-    if (existingValues.length > 0) {
-      return res.status(400).json({
-        error: 'Такой пользователь уже существует',
-      })
-    }
+//     if (existingValues.length > 0) {
+//       return res.status(400).json({
+//         error: 'Такой пользователь уже существует',
+//       })
+//     }
 
-    const user = await User.create({ vk_id, isPaid: true })
-    res.status(200).json(user)
-  } catch (error) {
-    console.log(error)
-    return res.status(400).json(error)
-  }
-}
+//     const user = await User.create({ vk_id, isPaid: true })
+//     res.status(200).json(user)
+//   } catch (error) {
+//     console.log(error)
+//     return res.status(400).json(error)
+//   }
+// }
 
 const getVkUser = async (req, res) => {
   const { vkId } = req.params
@@ -60,4 +60,4 @@ const listVkUsers = async (req, res) => {
 }
 
 
-export { createVkUser, listVkUsers, getVkUser }
+export { listVkUsers, getVkUser }
