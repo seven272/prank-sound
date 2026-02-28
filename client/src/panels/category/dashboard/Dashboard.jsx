@@ -52,6 +52,10 @@ const Dashboard = () => {
     return () => clearInterval(intervalId) // Cleanup on component unmount
   }, [isRepeat])
 
+  useEffect(() => {
+    setIsRepeat(false)
+  }, [])
+
   return (
     <section className={styles.section} onMouseEnter={() => {}}>
       <audio
