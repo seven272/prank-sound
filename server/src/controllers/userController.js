@@ -18,7 +18,7 @@ const createVkUser = async (req, res) => {
       })
     }
 
-    const user = await User.create({ vk_id, isPaid: false })
+    const user = await User.create({ vk_id, isPaid: true })
     res.status(200).json(user)
   } catch (error) {
     console.log(error)

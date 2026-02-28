@@ -2,7 +2,7 @@
 import { useRouteNavigator } from '@vkontakte/vk-mini-apps-router'
 import { useDispatch } from 'react-redux'
 import { Button, Flex, Form, Input } from 'antd'
-import { LockOutlined, UserOutlined } from '@ant-design/icons'
+import { LockOutlined, UserOutlined, CheckSquareOutlined } from '@ant-design/icons'
 
 import {
   fetchRegisterUser,
@@ -15,6 +15,7 @@ const Register = ({ showLogin, setShowForm }) => {
 
 
   const onFinish = (values) => {
+    console.log(values)
     dispatch(fetchRegisterUser(values))
     routeNavigator.push('/')
     setShowForm(false)
@@ -57,6 +58,22 @@ const Register = ({ showLogin, setShowForm }) => {
             prefix={<LockOutlined />}
             type="password"
             placeholder="Password"
+          />
+        </Form.Item>
+
+         <Form.Item
+          name="secretCode"
+          rules={[
+            {
+              required: true,
+              message: 'Please input your secret code!',
+            },
+          ]}
+        >
+          <Input
+            prefix={<CheckSquareOutlined /> }
+            type="text"
+            placeholder="secret code"
           />
         </Form.Item>
 

@@ -8,9 +8,16 @@ dotenv.config()
 
 //register user
 const register = async (req, res) => {
-  const { username, password, isAdmin } = req.body
+  const { username, password, secretCode } = req.body
 
-  try { 
+  // Проверяем соответствие кода
+  if (secretCode !== process.env.REGISTRATION_CODE) {
+    return res.status(403).json({
+      message: 'Регистрация запрещена',
+    })
+  }
+
+  try {
     const userExists = await Auth.findOne({ username })
 
     if (userExists) {
@@ -25,7 +32,7 @@ const register = async (req, res) => {
     const newUser = await Auth.create({
       username,
       password: hashedPassword,
-      isAdmin:false,
+      isAdmin: false,
     })
 
     createToken(res, newUser._id)
@@ -56,7 +63,7 @@ const login = async (req, res) => {
 
     const isPasswordCorrect = await bcrypt.compare(
       password,
-      user.password
+      user.password,
     )
 
     if (!isPasswordCorrect) {
@@ -113,22 +120,20 @@ const getMe = async (req, res) => {
 
 const subscribing = async (req, res) => {
   try {
-
-    const {user} = req.body
+    const { user } = req.body
     const id = req.userId
-    const updateData = {...user, isSubscription: true}
+    const updateData = { ...user, isSubscription: true }
     const options = { new: true }
 
     const updatedUser = await Auth.findByIdAndUpdate(
       id,
       updateData,
-      options
+      options,
     )
 
     if (!updatedUser) {
       return res.status(404).json({ error: 'Пользователь не найден' })
     }
-
 
     return res.status(200).json(updatedUser)
   } catch (error) {

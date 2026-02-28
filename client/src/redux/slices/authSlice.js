@@ -5,12 +5,12 @@ import axiosInstance from '../../utils/axios'
 
 const fetchRegisterUser = createAsyncThunk(
   'auth/fetchRegisterUser',
-  async ({ username, password }) => {
+  async ({ username, password, secretCode }) => {
     try {
       const res = await axiosInstance.post('/auth/register', {
         username,
         password,
-        isAdmin: false,
+        secretCode
       })
 
       message.success('Вы успешно зарегистрировались')
