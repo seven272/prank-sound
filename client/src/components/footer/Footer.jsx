@@ -47,7 +47,7 @@ const Footer = () => {
               <img src={Logo} alt="логотип" className={styles.logo} />
             </div>
 
-            <span className={styles.text}>{year}</span>
+            {/* <span className={styles.text}>{year}</span> */}
           </li>
           <li className={styles.item}>
             <AiOutlineLike

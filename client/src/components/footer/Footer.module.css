@@ -52,7 +52,7 @@
 }
 
 .icon {
-  font-size: 40px;
+  font-size: 25px;
   color: inherit;
 }
 
@@ -74,8 +74,8 @@
 }
 
 .logo_wrapper {
-  width: 80px;
-  height: 50px;
+  width: 70px;
+  height: auto;
   display: flex;
   flex-direction: row;
   align-items: center;
