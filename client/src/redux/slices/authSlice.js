@@ -93,11 +93,11 @@ const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    logout: (state) => (
-      (state.user = null),
-      (state.isAdmin = false),
-      (state.isLoading = false)
-    ),
+    logout: (state) => {
+      ;((state.user = null),
+        (state.isAdmin = false),
+        (state.isLoading = false))
+    },
   },
   extraReducers: (builder) => {
     //register user
