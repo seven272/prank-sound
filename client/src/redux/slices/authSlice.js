@@ -10,7 +10,7 @@ const fetchRegisterUser = createAsyncThunk(
       const res = await axiosInstance.post('/auth/register', {
         username,
         password,
-        secretCode
+        secretCode,
       })
 
       message.success('Вы успешно зарегистрировались')
@@ -93,13 +93,11 @@ const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    logout: (state) => {
-      return (
-        (state.user = null),
-        (state.isAdmin = false),
-        (state.isLoading = false)
-      )
-    },
+    logout: (state) => (
+      (state.user = null),
+      (state.isAdmin = false),
+      (state.isLoading = false)
+    ),
   },
   extraReducers: (builder) => {
     //register user
