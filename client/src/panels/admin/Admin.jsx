@@ -7,6 +7,7 @@ import Footer from '../../components/footer/Footer'
 import ButtonsAdmin from '../../components/buttons-admin/ButtonsAdmin'
 import Loader from '../../UI/loader/Loader'
 import { fetchGetMe } from '../../redux/slices/authSlice'
+import Error403 from '../../components/error-403/Error403'
 
 const Admin = ({ id }) => {
   const dispatch = useDispatch()
@@ -24,11 +25,19 @@ const Admin = ({ id }) => {
     return (
       <Panel id={id}>
         <Header />
-        <div className={styles.section}>
+        <Error403 />
+        {/* <div className={styles.section}>
           <div className={styles.section_wrap}>
             <h1 className={styles.title}>Доступ запрещен!</h1>
+            <div className={styles.img_error_wrap}>
+              <img
+                src={errorImg}
+                alt="ошибка доступа"
+                className={styles.img_error}
+              />
+            </div>
           </div>
-        </div>
+        </div> */}
         <Footer />
       </Panel>
     )
