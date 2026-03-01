@@ -26,18 +26,6 @@ const Admin = ({ id }) => {
       <Panel id={id}>
         <Header />
         <Error403 />
-        {/* <div className={styles.section}>
-          <div className={styles.section_wrap}>
-            <h1 className={styles.title}>Доступ запрещен!</h1>
-            <div className={styles.img_error_wrap}>
-              <img
-                src={errorImg}
-                alt="ошибка доступа"
-                className={styles.img_error}
-              />
-            </div>
-          </div>
-        </div> */}
         <Footer />
       </Panel>
     )
