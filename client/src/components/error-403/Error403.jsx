@@ -7,7 +7,7 @@ const Error403 = () => {
   return (
     <div className={styles.section}>
       <div className={styles.section_wrap}>
-        <h1 className={styles.title}>Доступ запрещен!</h1>
+        <h1 className={styles.title}>Ошибка 403. Нет прав доступа</h1>
         <div className={styles.img_error_wrap}>
           <img
             src={errorImg}
