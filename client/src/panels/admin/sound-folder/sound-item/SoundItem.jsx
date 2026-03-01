@@ -17,12 +17,14 @@ import {
   fetchGetOneSound,
   fetchDeleteSound,
 } from '../../../../redux/slices/soundSlice'
+import Error403 from '../../../../components/error-403/Error403'
 
 const SoundItem = () => {
   const { id } = useParams()
   const dispatch = useDispatch()
   const routerNavigator = useRouteNavigator()
   const { currentSound } = useSelector((state) => state.sound)
+  const { user } = useSelector((state) => state.auth)
   const [showUpdateForm, setShowUpdateForm] = useState(false)
   const pleerRef = useRef()
   const URL = import.meta.env.VITE_PUBLIC_URL
@@ -47,6 +49,10 @@ const SoundItem = () => {
   useEffect(() => {
     dispatch(fetchGetOneSound(id))
   }, [])
+
+  if (!user || !user.isAdmin) {
+    return <Error403 />
+  }
 
   if ('_id' in currentSound === false) {
     return <Loader />
@@ -129,7 +135,7 @@ const SoundItem = () => {
                   className={styles.icon}
                   onClick={handleDelete}
                 />
-              </div> 
+              </div>
             </li>
           </ul>
         )}

@@ -1,12 +1,13 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from '@vkontakte/vk-mini-apps-router'
-import { MdOutlineArrowBackIos } from "react-icons/md";
-import { useRouteNavigator } from '@vkontakte/vk-mini-apps-router';
+import { MdOutlineArrowBackIos } from 'react-icons/md'
+import { useRouteNavigator } from '@vkontakte/vk-mini-apps-router'
 
 import styles from './Statistic.module.css'
 import { fetchGetAllVkUsers } from '../../../redux/slices/vkUserSlice'
 import { fetchGetAllOrders } from '../../../redux/slices/orderSlice'
+import Error403 from '../../../components/error-403/Error403'
 
 const Statistic = () => {
   const { type } = useParams()
@@ -14,6 +15,7 @@ const Statistic = () => {
   const routerNavigator = useRouteNavigator()
   const { vk_users } = useSelector((state) => state.vkUser)
   const { orders } = useSelector((state) => state.order)
+  const { user } = useSelector((state) => state.auth)
 
   useEffect(() => {
     if (type === 'users') {
@@ -22,6 +24,10 @@ const Statistic = () => {
       dispatch(fetchGetAllOrders())
     }
   }, [type, dispatch])
+
+  if (!user || !user.isAdmin) {
+    return <Error403 />
+  }
 
   return (
     <div className={styles.main}>
@@ -32,7 +38,10 @@ const Statistic = () => {
         {type === 'users' ? `${vk_users.length}` : `${orders.length}`}
       </span>
 
-      <button className={styles.btn_back} onClick={() => routerNavigator.back()}>
+      <button
+        className={styles.btn_back}
+        onClick={() => routerNavigator.back()}
+      >
         <MdOutlineArrowBackIos />
         <span>назад</span>
       </button>
