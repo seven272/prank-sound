@@ -56,11 +56,10 @@ const Category = ({ id }) => {
     categories.length !== 0 &&
     categories.find((cat) => cat.alias === alias) === undefined
   ) {
-    routerNavigator.replace('/')
+    routerNavigator.go('/')
   }
 
   if (categorySounds.length === 0) {
-    console.log(categories)
     return <Loader />
   }
 
