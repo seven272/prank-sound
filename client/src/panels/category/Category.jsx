@@ -2,7 +2,7 @@ import { Panel } from '@vkontakte/vkui'
 import { useParams } from '@vkontakte/vk-mini-apps-router'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect, useState } from 'react'
-import { useRouteNavigator } from '@vkontakte/vk-mini-apps-router'
+
 
 import styles from './Category.module.css'
 import SoundCard from './sound-card/SoundCard'
@@ -12,17 +12,16 @@ import Header from '../../components/header/Header'
 import Footer from '../../components/footer/Footer'
 import Loader from '../../UI/loader/Loader'
 import LockedSound from './locked-sound/LockedSound'
-import Error404 from '../../components/error-404/Error404'
 import { fetchGetCategorySounds } from '../../redux/slices/soundSlice'
 
 const Category = ({ id }) => {
   const { alias } = useParams()
   const dispatch = useDispatch()
-  const routerNavigator = useRouteNavigator()
+  
   const { categorySounds, currentSound } = useSelector(
     (state) => state.sound,
   )
-  const { categories } = useSelector((state) => state.category)
+ 
 
   const { vk_id, isPaid } = useSelector((state) => state.vkUser)
   const [soundDisable, setSoundDisable] = useState(true)
@@ -53,13 +52,7 @@ const Category = ({ id }) => {
     }
   }, [currentSound, vk_id, isPaid])
 
-  if (
-    categories.length !== 0 &&
-    categories.find((cat) => cat.alias === alias) === undefined
-  ) {
-    
-    return <Error404 />
-  }
+ 
 
   if (categorySounds.length === 0) {
     return <Loader />
