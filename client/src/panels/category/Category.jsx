@@ -57,6 +57,7 @@ const Category = ({ id }) => {
     categories.find((cat) => cat.alias === alias) === undefined
   ) {
     routerNavigator.go('/')
+    return
   }
 
   if (categorySounds.length === 0) {
