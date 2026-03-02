@@ -57,8 +57,8 @@ const Category = ({ id }) => {
     categories.length !== 0 &&
     categories.find((cat) => cat.alias === alias) === undefined
   ) {
-    routerNavigator.go('/')
-    return
+    
+    return <Error404 />
   }
 
   if (categorySounds.length === 0) {
