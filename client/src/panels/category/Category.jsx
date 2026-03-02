@@ -49,9 +49,10 @@ const Category = ({ id }) => {
     }
   }, [currentSound, vk_id, isPaid])
 
-  if (categorySounds.length === 0) {
-    return <Loader />
-  }
+  // if (categorySounds.length === 0) {
+  //   return <Loader />
+  // }
+
   return (
     <Panel id={id} key={alias}> 
       <Header />
