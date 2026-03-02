@@ -12,6 +12,7 @@ import Header from '../../components/header/Header'
 import Footer from '../../components/footer/Footer'
 import Loader from '../../UI/loader/Loader'
 import LockedSound from './locked-sound/LockedSound'
+import Error404 from '../../components/error-404/Error404'
 import { fetchGetCategorySounds } from '../../redux/slices/soundSlice'
 
 const Category = ({ id }) => {
