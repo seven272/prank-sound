@@ -1,7 +1,7 @@
 import React from 'react'
 
 import styles from './Error404.module.css'
-import errorImg from '../../assets/images/404.jpg'
+import errorImg from '../../assets/images/404.webp'
 
 const Error404 = () => {
   return (
