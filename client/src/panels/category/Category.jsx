@@ -19,6 +19,9 @@ const Category = ({ id }) => {
   const { categorySounds, currentSound } = useSelector(
     (state) => state.sound,
   )
+  const { categories } = useSelector(
+    (state) => state.category,
+  )
 
   const { vk_id, isPaid } = useSelector((state) => state.vkUser)
   const [soundDisable, setSoundDisable] = useState(true)
@@ -49,9 +52,10 @@ const Category = ({ id }) => {
     }
   }, [currentSound, vk_id, isPaid])
 
-  // if (categorySounds.length === 0) {
-  //   return <Loader />
-  // }
+  if (categorySounds.length === 0) {
+    console.log(categories)
+    return <Loader />
+  }
 
   return (
     <Panel id={id} key={alias}> 
