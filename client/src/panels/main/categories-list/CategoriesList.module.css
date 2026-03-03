@@ -127,3 +127,24 @@
     height: 95px;
   }
 }
+
+@media screen and (max-width: 390px) {
+  .container {
+    column-gap: 15px;
+  }
+
+  .element {
+    max-width: 170px;
+    height: 170px;
+    padding: 20px;
+  }
+  .wrap_img_wrap {
+    width: 100px;
+    height: 100px;
+    padding: 10px;
+  }
+  .img_wrap {
+    width: 90px;
+    height: 90px;
+  }
+}
