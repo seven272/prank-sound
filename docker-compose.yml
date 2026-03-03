@@ -98,6 +98,8 @@ services:
       - 'traefik.http.routers.prank-me.rule=Host(`prank-sound.ru`) && PathPrefix(`/db-admin`)'
       - 'traefik.http.routers.prank-me.entrypoints=websecure'
       - 'traefik.http.routers.prank-me.tls.certresolver=myresolver'
+      # Добавляем middleware для заголовков
+      - "traefik.http.middlewares.prank-me-headers.headers.customResponseHeaders.Content-Security-Policy=default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:;"
       # 2. ПРИОРИТЕТ: Ставим выше, чем у фронтенда (10) и бэкенда (100)
       - 'traefik.http.routers.prank-me.priority=110'
 
@@ -107,7 +109,7 @@ services:
       # 2. Basic Auth (добавляем)
       - 'traefik.http.middlewares.prank-me-auth.basicauth.users=admin:$$2y$$05$$6nzCT5uL3YHZPqX7e8adyOjxT1ZBPVqyglCPgGcjce2iq0h1LQLMa'
       # Применяем обе цепочки (через запятую)
-      - 'traefik.http.routers.prank-me.middlewares=prank-me-strip,prank-me-auth'
+      - 'traefik.http.routers.prank-me.middlewares=prank-me-strip,prank-me-auth,prank-me-headers'
       # - 'traefik.http.routers.prank-me.middlewares=prank-me-strip'
 
       # 4. ПОРТ: Внутренний порт mongo-express
