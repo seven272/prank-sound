@@ -7,7 +7,7 @@ services:
     restart: always
     volumes:
       - mongo_database:/data/db
-    # prank-server начнет сборку и запуск только тогда, когда база ответит на «пинг» внутри контейнера
+      # prank-server начнет сборку и запуск только тогда, когда база ответит на «пинг» внутри контейнера
     healthcheck:
       test: ['CMD', 'mongosh', '--eval', "db.adminCommand('ping')"]
       interval: 10s
@@ -82,7 +82,7 @@ services:
     image: mongo-express:1.0
     container_name: prank_mongo_express_container
     networks:
-      - traefik-net
+      # - traefik-net
       - prank-app-net
     ports:
       - '${ME_OUTSIDE_PORT}:${ME_DOCKER_PORT}'
@@ -90,31 +90,25 @@ services:
       ME_CONFIG_MONGODB_URL: ${ME_CONFIG_MONGODB_URL}
       ME_CONFIG_BASICAUTH_USERNAME: ${ME_CONFIG_BASICAUTH_USERNAME}
       ME_CONFIG_BASICAUTH_PASSWORD: ${ME_CONFIG_BASICAUTH_PASSWORD}
-      ME_CONFIG_SITE_BASEURL: /db-admin/
+      # ME_CONFIG_SITE_BASEURL: /db-admin/
     restart: always
-    labels:
-      - 'traefik.enable=true'
-      # 1. Правило: Тот же основной домен + путь /db-admin
-      - 'traefik.http.routers.prank-me.rule=Host(`prank-sound.ru`) && PathPrefix(`/db-admin`)'
-      - 'traefik.http.routers.prank-me.entrypoints=websecure'
-      - 'traefik.http.routers.prank-me.tls.certresolver=myresolver'
-      # Добавляем middleware для заголовков
-      - "traefik.http.middlewares.prank-me-headers.headers.customResponseHeaders.Content-Security-Policy=default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:;"
-      # 2. ПРИОРИТЕТ: Ставим выше, чем у фронтенда (10) и бэкенда (100)
-      - 'traefik.http.routers.prank-me.priority=110'
+    # labels:
+      # - 'traefik.enable=true'
+      # # 1. Правило: Тот же основной домен + путь /db-admin
+      # - 'traefik.http.routers.prank-me.rule=Host(`prank-sound.ru`) && PathPrefix(`/db-admin`)'
+      # - 'traefik.http.routers.prank-me.entrypoints=websecure'
+      # - 'traefik.http.routers.prank-me.tls.certresolver=myresolver'
 
-      # 3. MIDDLEWARE: Отрезаем приставку /db-admin перед отправкой в контейнер
-      # Чтобы запрос 'sportplans.ru/db-admin/assets/app.js' стал '/assets/app.js'
-      - 'traefik.http.middlewares.prank-me-strip.stripprefix.prefixes=/db-admin'
-      - 'traefik.http.middlewares.prank-me-strip.stripprefix.forceSlash=true'
-      # 2. Basic Auth (добавляем)
-      - 'traefik.http.middlewares.prank-me-auth.basicauth.users=admin:$$2y$$05$$6nzCT5uL3YHZPqX7e8adyOjxT1ZBPVqyglCPgGcjce2iq0h1LQLMa'
-      # Применяем обе цепочки (через запятую)
-      - 'traefik.http.routers.prank-me.middlewares=prank-me-strip,prank-me-auth,prank-me-headers'
+      # # 2. ПРИОРИТЕТ: Ставим выше, чем у фронтенда (10) и бэкенда (100)
+      # - 'traefik.http.routers.prank-me.priority=110'
+
+      # # 3. MIDDLEWARE: Отрезаем приставку /db-admin перед отправкой в контейнер
+      # # Чтобы запрос 'sportplans.ru/db-admin/assets/app.js' стал '/assets/app.js'
+      # - 'traefik.http.middlewares.prank-me-strip.stripprefix.prefixes=/db-admin'
       # - 'traefik.http.routers.prank-me.middlewares=prank-me-strip'
 
-      # 4. ПОРТ: Внутренний порт mongo-express
-      - 'traefik.http.services.prank-me.loadbalancer.server.port=8081'
+      # # 4. ПОРТ: Внутренний порт mongo-express
+      # - 'traefik.http.services.prank-me.loadbalancer.server.port=8081'
 
 volumes:
   mongo_database:
@@ -126,6 +120,6 @@ networks:
     external: true
     driver_opts:
       com.docker.network.driver.mtu: '1500' # Чтобы Docker всегда помнил про MTU
-  # Внутренняя сеть для связи Backend <-> MongoDB
+  # Внутренняя сеть для связи Backend <-> MongoDB и Mongo-express <-> MongoDB
   prank-app-net:
     driver: bridge
