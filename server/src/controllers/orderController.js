@@ -6,9 +6,8 @@ const makePurchaseVk = async (req, res) => {
     premium_pass: {
       title: 'Премиум доступ',
       price: 10,
-      // photo_url: 'https://prank-sound.ru/static/other/vip-2.jpeg',
-      photo_url:
-        'https://prank-sound.ru/static/covers/1771155539922-123952281-burp-3.jpeg',
+      photo_url: 'https://prank-sound.ru/static/other/vip-2.jpeg',
+     
     },
     sale_key: {
       title: 'Музыкальный ключ',
