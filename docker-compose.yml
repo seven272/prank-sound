@@ -106,6 +106,7 @@ services:
       # 3. MIDDLEWARE: Отрезаем приставку /db-admin перед отправкой в контейнер
       # Чтобы запрос 'sportplans.ru/db-admin/assets/app.js' стал '/assets/app.js'
       - 'traefik.http.middlewares.prank-me-strip.stripprefix.prefixes=/db-admin'
+      - 'traefik.http.middlewares.prank-me-strip.stripprefix.forceSlash=true'
       # 2. Basic Auth (добавляем)
       - 'traefik.http.middlewares.prank-me-auth.basicauth.users=admin:$$2y$$05$$6nzCT5uL3YHZPqX7e8adyOjxT1ZBPVqyglCPgGcjce2iq0h1LQLMa'
       # Применяем обе цепочки (через запятую)
