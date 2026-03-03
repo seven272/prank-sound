@@ -53,7 +53,7 @@ services:
       - 'traefik.http.services.prank-backend.loadbalancer.server.port=5000'
   prank-client:
     build:
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.dev
       context: ./client
     container_name: prank_client_container
     networks:
@@ -73,7 +73,7 @@ services:
       - 'traefik.http.routers.prank-front.entrypoints=websecure'
       - 'traefik.http.routers.prank-front.tls.certresolver=myresolver'
       # Порт, на котором работает React/Nginx внутри контейнера. Для dev указываем порт Vite, prod - порт Nginx
-      - 'traefik.http.services.prank-front.loadbalancer.server.port=4000'
+      - 'traefik.http.services.prank-front.loadbalancer.server.port=3000'
       # ПРИОРИТЕТ 10 (самый низкий)
       # Это правило "по умолчанию" для всего, что не попало в /api
       - 'traefik.http.routers.prank-front.priority=10'
