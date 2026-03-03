@@ -2,15 +2,16 @@ import User from '../models/User.js'
 import Order from '../models/Order.js'
 
 const makePurchaseVk = async (req, res) => {
-
   const ITEMS_STORE = {
     premium_pass: {
       title: 'Премиум доступ',
       price: 10,
-      photo_url: 'https://prank-sound.ru/static/other/vip-2.jpeg',
+      // photo_url: 'https://prank-sound.ru/static/other/vip-2.jpeg',
+      photo_url:
+        'https://prank-sound.ru/static/covers/1771155539922-123952281-burp-3.jpeg',
     },
     sale_key: {
-      title: 'Музыкальный ключ', 
+      title: 'Музыкальный ключ',
       price: 2,
       photo_url: 'https://prank-sound.ru/.../...jpeg',
     },
@@ -89,7 +90,7 @@ const makePurchaseVk = async (req, res) => {
   }
 }
 
-const getAllOrdersVk =  async (req, res) => {
+const getAllOrdersVk = async (req, res) => {
   try {
     const all = await Order.find({})
     res.status(200).json(all)
