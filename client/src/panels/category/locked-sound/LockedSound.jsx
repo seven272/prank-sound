@@ -17,7 +17,7 @@ const LockedSound = () => {
   const handlePay = () => {
     payVirtualMoney()
   }
-
+ 
   const handleClick = () => {
     setOpenModal(true)
   }

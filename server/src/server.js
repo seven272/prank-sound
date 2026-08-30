@@ -20,7 +20,7 @@ const PORT = process.env.PORT || 5000
 const app = express()
 
 app.use(express.json())
-app.use(cookieParser())
+app.use(cookieParser()) 
 app.use(cors(corsOptions))
 // чтобы парсить вложенные данные(например обьекты) передаваемые в req.body
 app.use(express.urlencoded({ extended: true }))

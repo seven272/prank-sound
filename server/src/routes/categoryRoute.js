@@ -13,10 +13,6 @@ import {
 
 import upload from '../middlewares/upload.js'
 
-// import {
-//   authenticate,
-//   authorizeAdmin,
-// } from '../middlewares/authMiddleware.js'
 
 const router = express.Router()
 

@@ -12,7 +12,7 @@ const Auth = ({ showForm, setShowForm }) => {
   const isAuth = useSelector(checkIsAuth)
   const [showComponent, setShowComponent] = useState('login')
 
-  return (
+  return ( 
     <>
       {showForm && !isAuth && (
         <div className={styles.section}>

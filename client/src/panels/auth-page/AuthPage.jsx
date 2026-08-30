@@ -15,7 +15,7 @@ const AuthPage = () => {
   return (
     <div className={styles.main}>
       <div className={styles.wrap}>
-        {isAuth ? (
+        {isAuth ? ( 
           <Avatar
             size={50}
             className={styles.avatar}

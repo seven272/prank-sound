@@ -57,6 +57,6 @@ const checkAdmin = (req, res, next) => {
   } else {
     res.status(401).send('Вы не являетесь администратором.')
   }
-}
+} 
 
 export { checkAuth, checkAdmin }

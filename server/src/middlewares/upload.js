@@ -11,7 +11,7 @@ const storage = multer.diskStorage({
     }
     if (file.fieldname === 'category') {
       // проверка на наличие папки
-      if (!fs.existsSync('./src/uploads/categories')) {
+      if (!fs.existsSync('./src/uploads/categories')) { 
         console.log('Папки не существует, создаю ее')
         fs.mkdirSync('./src/uploads/categories')
       }

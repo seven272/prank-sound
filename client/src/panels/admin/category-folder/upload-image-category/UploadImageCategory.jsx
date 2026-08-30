@@ -20,7 +20,7 @@ const UploadImageCategory = ({ setImageUrl, haveUrl }) => {
         formData
       )
       const url = data.url
-
+ 
       if (url) {
         handleImageChange(evt)
       }

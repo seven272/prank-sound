@@ -8,7 +8,7 @@ import { changeStatusPaid } from '../redux/slices/vkUserSlice'
 const useVkPay = () => {
   const dispatch = useDispatch()
   const [loading, setLoading] = useState(false)
-
+ 
   const payVirtualMoney = async () => {
     try {
       // 1. Вызываем нативное окно оплаты VK
